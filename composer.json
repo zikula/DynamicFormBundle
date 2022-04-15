@@ -1,0 +1,33 @@
+{
+    "name": "zikula/dynamic-form-property-bundle",
+    "type": "symfony-bundle",
+    "description": "An bundle providing dynamic properties to symfony forms.",
+    "homepage": "https://ziku.la",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Craig Heydenburg",
+            "email": "craigh@mac.com"
+        },
+        {
+            "name": "Axel Guckelsberger",
+            "email": "info@guite.de"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "symfony/contracts": "^2",
+        "symfony/form": "^5.4",
+        "symfony/framework-bundle": "^5.4",
+        "symfony/string": "^5.4",
+        "symfony/validator": "^5.4",
+        "doctrine/orm": "^2.11"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": { "Zikula\\Bundle\\DynamicFormPropertyBundle\\": "" }
+    }
+}

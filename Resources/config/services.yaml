@@ -1,0 +1,9 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Zikula\Bundle\DynamicFormPropertyBundle\:
+        resource: '../../*'
+        exclude: '../../{bootstrap.php,Tests,vendor}'

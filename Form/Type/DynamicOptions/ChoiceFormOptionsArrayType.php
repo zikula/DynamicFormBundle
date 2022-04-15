@@ -13,16 +13,15 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions;
 
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class ChoiceFormOptionsArrayType extends FormOptionsArrayType
+class ChoiceFormOptionsArrayType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        parent::buildForm($builder, $options);
-
         $builder
             ->add('multiple', CheckboxType::class, [
                 'label' => 'Multiple',
@@ -37,5 +36,10 @@ class ChoiceFormOptionsArrayType extends FormOptionsArrayType
                 'help' => 'A comma-delineated list. either "value, value, value" or "key:value, key:value, key:value"'
             ])
         ;
+    }
+
+    public function getParent()
+    {
+        return FormOptionsArrayType::class;
     }
 }

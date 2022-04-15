@@ -13,16 +13,15 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions;
 
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraintTransformer;
 
-class RegexibleFormOptionsArrayType extends FormOptionsArrayType
+class RegexibleFormOptionsArrayType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        parent::buildForm($builder, $options);
-
         $builder->add('constraints', TextType::class, [
             'label' => 'Regex validation string constraint',
             'required' => false
@@ -30,5 +29,10 @@ class RegexibleFormOptionsArrayType extends FormOptionsArrayType
         $builder->get('constraints')
             ->addModelTransformer(new RegexConstraintTransformer())
         ;
+    }
+
+    public function getParent()
+    {
+        return FormOptionsArrayType::class;
     }
 }

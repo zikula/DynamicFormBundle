@@ -44,11 +44,6 @@ class InlineFormDefinitionType extends AbstractType
         }
     }
 
-    public function getBlockPrefix(): string
-    {
-        return 'zikula_dynamic_form_property_bundle_inlineformdefinition';
-    }
-
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

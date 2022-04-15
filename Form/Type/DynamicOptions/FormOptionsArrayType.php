@@ -34,9 +34,4 @@ class FormOptionsArrayType extends AbstractType
             ])
         ;
     }
-
-    public function getBlockPrefix()
-    {
-        return 'zikula_dynamic_form_property_bundle_formoptionsarray';
-    }
 }

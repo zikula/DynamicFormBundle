@@ -48,7 +48,6 @@ use Zikula\Bundle\DynamicFormPropertyBundle\Event\FormTypeChoiceEvent;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ChoiceValuesTransformer;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraintTransformer;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\ChoiceFormOptionsArrayType;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\ChoiceWithOtherType;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\DateTimeFormOptionsArrayType;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\FormOptionsArrayType;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\MoneyFormOptionsArrayType;
@@ -130,11 +129,6 @@ class DynamicFieldType extends AbstractType
     public function buildView(FormView $view, FormInterface $form, array $options): void
     {
         // @todo dispatch event to load javascript ZikulaDynamicFormPropertyBundle.DynamicProperty.Edit.js
-    }
-
-    public function getBlockPrefix(): string
-    {
-        return 'zikula_dynamic_form_property_bundle_dynamicfield';
     }
 
     private function getChoices(): FormTypesChoices

@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormPropertyBundle\Repository;
 
-use Zikula\Bundle\DynamicFormPropertyBundle\DynamicFieldsContainerInterface;
+use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertiesContainerInterface;
 
-abstract class AbstractPropertyRepository implements DynamicFieldsContainerInterface
+abstract class AbstractPropertyRepository implements DynamicPropertiesContainerInterface
 {
     public function getDynamicFieldsSpecification(): array
     {

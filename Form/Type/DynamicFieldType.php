@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\Type;
 
+use App\Entity\Survey;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -42,8 +43,11 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertyInterface;
+use Zikula\Bundle\DynamicFormPropertyBundle\Entity\AbstractPropertyEntity;
 use Zikula\Bundle\DynamicFormPropertyBundle\Event\FormTypeChoiceEvent;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ChoiceValuesTransformer;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraintTransformer;
@@ -72,11 +76,18 @@ class DynamicFieldType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('formType', ChoiceType::class, [
-            'label' => 'Field type',
-            'choices' => $this->getChoices(),
-            'placeholder' => 'Select'
-        ]);
+        $builder
+            ->add('formType', ChoiceType::class, [
+                'label' => 'Field type',
+                'attr' => ['class' => 'dynamic-property-form-type-select'],
+                'choices' => $this->getChoices(),
+                'placeholder' => 'Select'
+            ])
+            ->add('formOptions', FormOptionsArrayType::class, [
+                'label' => 'Field options',
+                'auto_initialize' => false
+            ])
+        ;
 
         $formModifier = function (FormInterface $form, $formType = null) use ($builder) {
             switch ($formType) {
@@ -117,8 +128,9 @@ class DynamicFieldType extends AbstractType
         };
         $builder->addEventListener(FormEvents::PRE_SET_DATA, static function (FormEvent $event) use ($formModifier) {
             $data = $event->getData();
-            $formType = $data['formType'];
-            $formModifier($event->getForm(), $formType);
+            if ($data instanceof DynamicPropertyInterface) {
+                $formModifier($event->getForm(), $data->getFormType());
+            }
         });
         $builder->get('formType')->addEventListener(FormEvents::POST_SUBMIT, static function (FormEvent $event) use ($formModifier) {
             $formType = $event->getForm()->getData();

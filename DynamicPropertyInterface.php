@@ -14,9 +14,9 @@ declare(strict_types=1);
 namespace Zikula\Bundle\DynamicFormPropertyBundle;
 
 /**
- * Represents a single dynamic field specification.
+ * Represents a single dynamic property specification.
  */
-interface DynamicFieldInterface
+interface DynamicPropertyInterface
 {
     /**
      * Returns name of form field.

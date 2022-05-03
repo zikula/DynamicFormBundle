@@ -23,6 +23,7 @@ class FormOptionsArrayType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('label', TextType::class)
             ->add('required', CheckboxType::class, [
                 'label' => 'Required',
                 'label_attr' => ['class' => 'switch-custom'],

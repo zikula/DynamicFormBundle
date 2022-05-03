@@ -16,20 +16,20 @@ namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Zikula\Bundle\DynamicFormPropertyBundle\DynamicFieldsContainerInterface;
+use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertiesContainerInterface;
 
 /**
  * Form type for embedding dynamic fields.
  */
 class InlineFormDefinitionType extends AbstractType
 {
-    private DynamicFieldsContainerInterface $dynamicFieldsContainer;
+    private DynamicPropertiesContainerInterface $dynamicFieldsContainer;
 
     public function buildForm(FormBuilderInterface $builder, array $options = []): void
     {
         $this->dynamicFieldsContainer = $options['dynamicFieldsContainer'];
 
-        if (!($this->dynamicFieldsContainer instanceof DynamicFieldsContainerInterface)) {
+        if (!($this->dynamicFieldsContainer instanceof DynamicPropertiesContainerInterface)) {
             return;
         }
 

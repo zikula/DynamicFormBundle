@@ -15,40 +15,52 @@ namespace Zikula\Bundle\DynamicFormPropertyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Zikula\Bundle\DynamicFormPropertyBundle\DynamicFieldInterface;
+use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertyInterface;
 
 /**
  * @ORM\MappedSuperclass
  */
-abstract class AbstractPropertyEntity implements DynamicFieldInterface
+#[ORM\MappedSuperclass]
+abstract class AbstractPropertyEntity implements DynamicPropertyInterface, \ArrayAccess
 {
+    use EntityArrayAccessTrait;
+
     /**
      * @ORM\Column(type="array")
      * @Assert\NotNull()
      */
+    #[ORM\Column(type: "array")]
+    #[Assert\NotNull]
     protected array $labels = [];
 
     /**
      * @ORM\Column(type="text")
      * @Assert\Length(min="0", max="255", allowEmptyString="false")
      */
+    #[Orm\Column(type: "text")]
+    #[Assert\Length(min:0, max:255)]
     protected string $formType = '';
 
     /**
      * @ORM\Column(type="array")
      * @Assert\NotNull()
      */
+    #[ORM\Column(type: "array")]
+    #[Assert\NotNull]
     protected array $formOptions = [];
 
     /**
      * @ORM\Column(type="integer")
      * @Assert\GreaterThan(0)
      */
+    #[ORM\Column(type: "integer")]
+    #[Assert\GreaterThan(0)]
     protected int $weight = 0;
 
     /**
      * @ORM\Column(type="boolean")
      */
+    #[ORM\Column(type: "boolean")]
     protected bool $active = true;
 
     /**
@@ -129,7 +141,10 @@ abstract class AbstractPropertyEntity implements DynamicFieldInterface
         return $this->getId();
     }
 
-    abstract public function getPrefix(): string;
+    public function getPrefix(): string
+    {
+        return '';
+    }
 
     public function getGroupNames(): array
     {

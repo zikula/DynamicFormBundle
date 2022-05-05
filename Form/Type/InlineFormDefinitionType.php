@@ -16,6 +16,7 @@ namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertiesContainerInterface;
 
 /**
@@ -23,17 +24,18 @@ use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertiesContainerInterface;
  */
 class InlineFormDefinitionType extends AbstractType
 {
-    private DynamicPropertiesContainerInterface $dynamicFieldsContainer;
+    private TranslatorInterface $translator;
+
+    public function __construct(TranslatorInterface $translator)
+    {
+        $this->translator = $translator;
+    }
 
     public function buildForm(FormBuilderInterface $builder, array $options = []): void
     {
-        $this->dynamicFieldsContainer = $options['dynamicFieldsContainer'];
+        $dynamicFieldsContainer = $options['dynamicFieldsContainer'];
 
-        if (!($this->dynamicFieldsContainer instanceof DynamicPropertiesContainerInterface)) {
-            return;
-        }
-
-        foreach ($this->dynamicFieldsContainer->getDynamicFieldsSpecification() as $fieldSpecification) {
+        foreach ($dynamicFieldsContainer->getDynamicFieldsSpecification() as $fieldSpecification) {
             $fieldOptions = $fieldSpecification->getFormOptions();
             $fieldOptions['label'] = $fieldOptions['label'] ?? $fieldSpecification->getLabel($this->translator->getLocale());
 
@@ -51,5 +53,6 @@ class InlineFormDefinitionType extends AbstractType
             'mapped' => false,
             'dynamicFieldsContainer' => null
         ]);
+        $resolver->addAllowedTypes('dynamicFieldsContainer', DynamicPropertiesContainerInterface::class);
     }
 }

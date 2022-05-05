@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\Type;
 
-use App\Entity\Survey;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -43,11 +42,9 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertyInterface;
-use Zikula\Bundle\DynamicFormPropertyBundle\Entity\AbstractPropertyEntity;
 use Zikula\Bundle\DynamicFormPropertyBundle\Event\FormTypeChoiceEvent;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ChoiceValuesTransformer;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraintTransformer;
@@ -77,6 +74,10 @@ class DynamicFieldType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('name', TextType::class, [
+                'label' => 'Field name',
+                'help' => 'May only container lower-case letters. For property access and internal use.'
+            ])
             ->add('formType', ChoiceType::class, [
                 'label' => 'Field type',
                 'attr' => ['class' => 'dynamic-property-form-type-select'],
@@ -86,6 +87,13 @@ class DynamicFieldType extends AbstractType
             ->add('formOptions', FormOptionsArrayType::class, [
                 'label' => 'Field options',
                 'auto_initialize' => false
+            ])
+            ->add('weight', IntegerType::class, [
+                'empty_data' => 0,
+                'required' => false
+            ])
+            ->add('active', CheckboxType::class, [
+                'required' => false
             ])
         ;
 

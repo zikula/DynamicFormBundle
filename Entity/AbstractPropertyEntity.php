@@ -26,6 +26,18 @@ abstract class AbstractPropertyEntity implements DynamicPropertyInterface, \Arra
     use EntityArrayAccessTrait;
 
     /**
+     * @ORM\Column(type="text", nullable=false)
+     * @Assert\Length(min="0", max="255", allowEmptyString="false")
+     * @Assert\Regex("[\w]+", "The name can only contain letters and underscores.")
+     * @Assert\NotBlank()
+     */
+    #[Orm\Column(type: "text", nullable: false)]
+    #[Assert\Length(min:0, max:255)]
+    #[Assert\Regex("[\w]+", "The name can only contain letters and underscores.")]
+    #[Assert\NotBlank]
+    protected string $name;
+
+    /**
      * @ORM\Column(type="array")
      * @Assert\NotNull()
      */
@@ -81,7 +93,7 @@ abstract class AbstractPropertyEntity implements DynamicPropertyInterface, \Arra
         }
         $values = array_values($this->labels);
 
-        return !empty($values[0]) ? array_shift($values) : $this->id;
+        return !empty($values[0]) ? array_shift($values) : (string) $this->id;
     }
 
     /**
@@ -136,9 +148,14 @@ abstract class AbstractPropertyEntity implements DynamicPropertyInterface, \Arra
         $this->active = $active;
     }
 
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
     public function getName(): string
     {
-        return $this->getId();
+        return $this->name;
     }
 
     public function getPrefix(): string

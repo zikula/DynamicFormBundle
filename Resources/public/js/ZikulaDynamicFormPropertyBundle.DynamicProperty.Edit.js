@@ -10,26 +10,22 @@
             formOptions.html('<i class="fa-solid fa-gear fa-3x fa-fw fa-spin" aria-hidden="true"></i>');
             form = $(this).closest('form');
             let formName = form.attr('name');
-            // console.log("formName:", formName);
             data = $(form).serializeArray();
             $.ajax({
                 url: form.attr('action'),
-                type: form.attr('method'),
+                method: form.attr('method'),
                 data: data,
-                success: function(html) {
-                    let newContents = $(html).find('form[name="'+formName+'"]');
-                    console.log('o_form:',form, 'n_form:',newContents);
-                    form.replaceWith(
-                        newContents
-                    );
-                }
-            });
+            })
+            .done(function(html) {
+                let newForm = $(html).filter('form').filter('form[name="'+formName+'"]');
+                form.replaceWith(newForm);
+            })
+            .always(function () {
+                $('.dynamic-property-form-type-select').change(changeHandler);
+                $('.add-another-collection-widget').click(addToCollectionHandler);
+            })
         }
-        let formTypeSelectEl = $('.dynamic-property-form-type-select');
-        formTypeSelectEl.change(changeHandler);
-
-        // add-collection-widget.js
-        $('.add-another-collection-widget').click(function (e) {
+        let addToCollectionHandler = function () {
             var list = $($(this).attr('data-list-selector'));
             // Try to find the counter of the list or use the length of the list
             var counter = list.data('widget-counter') || list.children().length;
@@ -49,9 +45,11 @@
             var newElem = $(list.attr('data-widget-tags')).html(newWidget);
             newElem.appendTo(list);
 
-
             // add change handler to selector
             $(newElem).find('.dynamic-property-form-type-select').change(changeHandler);
-        });
+        }
+
+        $('.dynamic-property-form-type-select').change(changeHandler);
+        $('.add-another-collection-widget').click(addToCollectionHandler);
     });
 })(jQuery);

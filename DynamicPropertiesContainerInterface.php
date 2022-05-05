@@ -23,5 +23,5 @@ interface DynamicPropertiesContainerInterface
      *
      * @return DynamicPropertyInterface[]
      */
-    public function getDynamicFieldsSpecification(): array;
+    public function getDynamicFieldsSpecification(array $params = []): array;
 }

@@ -93,7 +93,7 @@ abstract class AbstractPropertyEntity implements DynamicPropertyInterface, \Arra
         }
         $values = array_values($this->labels);
 
-        return !empty($values[0]) ? array_shift($values) : (string) $this->id;
+        return !empty($values[0]) ? array_shift($values) : ucfirst($this->name);
     }
 
     /**

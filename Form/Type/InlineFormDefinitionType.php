@@ -51,8 +51,9 @@ class InlineFormDefinitionType extends AbstractType
         $resolver->setDefaults([
             'constraints' => [],
             'mapped' => false,
-            'dynamicFieldsContainer' => null
+            'inherit_data' => true,
         ]);
+        $resolver->setRequired('dynamicFieldsContainer');
         $resolver->addAllowedTypes('dynamicFieldsContainer', DynamicPropertiesContainerInterface::class);
     }
 }

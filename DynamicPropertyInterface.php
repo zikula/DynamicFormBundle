@@ -29,7 +29,7 @@ interface DynamicPropertyInterface
     public function getPrefix(): string;
 
     /**
-     * Returns a list of labels per locale.
+     * Returns a list of labels per locale. e.g. ['en' => 'my label', 'de' => 'mein Etikett']
      * @return string[]
      */
     public function getLabels(): array;
@@ -50,9 +50,14 @@ interface DynamicPropertyInterface
     public function getFormOptions(): array;
 
     /**
-     * Returns a weighting number for sorting fields.
+     * Returns a weighting number for sorting properties.
      */
     public function getWeight(): int;
+
+    /**
+     * Returns boolean indicating if this property is active.
+     */
+    public function isActive(): bool;
 
     /**
      * Returns a list of group names per locale.

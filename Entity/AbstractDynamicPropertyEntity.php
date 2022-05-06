@@ -21,7 +21,7 @@ use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertyInterface;
  * @ORM\MappedSuperclass
  */
 #[ORM\MappedSuperclass]
-abstract class AbstractPropertyEntity implements DynamicPropertyInterface, \ArrayAccess
+abstract class AbstractDynamicPropertyEntity implements DynamicPropertyInterface, \ArrayAccess
 {
     use EntityArrayAccessTrait;
 
@@ -66,7 +66,7 @@ abstract class AbstractPropertyEntity implements DynamicPropertyInterface, \Arra
      * @Assert\GreaterThan(0)
      */
     #[ORM\Column(type: "integer")]
-    #[Assert\GreaterThan(0)]
+    #[Assert\GreaterThanOrEqual(0)]
     protected int $weight = 0;
 
     /**
@@ -138,7 +138,7 @@ abstract class AbstractPropertyEntity implements DynamicPropertyInterface, \Arra
         $this->weight = $weight;
     }
 
-    public function getActive(): bool
+    public function isActive(): bool
     {
         return $this->active;
     }

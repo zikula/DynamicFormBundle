@@ -76,7 +76,7 @@ class DynamicFieldType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Field name',
-                'help' => 'May only container lower-case letters. For property access and internal use.'
+                'help' => 'The name can only contain letters and underscores. For property access and internal use.'
             ])
             ->add('formType', ChoiceType::class, [
                 'label' => 'Field type',
@@ -89,7 +89,7 @@ class DynamicFieldType extends AbstractType
                 'auto_initialize' => false
             ])
             ->add('weight', IntegerType::class, [
-                'empty_data' => 0,
+                'empty_data' => '0',
                 'required' => false
             ])
             ->add('active', CheckboxType::class, [
@@ -144,11 +144,6 @@ class DynamicFieldType extends AbstractType
             $formType = $event->getForm()->getData();
             $formModifier($event->getForm()->getParent(), $formType);
         });
-    }
-
-    public function buildView(FormView $view, FormInterface $form, array $options): void
-    {
-        // @todo dispatch event to load javascript ZikulaDynamicFormPropertyBundle.DynamicProperty.Edit.js
     }
 
     private function getChoices(): FormTypesChoices

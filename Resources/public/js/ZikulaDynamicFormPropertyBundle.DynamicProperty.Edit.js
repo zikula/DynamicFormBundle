@@ -20,10 +20,6 @@
                 let newForm = $(html).filter('form').filter('form[name="'+formName+'"]');
                 form.replaceWith(newForm);
             })
-            .always(function () {
-                $('.dynamic-property-form-type-select').change(changeHandler);
-                $('.add-another-collection-widget').click(addToCollectionHandler);
-            })
         }
         let addToCollectionHandler = function () {
             var list = $($(this).attr('data-list-selector'));

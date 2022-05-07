@@ -28,12 +28,12 @@ abstract class AbstractDynamicPropertyEntity implements DynamicPropertyInterface
     /**
      * @ORM\Column(type="text", nullable=false)
      * @Assert\Length(min="0", max="255", allowEmptyString="false")
-     * @Assert\Regex("[\w]+", "The name can only contain letters and underscores.")
+     * @Assert\Regex(pattern="/\w+/", message="The name can only contain letters and underscores.")
      * @Assert\NotBlank()
      */
     #[Orm\Column(type: "text", nullable: false)]
     #[Assert\Length(min:0, max:255)]
-    #[Assert\Regex("[\w]+", "The name can only contain letters and underscores.")]
+    #[Assert\Regex(pattern: "/\w+/", message: "The name can only contain letters and underscores.")]
     #[Assert\NotBlank]
     protected string $name;
 
@@ -63,10 +63,10 @@ abstract class AbstractDynamicPropertyEntity implements DynamicPropertyInterface
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\GreaterThan(0)
+     * @Assert\PositiveOrZero()
      */
     #[ORM\Column(type: "integer")]
-    #[Assert\GreaterThanOrEqual(0)]
+    #[Assert\PositiveOrZero]
     protected int $weight = 0;
 
     /**

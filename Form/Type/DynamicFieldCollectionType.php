@@ -15,8 +15,6 @@ namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DynamicFieldCollectionType extends AbstractType
@@ -37,8 +35,8 @@ class DynamicFieldCollectionType extends AbstractType
         ]);
     }
 
-    public function buildView(FormView $view, FormInterface $form, array $options): void
+    public function getBlockPrefix()
     {
-        // @todo load javascript ZikulaDynamicFormPropertyBundle.DynamicProperty.Edit.js
+        return 'zikula_dynamic_field_collection';
     }
 }

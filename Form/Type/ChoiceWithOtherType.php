@@ -40,6 +40,7 @@ class ChoiceWithOtherType extends AbstractType
         // this will requires also custom ModelTransformer
         // http://symfony.com/doc/current/form/data_transformers.html
 //        $builder->addModelTransformer($transformer);
+        // add 'other' choice to choicelist
 
         // constraints can be added in listener
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
@@ -62,6 +63,6 @@ class ChoiceWithOtherType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        // do nothing?
+        // validate if 'other' selected, then other field cannot be empty
     }
 }

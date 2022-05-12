@@ -21,7 +21,8 @@
         "symfony/framework-bundle": "^5.4",
         "symfony/string": "^5.4",
         "symfony/validator": "^5.4",
-        "doctrine/orm": "^2.11"
+        "doctrine/orm": "^2.11",
+        "symfony/asset": "^6.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",

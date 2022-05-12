@@ -22,8 +22,10 @@ use Symfony\Component\Form\Extension\Core\Type\CurrencyType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\LanguageType;
+use Symfony\Component\Form\Extension\Core\Type\LocaleType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -41,7 +43,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormView;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertyInterface;
@@ -158,18 +159,18 @@ class DynamicFieldType extends AbstractType
                 $this->trans('Number') => NumberType::class,
                 $this->trans('Password') => PasswordType::class,
                 $this->trans('Percent') => PercentType::class,
-                $this->trans('Phone number') => TelType::class,
                 $this->trans('Url') => UrlType::class,
                 $this->trans('Range') => RangeType::class,
-                $this->trans('Week number') => WeekType::class,
+                $this->trans('Phone number') => TelType::class,
             ],
             $this->trans('Choice fields') => [
                 $this->trans('Choice') => ChoiceType::class,
                 $this->trans('Choice with other') => ChoiceWithOtherType::class,
                 $this->trans('Checkbox') => CheckboxType::class,
-                $this->trans('Radio') => RadioType::class,
+                // $this->trans('Radio') => RadioType::class,
                 $this->trans('Country') => CountryType::class,
                 $this->trans('Language') => LanguageType::class,
+                $this->trans('Locale') => LocaleType::class,
                 $this->trans('Timezone') => TimezoneType::class,
                 $this->trans('Currency') => CurrencyType::class,
             ],
@@ -178,6 +179,10 @@ class DynamicFieldType extends AbstractType
                 $this->trans('DateTime') => DateTimeType::class,
                 $this->trans('Time') => TimeType::class,
                 $this->trans('Birthday') => BirthdayType::class,
+                $this->trans('Week number') => WeekType::class,
+            ],
+            $this->trans('Other fields') => [
+                $this->trans('File') => FileType::class,
             ]
         ]);
 

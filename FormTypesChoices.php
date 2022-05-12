@@ -17,6 +17,9 @@ use ArrayAccess;
 use Exception;
 use Iterator;
 
+/**
+ * Object to manage the available choices when selecting a FormType in DynamicFieldType.
+ */
 class FormTypesChoices implements ArrayAccess, Iterator
 {
     private array $choices;

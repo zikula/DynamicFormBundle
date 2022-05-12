@@ -16,17 +16,20 @@
     ],
     "require": {
         "php": "^8.0",
+        "doctrine/orm": "^2.11",
+        "symfony/asset": "^5.4",
         "symfony/contracts": "^2",
         "symfony/form": "^5.4",
         "symfony/framework-bundle": "^5.4",
         "symfony/string": "^5.4",
-        "symfony/validator": "^5.4",
-        "doctrine/orm": "^2.11",
-        "symfony/asset": "^6.0"
+        "symfony/validator": "^5.4"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
         "phpunit/phpunit": "^9.5"
+    },
+    "config": {
+        "sort-packages": true
     },
     "autoload": {
         "psr-4": { "Zikula\\Bundle\\DynamicFormPropertyBundle\\": "" }

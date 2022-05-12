@@ -7,14 +7,15 @@
         data-prototype="{{ form_widget(form.vars.prototype)|e }}"
         data-widget-tags="{{ '<li></li>'|e }}"
         data-widget-counter="{{ form|length }}">
-        {% for questionField in form %}
+        {% for dynamicField in form %}
             <li>
-                {{ form_errors(questionField) }}
-                {{ form_widget(questionField) }}
+                {{ form_errors(dynamicField) }}
+                {{ form_widget(dynamicField) }}
+                <button type="button" class="remove-from-collection">Remove this field</button>
             </li>
         {% endfor %}
     </ul>
 
-    <button type="button" class="add-another-collection-widget" data-list-selector="#dynamic-fields-list">Add another</button>
+    <button type="button" class="add-another-collection-widget" data-list-selector="#dynamic-fields-list">Add another field</button>
 
 {% endblock %}

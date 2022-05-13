@@ -17,7 +17,7 @@ use ArrayAccess;
 use Iterator;
 use PHPUnit\Framework\TestCase;
 use Traversable;
-use Zikula\Bundle\DynamicFormPropertyBundle\FormTypesChoices;
+use Zikula\Bundle\DynamicFormPropertyBundle\Form\Data\FormTypesChoices;
 
 class FormTypesChoicesTest extends TestCase
 {

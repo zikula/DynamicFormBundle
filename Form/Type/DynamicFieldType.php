@@ -54,7 +54,7 @@ use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\DateTimeFor
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\FormOptionsArrayType;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\MoneyFormOptionsArrayType;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\RegexibleFormOptionsArrayType;
-use Zikula\Bundle\DynamicFormPropertyBundle\FormTypesChoices;
+use Zikula\Bundle\DynamicFormPropertyBundle\Form\Data\FormTypesChoices;
 
 /**
  * Form type providing a dynamic selection of field type and field options.

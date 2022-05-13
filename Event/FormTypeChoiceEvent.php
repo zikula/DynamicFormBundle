@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormPropertyBundle\Event;
 
-use Zikula\Bundle\DynamicFormPropertyBundle\FormTypesChoices;
+use Zikula\Bundle\DynamicFormPropertyBundle\Form\Data\FormTypesChoices;
 
 class FormTypeChoiceEvent
 {

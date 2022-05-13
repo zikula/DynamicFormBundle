@@ -21,10 +21,8 @@ use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertyInterface;
  * @ORM\MappedSuperclass
  */
 #[ORM\MappedSuperclass]
-abstract class AbstractDynamicPropertyEntity implements DynamicPropertyInterface, \ArrayAccess
+abstract class AbstractDynamicPropertyEntity implements DynamicPropertyInterface
 {
-    use EntityArrayAccessTrait;
-
     /**
      * @ORM\Column(type="text", nullable=false)
      * @Assert\Length(min="0", max="255", allowEmptyString="false")

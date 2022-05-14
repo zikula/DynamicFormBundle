@@ -6,4 +6,6 @@ services:
 
     Zikula\Bundle\DynamicFormPropertyBundle\:
         resource: '../../*'
-        exclude: '../../{bootstrap.php,Tests,vendor}'
+        exclude:
+            - '../../{bootstrap.php,Tests,vendor}'
+            - '../../Form/EventListener/*'

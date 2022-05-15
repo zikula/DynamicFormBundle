@@ -33,21 +33,21 @@ abstract class AbstractDynamicPropertyEntity implements DynamicPropertyInterface
     #[Assert\Length(min:0, max:255)]
     #[Assert\Regex(pattern: "/^\w+$/", message: "The name can only contain letters and underscores.")]
     #[Assert\NotBlank]
-    protected string $name;
+    protected ?string $name = null;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="array", nullable=false)
      * @Assert\NotNull()
      */
-    #[ORM\Column(type: "array")]
+    #[ORM\Column(type: "array", nullable: false)]
     #[Assert\NotNull]
     protected array $labels = [];
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=false)
      * @Assert\Length(min="0", max="255", allowEmptyString="false")
      */
-    #[Orm\Column(type: "text")]
+    #[Orm\Column(type: "text", nullable: false)]
     #[Assert\Length(min:0, max:255)]
     protected string $formType = '';
 

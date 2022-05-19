@@ -32,7 +32,7 @@ class DynamicFieldType extends AbstractType
 {
     private EventDispatcherInterface $eventDispatcher;
 
-    public function __construct(EventDispatcherInterface $eventDispatcher, LocaleProvider $localeProvider)
+    public function __construct(EventDispatcherInterface $eventDispatcher)
     {
         $this->eventDispatcher = $eventDispatcher;
     }
@@ -67,7 +67,8 @@ class DynamicFieldType extends AbstractType
                 'required' => false
             ])
         ;
-        $builder->addEventSubscriber(new AddPropertyOptionsListener($builder));
-        $builder->get('formType')->addEventSubscriber(new AddPropertyOptionsListener($builder));
+        $listener = new AddPropertyOptionsListener($builder);
+        $builder->addEventSubscriber($listener);
+        $builder->get('formType')->addEventSubscriber($listener);
     }
 }

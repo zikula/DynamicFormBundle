@@ -3,9 +3,17 @@
 namespace Zikula\Bundle\DynamicFormPropertyBundle\Provider;
 
 use Symfony\Component\Intl\Locales;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 class LocaleProvider
 {
+    private EventDispatcherInterface $eventDispatcher;
+
+    public function __construct(EventDispatcherInterface $eventDispatcher)
+    {
+        $this->eventDispatcher = $eventDispatcher;
+    }
+
     public function getSupportedLocales(bool $includeRegions = true, bool $syncConfig = true): array
     {
         return ['en', 'de', 'es'];

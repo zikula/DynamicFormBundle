@@ -32,6 +32,7 @@ class TranslationCollectionType extends AbstractType
         foreach ($this->localeProvider->getSupportedLocaleNames() as $name => $value) {
             $builder->add($value, TextType::class, [
                 'label' => $name,
+                'required' => false,
             ]);
         }
     }

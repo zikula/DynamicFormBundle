@@ -1,7 +1,6 @@
 {% block zikula_dynamic_field_collection_widget %}
     <script src="{{ asset('bundles/zikuladynamicformproperty/js/ZikulaDynamicFormPropertyBundle.DynamicProperty.Edit.js') }}" type="application/javascript"></script>
 
-    {{ form_label(form) }}
     {# store the prototype on the data-prototype attribute#}
     <ul id="dynamic-fields-list"
         data-prototype="{{ form_widget(form.vars.prototype)|e }}"

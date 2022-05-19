@@ -21,7 +21,7 @@ interface DynamicPropertyInterface
     /**
      * Returns name of form field.
      */
-    public function getName(): string;
+    public function getName(): ?string;
 
     /**
      * Returns optional prefix of form field.

@@ -74,7 +74,7 @@ abstract class AbstractDynamicPropertyEntity implements DynamicPropertyInterface
     protected bool $active = true;
 
     /**
-     * @return string[]
+     * @return array<string, string>
      */
     public function getLabels(): array
     {
@@ -95,7 +95,7 @@ abstract class AbstractDynamicPropertyEntity implements DynamicPropertyInterface
     }
 
     /**
-     * @param string[] $labels
+     * @param array<string, string> $labels
      */
     public function setLabels(array $labels): void
     {
@@ -151,7 +151,7 @@ abstract class AbstractDynamicPropertyEntity implements DynamicPropertyInterface
         $this->name = $name;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }

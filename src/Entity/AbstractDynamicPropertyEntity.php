@@ -81,13 +81,13 @@ abstract class AbstractDynamicPropertyEntity implements DynamicPropertyInterface
         return $this->labels;
     }
 
-    public function getLabel(string $locale = '', string $default = 'en'): string
+    public function getLabel(string $locale = ''): string
     {
         if (!empty($locale) && isset($this->labels[$locale])) {
             return $this->labels[$locale];
         }
-        if (!empty($default) && isset($this->labels[$default])) {
-            return $this->labels[$default];
+        if (isset($this->labels['default'])) {
+            return $this->labels['default'];
         }
         $values = array_values($this->labels);
 

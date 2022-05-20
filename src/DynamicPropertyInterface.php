@@ -37,7 +37,7 @@ interface DynamicPropertyInterface
     /**
      * Returns label for a specific locale.
      */
-    public function getLabel(string $locale = '', string $default = 'en'): string;
+    public function getLabel(string $locale = ''): string;
 
     /**
      * Returns the FqCN of the form class (e.g. return IntegerType::class;)

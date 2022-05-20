@@ -21,6 +21,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Zikula\Bundle\DynamicFormPropertyBundle\Event\FormTypeChoiceEvent;
+use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\DefaultLabelToLabelsTransformer;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\EventListener\AddPropertyOptionsListener;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\FormOptionsArrayType;
 
@@ -30,10 +31,12 @@ use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\FormOptions
 class DynamicFieldType extends AbstractType
 {
     private EventDispatcherInterface $eventDispatcher;
+    private bool $translateLabels;
 
-    public function __construct(EventDispatcherInterface $eventDispatcher)
+    public function __construct(EventDispatcherInterface $eventDispatcher, bool $translateLabels = false)
     {
         $this->eventDispatcher = $eventDispatcher;
+        $this->translateLabels = $translateLabels;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -51,9 +54,22 @@ class DynamicFieldType extends AbstractType
                 'choices' => $choiceEvent->getChoices(),
                 'placeholder' => 'Select'
             ])
-            ->add('labels', TranslationCollectionType::class, [
+        ;
+        if ($this->translateLabels) {
+            $builder->add('labels', TranslationCollectionType::class, [
                 'label' => 'Translated labels',
-            ])
+                'help' => 'If the label field is left blank, the name field will be used instead.',
+            ]);
+        } else {
+            $builder->add('labels', TextType::class, [
+                'label' => 'Label',
+                'required' => false,
+                'help' => 'If the label field is left blank, the name field will be used instead.',
+            ]);
+            $builder->get('labels')->addModelTransformer(new DefaultLabelToLabelsTransformer());
+        }
+
+        $builder
             ->add('formOptions', FormOptionsArrayType::class, [
                 'label' => 'Field options',
                 'auto_initialize' => false

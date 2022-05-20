@@ -108,6 +108,4 @@ public function formTypeChoices(FormTypeChoiceEvent $event)
 
 ### Translation
 
-This bundle provides for "inline" label translation for all dynamic fields. If a label text is not provided, the field
-name will be used (like normal text fields). Any _configured_ language/locale will be shown in the dynamic field
-creation. 
+see docs/translatable_labels.md

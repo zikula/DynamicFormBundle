@@ -31,6 +31,9 @@ class ZikulaDynamicFormPropertyExtension extends Extension
         $definition = $container->getDefinition('zikula.dynamic_form.provider.locale_provider');
         $definition->setArgument(1, $config['translate_labels']);
 
+        $definition = $container->getDefinition('zikula.dynamic_form.form_type.dynamic_form_field_type');
+        $definition->setArgument(1, $config['translate_labels']);
+
         $this->registerFormTheme($container);
     }
 

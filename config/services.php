@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Zikula package.
  *
@@ -18,9 +20,6 @@ use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\TranslationCollectionType;
 use Zikula\Bundle\DynamicFormPropertyBundle\Provider\LocaleProvider;
 
 return static function (ContainerConfigurator $container) {
-//    $container->parameters()
-//        ->set('security.role_hierarchy.roles', [])
-//    ;
 
     $container->services()
         ->set('zikula.dynamic_form.event_subscriber.form_type_choice_event_subscriber', FormTypeChoiceEventSubscriber::class)

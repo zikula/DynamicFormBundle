@@ -16,18 +16,18 @@ namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Zikula\Bundle\DynamicFormPropertyBundle\Provider\LocaleProvider;
+use Zikula\Bundle\DynamicFormPropertyBundle\Provider\LocaleProviderInterface;
 
 class TranslationCollectionType extends AbstractType
 {
-    private LocaleProvider $localeProvider;
+    private LocaleProviderInterface $localeProvider;
 
-    public function __construct(LocaleProvider $localeProvider)
+    public function __construct(LocaleProviderInterface $localeProvider)
     {
         $this->localeProvider = $localeProvider;
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         foreach ($this->localeProvider->getSupportedLocaleNames() as $name => $value) {
             $builder->add($value, TextType::class, [

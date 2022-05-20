@@ -1,1 +1,4 @@
 # Documentation index
+
+ - Please view the [README.md](../README.md)
+ - [Translatable Labels](translatable_labels.md)

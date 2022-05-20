@@ -15,13 +15,13 @@ namespace Zikula\Bundle\DynamicFormPropertyBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertyInterface;
+use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertySpecificationInterface;
 
 /**
  * @ORM\MappedSuperclass
  */
 #[ORM\MappedSuperclass]
-abstract class AbstractDynamicPropertyEntity implements DynamicPropertyInterface
+abstract class AbstractDynamicPropertySpecification implements DynamicPropertySpecificationInterface
 {
     /**
      * @ORM\Column(type="text", nullable=false)

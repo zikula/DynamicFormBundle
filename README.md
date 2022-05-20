@@ -65,35 +65,35 @@ Getting Started
 In order to implement this bundle, the developer must create three entities:
 
 1. A 'container' Entity that holds both:
-   1. The dynamic properties (OneToMany)
+   1. The dynamic property specifications (OneToMany)
    2. The response data (OneToMany)
    3. This _may_ implement `DynamicPropertiesContainerInterface`
-2. A 'wrapper' Entity that defines the dynamic property.
-   1. This must extend `AbstractDynamicPropertyEntity`
+2. A 'wrapper' Entity that defines the dynamic property specification.
+   1. This must extend `AbstractDynamicPropertySpecification`
 3. A PropertyResponse Entity to contain the data responses to the forms.
-   1. This must extend `AbstractDynamicPropertyDataEntity`
+   1. This must extend `AbstractDynamicPropertyData`
 
 In a real-world example:
-1. `SurveyEntity implements DynamicPropertiesContainerInterface`
-   1. OneToMany QuestionEntity
-   2. OneToMany SurveyResponseEntity
-2. `QuestionEntity extends AbstractDynamicPropertyEntity`
-   1. ManyToOne SurveyEntity
-3. `SurveyResponseEntity extends AbstractDynamicPropertyDataEntity`
-   1. ManyToOne SurveyEntity
+1. `Survey implements DynamicPropertiesContainerInterface`
+   1. OneToMany Question
+   2. OneToMany SurveyResponse
+2. `Question extends AbstractDynamicPropertySpecification`
+   1. ManyToOne Survey
+3. `SurveyResponse extends AbstractDynamicPropertyData`
+   1. ManyToOne Survey
 
-After generating the required entities (`symfony console make:entity SurveyEntity` etc...) and adjusting them to 
-extend required abstract classes or implement required interfaces, A standard "CRUD" Controller interface can be 
-created (`symfony console make:crud SurveyEntity`) to quickly generate much of the needed boilerplate code for a
-quick implementation. 
+After generating the required entities (`symfony console make:entity Survey` etc...) and adjusting them to 
+extend required abstract classes or implement required interfaces, A standard "CRUD" Controller can be 
+created (`symfony console make:crud Survey`) to quickly generate much of the needed boilerplate code for a
+sample implementation. 
 
 Form Creation: the 'Building' form
 ----------------------------------
 
 The `Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicFieldCollectionType` formType is a collection of 
-Dynamic Fields in your form. You must define the `entry_type` to be your own WrapperEntity (QuestionEntity above).
+Dynamic Fields in your form. You must define the `entry_type` to be your own 'wrapper' Entity (`Question` above).
 Each member of the collection provides a form type to define all the needed details of a formType
-(a "DynamicFieldSpecification") which consists of two main parts. First a choice field which allows the
+(a `DynamicPropertySpecification`) which consists of two main parts. First a choice field which allows the
 selection of a field type using a dropdown list. Upon selection further field-specific form fields for the field options
 are loaded using ajax and dynamically added/replaced in the form. 
 
@@ -113,8 +113,8 @@ The bundle also provides the `Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\
 This provides for inclusion of the dynamic properties of the form. So an application can just use one
 form type for adding the defined fields for a given data object form. The formType requires the `dynamicFieldsContainer`
 object. This object implements `Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertiesContainerInterface`. This can
-be your 'Container' object (the SurveyEntity above) or possibly another provider like a Respository. The object must
-provide a list of dynamic field specifications (as defined by the 'Wrapper' class - The QuestionEntity above). This list
+be your 'Container' object (the `Survey` above) or possibly another provider like a Repository. The object must
+provide a list of dynamic property specifications (as defined by the 'Wrapper' class - The `Question` above). This list
 can be optionally sorted or filtered as required.
 
 Example:

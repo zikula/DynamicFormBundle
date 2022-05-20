@@ -26,7 +26,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
-use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertyInterface;
+use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertySpecificationInterface;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ChoiceValuesTransformer;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraintTransformer;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType;
@@ -56,7 +56,7 @@ class AddPropertyOptionsListener implements EventSubscriberInterface
     public function onPreSetData(FormEvent $event): void
     {
         $data = $event->getData();
-        if ($data instanceof DynamicPropertyInterface) {
+        if ($data instanceof DynamicPropertySpecificationInterface) {
             $this->addFormOptions($event->getForm(), $data->getFormType());
         }
     }

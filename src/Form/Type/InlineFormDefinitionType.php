@@ -33,9 +33,10 @@ class InlineFormDefinitionType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options = []): void
     {
+        /** @var DynamicPropertiesContainerInterface $dynamicFieldsContainer */
         $dynamicFieldsContainer = $options['dynamicFieldsContainer'];
 
-        foreach ($dynamicFieldsContainer->getDynamicFieldsSpecification() as $fieldSpecification) {
+        foreach ($dynamicFieldsContainer->getPropertySpecifications() as $fieldSpecification) {
             $fieldOptions = $fieldSpecification->getFormOptions();
             $fieldOptions['label'] = $fieldOptions['label'] ?? $fieldSpecification->getLabel($this->translator->getLocale());
 

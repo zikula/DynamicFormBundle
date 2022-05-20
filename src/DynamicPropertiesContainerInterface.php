@@ -13,15 +13,13 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormPropertyBundle;
 
-/**
- * Represents a form object (“data_class”) containing dynamic fields.
- */
 interface DynamicPropertiesContainerInterface
 {
     /**
-     * Returns a list of field specifications.
+     * Returns a list of property specifications.
+     * @param array $params Parameters used to filter the array.
      *
-     * @return DynamicPropertyInterface[]
+     * @return DynamicPropertySpecificationInterface[]
      */
-    public function getDynamicFieldsSpecification(array $params = []): array;
+    public function getPropertySpecifications(array $params = []): array;
 }

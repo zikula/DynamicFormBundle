@@ -16,7 +16,7 @@ namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Zikula\Bundle\DynamicFormPropertyBundle\Entity\AbstractDynamicPropertyEntity;
+use Zikula\Bundle\DynamicFormPropertyBundle\Entity\AbstractDynamicPropertySpecification;
 
 class DynamicFieldCollectionType extends AbstractType
 {
@@ -31,7 +31,7 @@ class DynamicFieldCollectionType extends AbstractType
             'entry_type' => DynamicFieldType::class,
             'allow_add' => true,
             'allow_delete' => true,
-            'delete_empty' => function (AbstractDynamicPropertyEntity $property = null) {
+            'delete_empty' => function (AbstractDynamicPropertySpecification $property = null) {
                 return null === $property || empty($property->getName());
             },
             'prototype' => true, // required for javascript to work

@@ -23,7 +23,6 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Zikula\Bundle\DynamicFormPropertyBundle\Event\FormTypeChoiceEvent;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\EventListener\AddPropertyOptionsListener;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\FormOptionsArrayType;
-use Zikula\Bundle\DynamicFormPropertyBundle\Provider\LocaleProvider;
 
 /**
  * Form type providing a dynamic selection of field type and field options.

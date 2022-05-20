@@ -11,7 +11,7 @@
          verbose="true">
     <testsuites>
         <testsuite name="DynamicFormPropertyBundle Test Suite">
-            <directory>./Tests/</directory>
+            <directory>./tests/</directory>
         </testsuite>
     </testsuites>
 </phpunit>

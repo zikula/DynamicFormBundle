@@ -125,34 +125,6 @@ Example:
     ]);
 ```
 
+### More information
 
-Custom FormTypes for your list
-------------------------------
-
-You may want to amend, filter or extend the field type list. For example profile modules may want
-to add an avatar field type. Similarly, other custom types may be relevant for other applications.
-For this purpose you can listen for an event provided by the
-`Zikula\Bundle\DynamicFormPropertyBundle\Event\FormTypeChoiceEvent` class.
-Implementation inside your listener might look similar to this example:
-
-```php
-public function formTypeChoices(FormTypeChoiceEvent $event)
-{
-    $choices = $event->getChoices();
-
-    $groupName = $this->translator->trans('Other Fields', 'my_trans_domain');
-    if (!isset($choices[$groupName])) {
-        $choices[$groupName] = [];
-    }
-
-    $groupChoices = $choices[$groupName];
-    $groupChoices[$this->translator->trans('Avatar')] = AvatarType::class;
-    $choices[$groupName] = $groupChoices;
-
-    $event->setChoices($choices);
-}
-```
-
-### Label Translation
-
-see [Translatable Labesl](docs/translatable_labels.md)
+see [Additional Documentation](docs/index.md)

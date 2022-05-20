@@ -1,7 +1,7 @@
 {
     "name": "zikula/dynamic-form-property-bundle",
     "type": "symfony-bundle",
-    "description": "An bundle providing dynamic properties to symfony forms.",
+    "description": "A Symfony bundle providing dynamic properties to Symfony forms.",
     "homepage": "https://ziku.la",
     "license": "MIT",
     "authors": [

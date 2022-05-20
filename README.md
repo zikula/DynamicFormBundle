@@ -1,7 +1,50 @@
 DynamicFormPropertyBundle
-===================
+=========================
 
-# Dynamic form fields
+Installation
+============
+
+Make sure Composer is installed globally, as explained in the
+[installation chapter](https://getcomposer.org/doc/00-intro.md)
+of the Composer documentation.
+
+Applications that use Symfony Flex
+----------------------------------
+
+Open a command console, enter your project directory and execute:
+
+```console
+$ composer require zikula/dynamic-form-property-bundle
+```
+
+Applications that don't use Symfony Flex
+----------------------------------------
+
+### Step 1: Download the Bundle
+
+Open a command console, enter your project directory and execute the
+following command to download the latest stable version of this bundle:
+
+```console
+$ composer require zikula/dynamic-form-property-bundle
+```
+
+### Step 2: Enable the Bundle
+
+Then, enable the bundle by adding it to the list of registered bundles
+in the `config/bundles.php` file of your project:
+
+```php
+// config/bundles.php
+
+return [
+    // ...
+    Zikula\Bundle\DynamicFormPropertyBundle\ZikulaDynamicFormPropertyBundle::class => ['all' => true],
+];
+```
+
+Dynamic form fields
+===================
 
 The `DynamicFormPropertyBundle` offers helpers for handling dynamic form fields (*properties*).
 This can be helpful for several applications where a site admin (not the developer) needs to configure the fields of a 
@@ -16,7 +59,8 @@ Example Use cases:
  - Application data
  - etc.
 
-## Getting Started
+Getting Started
+---------------
 
 In order to implement this bundle, the developer must create three entities:
 
@@ -43,7 +87,8 @@ extend required abstract classes or implement required interfaces, A standard "C
 created (`symfony console make:crud SurveyEntity`) to quickly generate much of the needed boilerplate code for a
 quick implementation. 
 
-## Form Creation: the 'Building' form
+Form Creation: the 'Building' form
+----------------------------------
 
 The `Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicFieldCollectionType` formType is a collection of 
 Dynamic Fields in your form. You must define the `entry_type` to be your own WrapperEntity (QuestionEntity above).
@@ -61,7 +106,8 @@ are loaded using ajax and dynamically added/replaced in the form.
         ])
 ```
 
-## Form Creation: The 'Responding' form
+Form Creation: The 'Responding' form
+------------------------------------
 
 The bundle also provides the `Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\InlineFormDefinitionType` formType.
 This provides for inclusion of the dynamic properties of the form. So an application can just use one
@@ -80,7 +126,8 @@ Example:
 ```
 
 
-## Custom FormTypes for your list
+Custom FormTypes for your list
+------------------------------
 
 You may want to amend, filter or extend the field type list. For example profile modules may want
 to add an avatar field type. Similarly, other custom types may be relevant for other applications.
@@ -106,6 +153,6 @@ public function formTypeChoices(FormTypeChoiceEvent $event)
 }
 ```
 
-### Translation
+### Label Translation
 
-see docs/translatable_labels.md
+see [Translatable Labesl](docs/translatable_labels.md)

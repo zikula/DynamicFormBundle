@@ -22,7 +22,7 @@ class ZikulaDynamicFormPropertyExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
-        $loader = new PhpFileLoader($container, new FileLocator(\dirname(__DIR__).'/Resources/config'));
+        $loader = new PhpFileLoader($container, new FileLocator(\dirname(__DIR__).'/../config'));
         $loader->load('services.php');
 
         $configuration = $this->getConfiguration($configs, $container);

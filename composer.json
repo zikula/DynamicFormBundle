@@ -33,6 +33,9 @@
         "sort-packages": true
     },
     "autoload": {
-        "psr-4": { "Zikula\\Bundle\\DynamicFormPropertyBundle\\": "" }
+        "psr-4": { "Zikula\\Bundle\\DynamicFormPropertyBundle\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Zikula\\Bundle\\DynamicFormPropertyBundle\\Tests\\": "tests/" }
     }
 }

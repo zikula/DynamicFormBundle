@@ -25,6 +25,12 @@ class ZikulaDynamicFormPropertyExtension extends Extension
         $loader = new PhpFileLoader($container, new FileLocator(\dirname(__DIR__).'/Resources/config'));
         $loader->load('services.php');
 
+        $configuration = $this->getConfiguration($configs, $container);
+        $config = $this->processConfiguration($configuration, $configs);
+
+        $definition = $container->getDefinition('zikula.dynamic_form.provider.locale_provider');
+        $definition->setArgument(1, $config['translate_labels']);
+
         $this->registerFormTheme($container);
     }
 

@@ -8,10 +8,12 @@ use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 class LocaleProvider
 {
     private EventDispatcherInterface $eventDispatcher;
+    private bool $translateLabels;
 
-    public function __construct(EventDispatcherInterface $eventDispatcher)
+    public function __construct(EventDispatcherInterface $eventDispatcher, bool $translateLabels = false)
     {
         $this->eventDispatcher = $eventDispatcher;
+        $this->translateLabels = $translateLabels;
     }
 
     public function getSupportedLocales(bool $includeRegions = true, bool $syncConfig = true): array

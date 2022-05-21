@@ -20,7 +20,7 @@ use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraint
 
 class RegexibleFormOptionsArrayType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('constraints', TextType::class, [
             'label' => 'Regex validation string constraint',

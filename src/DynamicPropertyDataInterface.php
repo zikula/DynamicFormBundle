@@ -17,5 +17,5 @@ interface DynamicPropertyDataInterface
 {
     public function getData(): ?array;
 
-    public function setData(?array $data);
+    public function setData(?array $data): void;
 }

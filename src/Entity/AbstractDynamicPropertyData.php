@@ -30,11 +30,9 @@ abstract class AbstractDynamicPropertyData implements DynamicPropertyDataInterfa
         return $this->data;
     }
 
-    public function setData(?array $data): self
+    public function setData(?array $data): void
     {
         $this->data = $data;
-
-        return $this;
     }
 
     public function __get(string $name)

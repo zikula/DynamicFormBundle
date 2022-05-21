@@ -19,7 +19,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class MoneyFormOptionsArrayType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('currency', TextType::class, [
             'empty_data' => 'EUR',

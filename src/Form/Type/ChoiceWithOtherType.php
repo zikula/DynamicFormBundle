@@ -28,7 +28,7 @@ class ChoiceWithOtherType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         // http://symfony.com/doc/master/form/create_custom_field_type.html
         // prepare passed $options
@@ -52,7 +52,7 @@ class ChoiceWithOtherType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildView(FormView $view, FormInterface $form, array $options)
+    public function buildView(FormView $view, FormInterface $form, array $options): void
     {
         // if needed
     }
@@ -60,7 +60,7 @@ class ChoiceWithOtherType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         // validate if 'other' selected, then other field cannot be empty
     }

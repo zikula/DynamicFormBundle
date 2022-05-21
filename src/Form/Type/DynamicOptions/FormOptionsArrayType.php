@@ -20,7 +20,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class FormOptionsArrayType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('required', CheckboxType::class, [

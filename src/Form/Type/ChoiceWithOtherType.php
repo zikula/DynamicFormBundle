@@ -47,7 +47,6 @@ class ChoiceWithOtherType extends AbstractType
             // http://symfony.com/doc/current/form/dynamic_form_modification.html
             // ... adding the constraint if needed
         });
-
     }
 
     /**

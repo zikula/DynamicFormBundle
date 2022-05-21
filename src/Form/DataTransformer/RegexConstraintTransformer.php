@@ -16,9 +16,6 @@ namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Validator\Constraints\Regex;
 
-/**
- * Class RegexConstraintTransformer
- */
 class RegexConstraintTransformer implements DataTransformerInterface
 {
     /**

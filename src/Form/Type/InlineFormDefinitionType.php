@@ -41,9 +41,9 @@ class InlineFormDefinitionType extends AbstractType
             $fieldOptions['label'] = $fieldOptions['label'] ?? $fieldSpecification->getLabel($this->translator->getLocale());
 
             $prefix = $fieldSpecification->getPrefix();
-            $prefix = null !== $prefix && '' !== $prefix ? $prefix . ':' : '';
+            $prefix = null !== $prefix && '' !== $prefix ? $prefix.':' : '';
 
-            $builder->add($prefix . $fieldSpecification->getName(), $fieldSpecification->getFormType(), $fieldOptions);
+            $builder->add($prefix.$fieldSpecification->getName(), $fieldSpecification->getFormType(), $fieldOptions);
         }
     }
 

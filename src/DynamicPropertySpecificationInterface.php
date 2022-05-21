@@ -29,7 +29,8 @@ interface DynamicPropertySpecificationInterface
     public function getPrefix(): string;
 
     /**
-     * Returns a list of labels per locale. e.g. ['en' => 'my label', 'de' => 'mein Etikett']
+     * Returns a list of labels per locale. e.g. ['en' => 'my label', 'de' => 'mein Etikett'].
+     *
      * @return string[]
      */
     public function getLabels(): array;
@@ -40,7 +41,7 @@ interface DynamicPropertySpecificationInterface
     public function getLabel(string $locale = ''): string;
 
     /**
-     * Returns the FqCN of the form class (e.g. return IntegerType::class;)
+     * Returns the FqCN of the form class (e.g. return IntegerType::class;).
      */
     public function getFormType(): string;
 
@@ -62,6 +63,7 @@ interface DynamicPropertySpecificationInterface
     /**
      * Returns a list of group names per locale.
      * May optionally be used for dividing fields into several fieldsets.
+     *
      * @return string[]
      */
     public function getGroupNames(): array;

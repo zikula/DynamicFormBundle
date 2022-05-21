@@ -35,7 +35,7 @@ class DynamicFieldCollectionType extends AbstractType
                 return null === $property || empty($property->getName());
             },
             'prototype' => true, // required for javascript to work
-            'by_reference' => false // required to force use of add/remove methods in Survey
+            'by_reference' => false, // required to force use of add/remove methods in Survey
         ]);
     }
 

@@ -46,13 +46,13 @@ class DynamicFieldType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => 'Field name',
-                'help' => 'The name can only contain letters and underscores. For property access and internal use.'
+                'help' => 'The name can only contain letters and underscores. For property access and internal use.',
             ])
             ->add('formType', ChoiceType::class, [
                 'label' => 'Field type',
                 'attr' => ['class' => 'dynamic-property-form-type-select'],
                 'choices' => $choiceEvent->getChoices(),
-                'placeholder' => 'Select'
+                'placeholder' => 'Select',
             ])
         ;
         if ($this->translateLabels) {
@@ -72,14 +72,14 @@ class DynamicFieldType extends AbstractType
         $builder
             ->add('formOptions', FormOptionsArrayType::class, [
                 'label' => 'Field options',
-                'auto_initialize' => false
+                'auto_initialize' => false,
             ])
             ->add('weight', IntegerType::class, [
                 'empty_data' => '0',
-                'required' => false
+                'required' => false,
             ])
             ->add('active', CheckboxType::class, [
-                'required' => false
+                'required' => false,
             ])
         ;
         $listener = new AddPropertyOptionsListener($builder);

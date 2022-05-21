@@ -14,11 +14,7 @@ declare(strict_types=1);
 namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
-use function Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\mb_strpos;
 
-/**
- * Class ChoiceValuesTransformer
- */
 class ChoiceValuesTransformer implements DataTransformerInterface
 {
     /**
@@ -31,7 +27,7 @@ class ChoiceValuesTransformer implements DataTransformerInterface
         $strings = [];
         if (is_array($value)) {
             foreach ($value as $k => $v) {
-                $strings[] = $k === $v ? $v : $k . ':' . $v;
+                $strings[] = $k === $v ? $v : $k.':'.$v;
             }
         }
 

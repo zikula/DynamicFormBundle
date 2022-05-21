@@ -28,16 +28,16 @@ abstract class AbstractDynamicPropertySpecification implements DynamicPropertySp
      * @Assert\Length(min="1", max="255")
      * @Assert\Regex(pattern="/^\w+$/", message="The name can only contain letters and underscores.")
      */
-    #[ORM\Column(type: "text", nullable: false)]
-    #[Assert\Length(min:1, max:255)]
-    #[Assert\Regex(pattern: "/^\w+$/", message: "The name can only contain letters and underscores.")]
+    #[ORM\Column(type: 'text', nullable: false)]
+    #[Assert\Length(min: 1, max: 255)]
+    #[Assert\Regex(pattern: "/^\w+$/", message: 'The name can only contain letters and underscores.')]
     protected ?string $name = null;
 
     /**
      * @ORM\Column(type="array", nullable=false)
      * @Assert\NotNull()
      */
-    #[ORM\Column(type: "array", nullable: false)]
+    #[ORM\Column(type: 'array', nullable: false)]
     #[Assert\NotNull]
     protected array $labels = [];
 
@@ -45,15 +45,15 @@ abstract class AbstractDynamicPropertySpecification implements DynamicPropertySp
      * @ORM\Column(type="text", nullable=false)
      * @Assert\Length(min="1", max="255")
      */
-    #[ORM\Column(type: "text", nullable: false)]
-    #[Assert\Length(min:1, max:255)]
+    #[ORM\Column(type: 'text', nullable: false)]
+    #[Assert\Length(min: 1, max: 255)]
     protected string $formType = '';
 
     /**
      * @ORM\Column(type="array")
      * @Assert\NotNull()
      */
-    #[ORM\Column(type: "array")]
+    #[ORM\Column(type: 'array')]
     #[Assert\NotNull]
     protected array $formOptions = [];
 
@@ -61,14 +61,14 @@ abstract class AbstractDynamicPropertySpecification implements DynamicPropertySp
      * @ORM\Column(type="integer")
      * @Assert\PositiveOrZero()
      */
-    #[ORM\Column(type: "integer")]
+    #[ORM\Column(type: 'integer')]
     #[Assert\PositiveOrZero]
     protected int $weight = 0;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    #[ORM\Column(type: "boolean")]
+    #[ORM\Column(type: 'boolean')]
     protected bool $active = true;
 
     /**

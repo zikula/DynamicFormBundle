@@ -25,7 +25,7 @@ class MoneyFormOptionsArrayType extends AbstractType
             'empty_data' => 'EUR',
             'label' => 'Currency',
             'required' => false,
-            'help' => 'Any 3 letter ISO 4217 code. Default: EUR'
+            'help' => 'Any 3 letter ISO 4217 code. Default: EUR',
         ]);
     }
 

@@ -26,11 +26,11 @@ class FormOptionsArrayType extends AbstractType
             ->add('required', CheckboxType::class, [
                 'label' => 'Required',
                 'label_attr' => ['class' => 'switch-custom'],
-                'required' => false
+                'required' => false,
             ])
             ->add('help', TextType::class, [
                 'label' => 'Help text',
-                'required' => false
+                'required' => false,
             ])
         ;
     }

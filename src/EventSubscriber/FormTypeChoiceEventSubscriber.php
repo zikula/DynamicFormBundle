@@ -94,7 +94,7 @@ class FormTypeChoiceEventSubscriber implements EventSubscriberInterface
             ],
             $this->trans('Other fields') => [
                 $this->trans('File') => FileType::class,
-            ]
+            ],
         ]);
 
         $event->setChoices($defaultChoices);

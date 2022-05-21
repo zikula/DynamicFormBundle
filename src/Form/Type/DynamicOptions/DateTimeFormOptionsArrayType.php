@@ -27,15 +27,15 @@ class DateTimeFormOptionsArrayType extends AbstractType
         $builder
             ->add('html5', CheckboxType::class, [
                 'label' => 'Html5',
-                'required' => false
+                'required' => false,
             ])
             ->add('widget', ChoiceType::class, [
                 'label' => 'Widget',
                 'choices' => [
                     'Choice' => 'choice',
                     'Text' => 'text',
-                    'Single Text' => 'single_text'
-                ]
+                    'Single Text' => 'single_text',
+                ],
             ])
             ->add('input', ChoiceType::class, [
                 'label' => 'Input',
@@ -43,13 +43,13 @@ class DateTimeFormOptionsArrayType extends AbstractType
                     'String' => 'string',
                     'DateTime object' => 'datetime',
                     'Array' => 'array',
-                    'Timestamp' => 'timestamp'
-                ]
+                    'Timestamp' => 'timestamp',
+                ],
             ])
             ->add('format', TextType::class, [
                 'label' => 'Format',
                 'help' => 'e.g. yyyy-MM-dd',
-                'required' => false
+                'required' => false,
             ])
             ->add('model_timezone', TimezoneType::class)
         ;

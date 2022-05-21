@@ -24,7 +24,7 @@ class RegexibleFormOptionsArrayType extends AbstractType
     {
         $builder->add('constraints', TextType::class, [
             'label' => 'Regex validation string constraint',
-            'required' => false
+            'required' => false,
         ]);
         $builder->get('constraints')
             ->addModelTransformer(new RegexConstraintTransformer())

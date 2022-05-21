@@ -34,7 +34,7 @@ class FormTypesChoicesTest extends TestCase
         $foo = new FormTypesChoices([
             'foo' => 'bar',
             'three' => 'nine',
-            1 => 17
+            1 => 17,
         ]);
         $this->assertInstanceOf(ArrayAccess::class, $foo);
         $this->assertInstanceOf(Iterator::class, $foo);
@@ -49,7 +49,7 @@ class FormTypesChoicesTest extends TestCase
         $foo = new FormTypesChoices([
             'foo' => 'bar',
             'three' => 'nine',
-            1 => 17
+            1 => 17,
         ]);
         $this->assertArrayNotHasKey(6, $foo);
         $foo[6] = 'sixvalue';
@@ -63,7 +63,7 @@ class FormTypesChoicesTest extends TestCase
         $foo = new FormTypesChoices([
             'foo' => 'bar',
             'three' => 'nine',
-            1 => 17
+            1 => 17,
         ]);
         unset($foo['foo']);
     }

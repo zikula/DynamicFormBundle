@@ -49,7 +49,7 @@ class AddPropertyOptionsListener implements EventSubscriberInterface
     {
         return [
             FormEvents::PRE_SET_DATA => 'onPreSetData',
-            FormEvents::POST_SUBMIT  => 'onPostSubmit',
+            FormEvents::POST_SUBMIT => 'onPostSubmit',
         ];
     }
 
@@ -95,7 +95,7 @@ class AddPropertyOptionsListener implements EventSubscriberInterface
         }
         $formOptions = $this->formBuilder->create('formOptions', $optionsType, [
             'label' => 'Field options',
-            'auto_initialize' => false
+            'auto_initialize' => false,
         ]);
         if (ChoiceFormOptionsArrayType::class === $optionsType) {
             $formOptions->get('choices')->addModelTransformer(

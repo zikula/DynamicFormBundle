@@ -25,15 +25,15 @@ class ChoiceFormOptionsArrayType extends AbstractType
         $builder
             ->add('multiple', CheckboxType::class, [
                 'label' => 'Multiple',
-                'required' => false
+                'required' => false,
             ])
             ->add('expanded', CheckboxType::class, [
                 'label' => 'Expanded',
-                'required' => false
+                'required' => false,
             ])
             ->add('choices', TextType::class, [
                 'label' => 'Choices',
-                'help' => 'A comma-delineated list. either "value, value, value" or "key:value, key:value, key:value"'
+                'help' => 'A comma-delineated list. either "value, value, value" or "key:value, key:value, key:value"',
             ])
         ;
     }

@@ -20,7 +20,7 @@ use Zikula\Bundle\DynamicFormPropertyBundle\Entity\AbstractDynamicPropertySpecif
 
 class DynamicFieldCollectionType extends AbstractType
 {
-    public function getParent()
+    public function getParent(): ?string
     {
         return CollectionType::class;
     }
@@ -39,7 +39,7 @@ class DynamicFieldCollectionType extends AbstractType
         ]);
     }
 
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'zikula_dynamic_field_collection';
     }

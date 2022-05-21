@@ -50,7 +50,7 @@ class ChoiceValuesTransformer implements DataTransformerInterface
         $array = explode(',', $value);
         $newArray = [];
         foreach ($array as $v) {
-            if (mb_strpos($v, ':')) {
+            if (\mb_strpos($v, ':')) {
                 list($k, $v) = explode(':', $v);
             } else {
                 $k = $v;

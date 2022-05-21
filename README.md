@@ -105,6 +105,8 @@ are loaded using ajax and dynamically added/replaced in the form.
             ],
         ])
 ```
+**IMPORTANT NOTE**: The Javascript for these actions is automatically loaded. However, the javascript is jQuery-based.
+Therefore, **you must include jQuery in your front-end assets.**
 
 Form Creation: The 'Responding' form
 ------------------------------------

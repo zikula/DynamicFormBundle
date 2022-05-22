@@ -37,6 +37,7 @@ class ChoiceValuesTransformer implements DataTransformerInterface
 
     /**
      * Transforms the string back into a choices array .
+     *
      * @return array<mixed, string>
      */
     public function reverseTransform($value): array

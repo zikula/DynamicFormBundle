@@ -47,7 +47,6 @@ abstract class AbstractDynamicPropertyData implements DynamicPropertyDataInterfa
     }
 
     /**
-     * @param string $name
      * @param mixed $value
      */
     public function __set(string $name, $value): void

@@ -18,7 +18,7 @@ interface DynamicPropertiesContainerInterface
     /**
      * Returns a list of property specifications.
      *
-     * @param array $params parameters used to filter the array
+     * @param array<string, mixed> $params parameters used to filter the array
      *
      * @return DynamicPropertySpecificationInterface[]
      */

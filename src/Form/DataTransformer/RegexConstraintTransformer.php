@@ -16,12 +16,13 @@ namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Validator\Constraints\Regex;
 
+/**
+ * @implements DataTransformerInterface<mixed, mixed>
+ */
 class RegexConstraintTransformer implements DataTransformerInterface
 {
     /**
      * Transforms constraint into the text pattern.
-     *
-     * @param array $value
      */
     public function transform($value): string
     {
@@ -34,7 +35,7 @@ class RegexConstraintTransformer implements DataTransformerInterface
     /**
      * Transforms a regex pattern into an array of constraints.
      *
-     * @param string $value
+     * @return array<Regex>
      */
     public function reverseTransform($value): array
     {

@@ -19,11 +19,20 @@ use Iterator;
 
 /**
  * Object to manage the available choices when selecting a FormType in DynamicFieldType.
+ *
+ * @implements Iterator<string, array<string, string>>
+ * @implements ArrayAccess<string, array<string, string>>
  */
 class FormTypesChoices implements ArrayAccess, Iterator
 {
+    /**
+     * @var array<string, array<string, string>>
+     */
     private array $choices;
 
+    /**
+     * @param array<string, array<string, string>> $choices
+     */
     public function __construct(array $choices = [])
     {
         $this->choices = $choices;
@@ -84,6 +93,9 @@ class FormTypesChoices implements ArrayAccess, Iterator
         }
     }
 
+    /**
+     * @param array{mixed, array{groupName:string, label:string, formType:string}} $choices
+     */
     public function addChoices(array $choices): void
     {
         foreach ($choices as $choice) {
@@ -99,6 +111,9 @@ class FormTypesChoices implements ArrayAccess, Iterator
         unset($this->choices[$groupName][$label]);
     }
 
+    /**
+     * @param array{mixed, array{groupName:string, label:string}} $choices
+     */
     public function removeChoices(array $choices): void
     {
         foreach ($choices as $choice) {

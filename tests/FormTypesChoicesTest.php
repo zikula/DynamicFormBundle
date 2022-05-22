@@ -32,38 +32,34 @@ class FormTypesChoicesTest extends TestCase
     public function testInstantiationWithArg(): void
     {
         $foo = new FormTypesChoices([
-            'foo' => 'bar',
-            'three' => 'nine',
-            1 => 17,
+            'foo' => ['bar' => 'bar'],
+            'three' => ['nine' => 'nine'],
         ]);
         $this->assertInstanceOf(ArrayAccess::class, $foo);
         $this->assertInstanceOf(Iterator::class, $foo);
         $this->assertInstanceOf(Traversable::class, $foo);
         $this->assertArrayHasKey('foo', $foo);
         $this->assertArrayHasKey('three', $foo);
-        $this->assertArrayHasKey(1, $foo);
     }
 
     public function testAdd(): void
     {
         $foo = new FormTypesChoices([
-            'foo' => 'bar',
-            'three' => 'nine',
-            1 => 17,
+            'foo' => ['bar' => 'bar'],
+            'three' => ['nine' => 'nine'],
         ]);
-        $this->assertArrayNotHasKey(6, $foo);
-        $foo[6] = 'sixvalue';
-        $this->assertArrayHasKey(6, $foo);
-        $this->assertEquals('sixvalue', $foo[6]);
+        $this->assertArrayNotHasKey('six', $foo);
+        $foo['six'] = ['sixvalue' => 'sixvalue'];
+        $this->assertArrayHasKey('six', $foo);
+        $this->assertEquals('sixvalue', $foo['six']);
     }
 
     public function testExceptionOnUnset(): void
     {
         $this->expectException(\Exception::class);
         $foo = new FormTypesChoices([
-            'foo' => 'bar',
-            'three' => 'nine',
-            1 => 17,
+            'foo' => ['bar' => 'bar'],
+            'three' => ['nine' => 'nine'],
         ]);
         unset($foo['foo']);
     }

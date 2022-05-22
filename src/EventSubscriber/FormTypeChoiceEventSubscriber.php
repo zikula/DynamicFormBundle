@@ -100,8 +100,8 @@ class FormTypeChoiceEventSubscriber implements EventSubscriberInterface
         $event->setChoices($defaultChoices);
     }
 
-    private function trans(string $id, array $parameters = [], string $domain = null, string $locale = null): string
+    private function trans(string $id): string
     {
-        return $this->translator->trans($id, $parameters, $domain, $locale);
+        return $this->translator->trans($id);
     }
 }

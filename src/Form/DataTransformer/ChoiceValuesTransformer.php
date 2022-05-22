@@ -15,12 +15,13 @@ namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
 
+/**
+ * @implements DataTransformerInterface<mixed, mixed>
+ */
 class ChoiceValuesTransformer implements DataTransformerInterface
 {
     /**
      * Transforms choices array into a string.
-     *
-     * @param array $value
      */
     public function transform($value): string
     {
@@ -36,12 +37,11 @@ class ChoiceValuesTransformer implements DataTransformerInterface
 
     /**
      * Transforms the string back into a choices array .
-     *
-     * @param string $value
+     * @return array<mixed, string>
      */
     public function reverseTransform($value): array
     {
-        if (null === $value) {
+        if (empty($value)) {
             return [];
         }
         if (is_array($value)) {

@@ -15,7 +15,13 @@ namespace Zikula\Bundle\DynamicFormPropertyBundle;
 
 interface DynamicPropertyDataInterface
 {
+    /**
+     * @return array<string, mixed>|null
+     */
     public function getData(): ?array;
 
+    /**
+     * @param array<string, mixed>|null $data
+     */
     public function setData(?array $data): void;
 }

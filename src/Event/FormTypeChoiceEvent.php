@@ -42,6 +42,9 @@ class FormTypeChoiceEvent
         $this->choices->addChoice($groupName, $label, $formType);
     }
 
+    /**
+     * @param array{mixed, array{groupName:string, label:string, formType:string}} $choices
+     */
     public function addChoices(array $choices): void
     {
         $this->choices->addChoices($choices);
@@ -52,6 +55,9 @@ class FormTypeChoiceEvent
         $this->choices->removeChoice($groupName, $label);
     }
 
+    /**
+     * @param array{mixed, array{groupName:string, label:string}} $choices
+     */
     public function removeChoices(array $choices): void
     {
         $this->choices->removeChoices($choices);

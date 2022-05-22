@@ -15,6 +15,9 @@ namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
 
+/**
+ * @implements DataTransformerInterface<mixed, mixed>
+ */
 class DefaultLabelToLabelsTransformer implements DataTransformerInterface
 {
     public function transform($value)

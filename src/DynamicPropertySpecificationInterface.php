@@ -47,6 +47,8 @@ interface DynamicPropertySpecificationInterface
 
     /**
      * Returns an array of form options.
+     *
+     * @return array<string, mixed>
      */
     public function getFormOptions(): array;
 

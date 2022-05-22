@@ -34,6 +34,7 @@ abstract class AbstractDynamicPropertySpecification implements DynamicPropertySp
     protected ?string $name = null;
 
     /**
+     * @var array<string, string>
      * @ORM\Column(type="array", nullable=false)
      * @Assert\NotNull()
      */
@@ -50,6 +51,7 @@ abstract class AbstractDynamicPropertySpecification implements DynamicPropertySp
     protected string $formType = '';
 
     /**
+     * @var array<string, mixed>
      * @ORM\Column(type="array")
      * @Assert\NotNull()
      */
@@ -110,6 +112,9 @@ abstract class AbstractDynamicPropertySpecification implements DynamicPropertySp
         $this->formType = $formType;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getFormOptions(): array
     {
         if (!isset($this->formOptions['required'])) {
@@ -119,6 +124,9 @@ abstract class AbstractDynamicPropertySpecification implements DynamicPropertySp
         return $this->formOptions;
     }
 
+    /**
+     * @param array<string, mixed> $formOptions
+     */
     public function setFormOptions(array $formOptions): void
     {
         $this->formOptions = $formOptions;

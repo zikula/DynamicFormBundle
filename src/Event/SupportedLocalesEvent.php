@@ -15,18 +15,30 @@ namespace Zikula\Bundle\DynamicFormPropertyBundle\Event;
 
 class SupportedLocalesEvent
 {
+    /**
+     * @var string[]
+     */
     private array $supportedLocales;
 
+    /**
+     * @param string[] $supportedLocales
+     */
     public function __construct(array $supportedLocales = [])
     {
         $this->supportedLocales = $supportedLocales;
     }
 
+    /**
+     * @return string[]
+     */
     public function getSupportedLocales(): array
     {
         return $this->supportedLocales;
     }
 
+    /**
+     * @param string[] $supportedLocales
+     */
     public function setSupportedLocales(array $supportedLocales): void
     {
         $this->supportedLocales = $supportedLocales;

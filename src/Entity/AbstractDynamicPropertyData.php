@@ -22,6 +22,9 @@ use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertyDataInterface;
 #[ORM\MappedSuperclass]
 abstract class AbstractDynamicPropertyData implements DynamicPropertyDataInterface
 {
+    /**
+     * @var array<string, mixed>
+     */
     #[ORM\Column(type: 'json', nullable: true)]
     protected array $data = [];
 
@@ -35,11 +38,18 @@ abstract class AbstractDynamicPropertyData implements DynamicPropertyDataInterfa
         $this->data = $data;
     }
 
+    /**
+     * @return mixed|null
+     */
     public function __get(string $name)
     {
         return $this->data[$name] ?? null;
     }
 
+    /**
+     * @param string $name
+     * @param mixed $value
+     */
     public function __set(string $name, $value): void
     {
         $this->data[$name] = $value;

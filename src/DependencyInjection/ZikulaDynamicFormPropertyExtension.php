@@ -26,19 +26,21 @@ class ZikulaDynamicFormPropertyExtension extends Extension
         $loader->load('services.php');
 
         $configuration = $this->getConfiguration($configs, $container);
-        $config = $this->processConfiguration($configuration, $configs);
+        if (null !== $configuration) {
+            $config = $this->processConfiguration($configuration, $configs);
+            $definition = $container->getDefinition('zikula.dynamic_form.provider.locale_provider');
+            $definition->setArgument(1, $config['translate_labels']);
 
-        $definition = $container->getDefinition('zikula.dynamic_form.provider.locale_provider');
-        $definition->setArgument(1, $config['translate_labels']);
-
-        $definition = $container->getDefinition('zikula.dynamic_form.form_type.dynamic_form_field_type');
-        $definition->setArgument(1, $config['translate_labels']);
+            $definition = $container->getDefinition('zikula.dynamic_form.form_type.dynamic_form_field_type');
+            $definition->setArgument(1, $config['translate_labels']);
+        }
 
         $this->registerFormTheme($container);
     }
 
     private function registerFormTheme(ContainerBuilder $container): void
     {
+        /** @var string[] $resources */
         $resources = $container->hasParameter('twig.form.resources') ?
             $container->getParameter('twig.form.resources') : [];
 

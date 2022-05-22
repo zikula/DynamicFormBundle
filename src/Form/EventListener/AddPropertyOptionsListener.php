@@ -67,7 +67,9 @@ class AddPropertyOptionsListener implements EventSubscriberInterface
             return;
         }
         $formType = $event->getForm()->getData();
-        $this->addFormOptions($event->getForm()->getParent(), $formType);
+        if (!is_null($parent = $event->getForm()->getParent())) {
+            $this->addFormOptions($parent, $formType);
+        }
     }
 
     protected function addFormOptions(FormInterface $form, ?string $formType = null): void

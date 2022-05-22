@@ -90,8 +90,9 @@ abstract class AbstractDynamicPropertySpecification implements DynamicPropertySp
             return $this->labels['default'];
         }
         $values = array_values($this->labels);
+        $name = $this->name ?? 'unknown';
 
-        return !empty($values[0]) ? array_shift($values) : ucfirst($this->name);
+        return !empty($values[0]) ? array_shift($values) : ucfirst($name);
     }
 
     /**

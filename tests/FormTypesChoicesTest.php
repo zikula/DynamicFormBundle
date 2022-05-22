@@ -51,7 +51,7 @@ class FormTypesChoicesTest extends TestCase
         $this->assertArrayNotHasKey('six', $foo);
         $foo['six'] = ['sixvalue' => 'sixvalue'];
         $this->assertArrayHasKey('six', $foo);
-        $this->assertEquals('sixvalue', $foo['six']);
+        $this->assertEquals(['sixvalue' => 'sixvalue'], $foo['six']);
     }
 
     public function testExceptionOnUnset(): void

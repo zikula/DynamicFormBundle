@@ -23,10 +23,10 @@ use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertyDataInterface;
 abstract class AbstractDynamicPropertyData implements DynamicPropertyDataInterface
 {
     /**
-     * @var array<string, mixed>
+     * @var array<string, mixed>|null
      */
     #[ORM\Column(type: 'json', nullable: true)]
-    protected array $data = [];
+    protected ?array $data = [];
 
     public function getData(): ?array
     {

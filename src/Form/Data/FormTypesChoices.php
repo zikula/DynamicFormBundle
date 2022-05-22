@@ -20,7 +20,7 @@ use Iterator;
 /**
  * Object to manage the available choices when selecting a FormType in DynamicFieldType.
  *
- * @implements Iterator<string, array<string, string>>
+ * @implements Iterator<string|null, array<string, string>|false>
  * @implements ArrayAccess<string, array<string, string>>
  */
 class FormTypesChoices implements ArrayAccess, Iterator

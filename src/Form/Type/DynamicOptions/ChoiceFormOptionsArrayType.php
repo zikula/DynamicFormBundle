@@ -33,7 +33,7 @@ class ChoiceFormOptionsArrayType extends AbstractType
             ])
             ->add('choices', TextType::class, [
                 'label' => 'Choices',
-                'help' => 'A comma-delineated list. either "value, value, value" or "key:value, key:value, key:value"',
+                'help' => 'A comma-delineated list. either "value, value, value" or "value:label, value:label, value:label"',
             ])
         ;
     }

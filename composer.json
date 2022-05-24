@@ -15,15 +15,15 @@
         }
     ],
     "require": {
-        "php": "^8.0",
+        "php": "^7.4 || ^8.0",
         "doctrine/orm": "^2.11",
-        "symfony/asset": "^5.4",
+        "symfony/asset": "^5.4 || ^6.0",
         "symfony/contracts": "^2",
-        "symfony/form": "^5.4",
-        "symfony/framework-bundle": "^5.4",
-        "symfony/intl": "^5.4",
-        "symfony/string": "^5.4",
-        "symfony/validator": "^5.4"
+        "symfony/form": "^5.4 || ^6.0",
+        "symfony/framework-bundle": "^5.4 || ^6.0",
+        "symfony/intl": "^5.4 || ^6.0",
+        "symfony/string": "^5.4 || ^6.0",
+        "symfony/validator": "^5.4 || ^6.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.8",
@@ -32,6 +32,9 @@
         "phpstan/phpstan-symfony": "^1.1",
         "phpunit/phpunit": "^9.5",
         "roave/security-advisories": "dev-latest"
+    },
+    "suggest": {
+        "scienta/doctrine-json-functions": "To extract and search for data within the json data."
     },
     "config": {
         "sort-packages": true,

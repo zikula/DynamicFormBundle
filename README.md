@@ -129,4 +129,6 @@ Example:
 
 ### More information
 
-see [Additional Documentation](docs/index.md)
+ - see [Additional Documentation](docs/index.md)
+ - This bundle suggests [scienta/doctrine-json-functions](https://github.com/ScientaNL/DoctrineJsonFunctions)
+   - You must configure the DoctrineJsonFunctions bundle at the application level. It is not done automatically.

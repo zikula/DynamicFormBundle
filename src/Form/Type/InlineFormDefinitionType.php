@@ -18,6 +18,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertiesContainerInterface;
+use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ChoiceWithOtherValueTransformer;
 
 /**
  * Form type for embedding dynamic fields.
@@ -44,6 +45,9 @@ class InlineFormDefinitionType extends AbstractType
             $prefix = null !== $prefix && '' !== $prefix ? $prefix.':' : '';
 
             $builder->add($prefix.$fieldSpecification->getName(), $fieldSpecification->getFormType(), $fieldOptions);
+            if (ChoiceWithOtherType::class === $fieldSpecification->getFormType()) {
+                $builder->get($prefix.$fieldSpecification->getName())->addModelTransformer(new ChoiceWithOtherValueTransformer($fieldOptions));
+            }
         }
     }
 

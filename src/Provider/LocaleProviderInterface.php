@@ -25,7 +25,7 @@ interface LocaleProviderInterface
     /**
      * Return an associative list of supported locales by region by their translated names.
      *
-     * @return string[]
+     * @return array<string, string>
      */
     public function getSupportedLocaleNames(string $region = null, string $displayLocale = null, bool $includeRegions = true): array;
 }

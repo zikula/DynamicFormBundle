@@ -14,58 +14,42 @@ declare(strict_types=1);
 namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\ChoiceList\ArrayChoiceList;
-use Symfony\Component\Form\ChoiceList\ChoiceListInterface;
-use Symfony\Component\Form\DataTransformerInterface;
-use Symfony\Component\Form\Exception\TransformationFailedException;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ChoiceWithOtherValueTransformer;
+use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataMapper\ChoiceWithOtherDataMapper;
 
 class ChoiceWithOtherType extends AbstractType
 {
-    const OTHER_VALUE = 'other';
+    public const OTHER_VALUE = 'other';
 
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        // http://symfony.com/doc/master/form/create_custom_field_type.html
-        // prepare passed $options
-        unset($options['other_label']);
-        $options['attr']['class'] = 'other-enabler';
-
         $builder
-            ->add('choices', ChoiceType::class, $options)
-            ->add('other', TextType::class);
+            ->add('choices', ChoiceType::class, [
+                'choices' => $options['choices'],
+                'multiple' => $options['multiple'],
+                'expanded' => $options['expanded'],
+                'required' => $options['required'],
+                'attr' => ['class' => 'other-enabler'],
+            ])
+            ->add('other', TextType::class, [
+                'required' => false,
+            ])
+            ->setDataMapper(new ChoiceWithOtherDataMapper())
+        ;
 
-        $builder->addModelTransformer(new ChoiceWithOtherValueTransformer($options));
-
-        // constraints can be added in listener
-//        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
-            // http://symfony.com/doc/current/form/dynamic_form_modification.html
-            // ... adding the constraint if needed
-//        });
-
-        // probably need a DataMapper to map `other` field back to data and select the 'other' option.
-        // https://symfony.com/doc/current/form/data_mappers.html
-        // implements DataMapperInterface
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function buildView(FormView $view, FormInterface $form, array $options): void
-    {
-        // if needed
+        $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
+            $this->validate($event);
+        });
     }
 
     /**
@@ -82,12 +66,29 @@ class ChoiceWithOtherType extends AbstractType
         $resolver->setRequired('choices');
         $resolver->addAllowedTypes('choices', 'array');
         $resolver->addAllowedTypes('other_label', ['null', 'string']);
-        // validate if 'other' selected, then other field cannot be empty
+        // add the 'other' option to the choice list
         $resolver->addNormalizer('choices', function (Options $options, $value) {
             $label = $options['other_label'] ?? 'Other';
             $value[$label] = self::OTHER_VALUE;
 
             return $value;
         }, true);
+    }
+
+    private function validate(FormEvent $event): void
+    {
+        $data = $event->getData();
+        if (empty($data['other'])
+            && (
+                (
+                    is_array($data['choices'])
+                    && in_array(self::OTHER_VALUE, $data['choices'], true)
+                )
+                || (self::OTHER_VALUE === $data['choices'])
+            )
+        ) {
+            $errorMessage = 'If you select "other" you must indicate a value';
+            $event->getForm()->addError(new FormError($errorMessage, $errorMessage, [], null));
+        }
     }
 }

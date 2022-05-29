@@ -20,68 +20,47 @@ use Zikula\Bundle\DynamicFormPropertyBundle\Provider\LocaleProviderInterface;
 
 class TranslationCollectionTypeTest extends TypeTestCase
 {
-    private $localeProvider;
+    private LocaleProviderInterface $localeProvider;
 
-
-    // https://symfony.com/doc/current/form/unit_testing.html
-
-
-//    protected function setUp(): void
-//    {
-//        $this->localeProvider = $this->getMockBuilder(LocaleProviderInterface::class)
-//            ->getMock()
-//            ->method('getSupportedLocaleNames')
-//            ->willReturn([])
-//        ;
-
-//        parent::setUp();
-//    }
-
-//    protected function getExtensions()
-//    {
-//        $type = new TranslationCollectionType($this->localeProvider);
-//
-//        return [
-//            new PreloadedExtension([$type], []),
-//        ];
-//    }
-
-    public function testSubmitValidData(): void
+    protected function setUp(): void
     {
-        $this->markTestSkipped('not ready!');
-        $formData = [
-            'test' => 'test',
-            'test2' => 'test2',
-        ];
+        $this->localeProvider = new class() implements LocaleProviderInterface {
+            public function getSupportedLocales(bool $includeRegions = true): array
+            {
+                return ['en'];
+            }
 
-        $model = [];
-        // $model will retrieve data from the form submission; pass it as the second argument
-        $form = $this->factory->create(TranslationCollectionType::class, $model);
-
-        $expected = [];
-        // ...populate $object properties with the data stored in $formData
-
-        // submit the data to the form directly
-        $form->submit($formData);
-
-        // This check ensures there are no transformation failures
-        $this->assertTrue($form->isSynchronized());
-
-        // check that $model was modified as expected when the form was submitted
-        $this->assertEquals($expected, $model);
+            public function getSupportedLocaleNames(string $region = null, string $displayLocale = null, bool $includeRegions = true): array
+            {
+                return ['English' => 'en'];
+            }
+        };
+        parent::setUp();
     }
 
-    public function testCustomFormView(): void
+    protected function getExtensions()
     {
-        $this->markTestSkipped('not ready!');
-        $formData = [];
-        // ... prepare the data as you need
+        $type = new TranslationCollectionType($this->localeProvider);
 
-        // The initial data may be used to compute custom view variables
-        $view = $this->factory->create(TranslationCollectionType::class, $formData)
-            ->createView();
+        return [
+            new PreloadedExtension([$type], []),
+        ];
+    }
 
-        $this->assertArrayHasKey('custom_var', $view->vars);
-        $this->assertSame('expected value', $view->vars['custom_var']);
+    /**
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\TranslationCollectionType
+     */
+    public function testSubmitValidData(): void
+    {
+        $formData = [
+            'en' => 'myEnglishLabel',
+        ];
+
+        $form = $this->factory->create(TranslationCollectionType::class, $formData);
+        $form->submit($formData);
+        $this->assertTrue($form->isSynchronized());
+        $data = $form->getData();
+        $expected = ['en' => 'myEnglishLabel'];
+        $this->assertEquals($expected, $data);
     }
 }

@@ -20,7 +20,7 @@ use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraint
 class RegexConstraintTransformerTest extends TestCase
 {
     /**
-     * @covers RegexConstraintTransformer::transform
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraintTransformer::transform
      * @dataProvider data
      */
     public function testTransform($storedAs, string $submitted, string $restored): void
@@ -30,7 +30,7 @@ class RegexConstraintTransformerTest extends TestCase
     }
 
     /**
-     * @covers RegexConstraintTransformer::reverseTransform
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraintTransformer::reverseTransform
      * @dataProvider data
      */
     public function testReverseTransform($storedAs, string $submitted, string $restored): void

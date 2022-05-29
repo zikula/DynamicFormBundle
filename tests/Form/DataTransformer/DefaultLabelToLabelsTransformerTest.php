@@ -19,7 +19,7 @@ use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\DefaultLabelToL
 class DefaultLabelToLabelsTransformerTest extends TestCase
 {
     /**
-     * @covers DefaultLabelToLabelsTransformer::transform
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\DefaultLabelToLabelsTransformer::transform
      * @dataProvider data
      */
     public function testTransform(array $storedAs, string $submitted, string $restored): void
@@ -29,7 +29,7 @@ class DefaultLabelToLabelsTransformerTest extends TestCase
     }
 
     /**
-     * @covers DefaultLabelToLabelsTransformer::reverseTransform
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\DefaultLabelToLabelsTransformer::reverseTransform
      * @dataProvider data
      */
     public function testReverseTransform(array $storedAs, string $submitted, string $restored): void

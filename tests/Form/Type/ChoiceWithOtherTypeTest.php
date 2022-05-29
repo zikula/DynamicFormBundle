@@ -1,0 +1,192 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is part of the Zikula package.
+ *
+ * Copyright Zikula - https://ziku.la/
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Zikula\Bundle\DynamicFormPropertyBundle\Tests\Form\Type;
+
+use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
+use Symfony\Component\Form\Test\TypeTestCase;
+use Symfony\Component\Validator\Validation;
+use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType;
+
+class ChoiceWithOtherTypeTest extends TypeTestCase
+{
+    private array $options = [
+        'choices' => [
+            'Spades' => 'spades',
+            'Diamonds' => 'diamonds',
+            'Hearts' => 'hearts',
+            'Clubs' => 'clubs',
+        ],
+        'multiple' => false,
+        'expanded' => false,
+    ];
+
+    protected function getExtensions()
+    {
+        $validator = Validation::createValidator();
+
+        return [
+            new ValidatorExtension($validator),
+        ];
+    }
+
+    /**
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType
+     */
+    public function testOtherOptionExists(): void
+    {
+        $form = $this->factory->create(ChoiceWithOtherType::class, [], $this->options);
+        $choices = $form->get('choices')->getConfig()->getOption('choices');
+        $this->assertCount(5, $choices);
+        $this->assertContains(ChoiceWithOtherType::OTHER_VALUE, $choices);
+
+        $this->options['expanded'] = true;
+        $form = $this->factory->create(ChoiceWithOtherType::class, [], $this->options);
+        $choices = $form->get('choices')->getConfig()->getOption('choices');
+        $this->assertCount(5, $choices);
+        $this->assertContains(ChoiceWithOtherType::OTHER_VALUE, $choices);
+
+        $this->options['expanded'] = false;
+        $this->options['multiple'] = true;
+        $form = $this->factory->create(ChoiceWithOtherType::class, [], $this->options);
+        $choices = $form->get('choices')->getConfig()->getOption('choices');
+        $this->assertCount(5, $choices);
+        $this->assertContains(ChoiceWithOtherType::OTHER_VALUE, $choices);
+
+        $this->options['expanded'] = true;
+        $this->options['multiple'] = true;
+        $form = $this->factory->create(ChoiceWithOtherType::class, [], $this->options);
+        $choices = $form->get('choices')->getConfig()->getOption('choices');
+        $this->assertCount(5, $choices);
+        $this->assertContains(ChoiceWithOtherType::OTHER_VALUE, $choices);
+    }
+
+    public function testFormValidation(): void
+    {
+        $form = $this->factory->create(ChoiceWithOtherType::class, [], $this->options);
+        $form->submit(['choices' => ChoiceWithOtherType::OTHER_VALUE, 'other' => '']);
+        $this->assertTrue($form->isSynchronized());
+        $this->assertNotEmpty($form->getErrors());
+        $this->assertCount(1, $form->getErrors());
+        foreach ($form->getErrors() as $error) {
+            $this->assertEquals('If you select "other" you must indicate a value', $error->getMessage());
+        }
+
+        $this->options['expanded'] = true;
+        $form = $this->factory->create(ChoiceWithOtherType::class, [], $this->options);
+        $form->submit(['choices' => ChoiceWithOtherType::OTHER_VALUE, 'other' => '']);
+        $this->assertTrue($form->isSynchronized());
+        $this->assertNotEmpty($form->getErrors());
+        $this->assertCount(1, $form->getErrors());
+        foreach ($form->getErrors() as $error) {
+            $this->assertEquals('If you select "other" you must indicate a value', $error->getMessage());
+        }
+
+        $this->options['expanded'] = false;
+        $this->options['multiple'] = true;
+        $form = $this->factory->create(ChoiceWithOtherType::class, [], $this->options);
+        $form->submit(['choices' => [ChoiceWithOtherType::OTHER_VALUE], 'other' => '']);
+        $this->assertTrue($form->isSynchronized());
+        $this->assertNotEmpty($form->getErrors());
+        $this->assertCount(1, $form->getErrors());
+        foreach ($form->getErrors() as $error) {
+            $this->assertEquals('If you select "other" you must indicate a value', $error->getMessage());
+        }
+
+        $this->options['expanded'] = true;
+        $this->options['multiple'] = true;
+        $form = $this->factory->create(ChoiceWithOtherType::class, [], $this->options);
+        $form->submit(['choices' => [ChoiceWithOtherType::OTHER_VALUE], 'other' => '']);
+        $this->assertTrue($form->isSynchronized());
+        $this->assertNotEmpty($form->getErrors());
+        $this->assertCount(1, $form->getErrors());
+        foreach ($form->getErrors() as $error) {
+            $this->assertEquals('If you select "other" you must indicate a value', $error->getMessage());
+        }
+    }
+
+    /**
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType
+     * @dataProvider data
+     */
+    public function testSubmitValidData(string $expected, array $formData): void
+    {
+        $form = $this->factory->create(ChoiceWithOtherType::class, [], $this->options);
+        $form->submit($formData);
+        $this->assertTrue($form->isSynchronized());
+        $this->assertEmpty($form->getErrors());
+        $data = $form->getData();
+        $this->assertEquals($expected, $data);
+    }
+
+    /**
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType
+     * @dataProvider data
+     */
+    public function testExpandedSubmitValidData(string $expected, array $formData): void
+    {
+        $this->options['expanded'] = true;
+        $form = $this->factory->create(ChoiceWithOtherType::class, [], $this->options);
+        $form->submit($formData);
+        $this->assertTrue($form->isSynchronized());
+        $data = $form->getData();
+        $this->assertEquals($expected, $data);
+    }
+
+    public function data(): \Iterator
+    {
+        yield 0 => ['', ['choices' => '', 'other' => '']];
+        yield 1 => ['spades', ['choices' => 'spades', 'other' => '']];
+        yield 2 => ['Hearts', ['choices' => ChoiceWithOtherType::OTHER_VALUE, 'other' => 'Hearts']]; // case-sensitive
+        yield 3 => ['stars', ['choices' => ChoiceWithOtherType::OTHER_VALUE, 'other' => 'stars']]; // non-value
+    }
+
+    /**
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType
+     * @dataProvider multipleData
+     */
+    public function testMultipleSubmitValidData(string $expected, array $formData): void
+    {
+        $this->options['multiple'] = true;
+        $form = $this->factory->create(ChoiceWithOtherType::class, [], $this->options);
+        $form->submit($formData);
+        $this->assertTrue($form->isSynchronized());
+        $data = $form->getData();
+        $this->assertEquals($expected, $data);
+    }
+
+    /**
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType
+     * @dataProvider multipleData
+     */
+    public function testExpandedMultipleSubmitValidData(string $expected, array $formData): void
+    {
+        $this->options['multiple'] = true;
+        $this->options['expanded'] = true;
+        $form = $this->factory->create(ChoiceWithOtherType::class, [], $this->options);
+        $form->submit($formData);
+        $this->assertTrue($form->isSynchronized());
+        $data = $form->getData();
+        $this->assertEquals($expected, $data);
+    }
+
+    public function multipleData(): \Iterator
+    {
+        yield 1 => ['', ['choices' => [], 'other' => '']];
+        yield 2 => ['spades,hearts', ['choices' => ['spades', 'hearts'], 'other' => '']];
+        yield 3 => ['spades,hearts,moons', ['choices' => ['spades', 'hearts', ChoiceWithOtherType::OTHER_VALUE], 'other' => 'moons']];
+        yield 4 => ['hearts,Spades', ['choices' => ['hearts', ChoiceWithOtherType::OTHER_VALUE], 'other' => 'Spades']];
+        yield 5 => ['stars', ['choices' => [ChoiceWithOtherType::OTHER_VALUE], 'other' => 'stars']];
+        yield 5 => ['stars,moons', ['choices' => [ChoiceWithOtherType::OTHER_VALUE], 'other' => 'stars,moons']];
+    }
+}

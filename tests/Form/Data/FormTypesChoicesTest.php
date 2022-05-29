@@ -21,6 +21,9 @@ use Zikula\Bundle\DynamicFormPropertyBundle\Form\Data\FormTypesChoices;
 
 class FormTypesChoicesTest extends TestCase
 {
+    /**
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Data\FormTypesChoices
+     */
     public function testEmptyInstantiation(): void
     {
         $foo = new FormTypesChoices();
@@ -29,6 +32,9 @@ class FormTypesChoicesTest extends TestCase
         $this->assertInstanceOf(Traversable::class, $foo);
     }
 
+    /**
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Data\FormTypesChoices
+     */
     public function testInstantiationWithArg(): void
     {
         $foo = new FormTypesChoices([
@@ -42,6 +48,9 @@ class FormTypesChoicesTest extends TestCase
         $this->assertArrayHasKey('three', $foo);
     }
 
+    /**
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Data\FormTypesChoices::offsetSet
+     */
     public function testAdd(): void
     {
         $foo = new FormTypesChoices([
@@ -54,6 +63,9 @@ class FormTypesChoicesTest extends TestCase
         $this->assertEquals(['sixvalue' => 'sixvalue'], $foo['six']);
     }
 
+    /**
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Data\FormTypesChoices::offsetUnset
+     */
     public function testExceptionOnUnset(): void
     {
         $this->expectException(\Exception::class);

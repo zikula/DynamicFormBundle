@@ -19,7 +19,7 @@ use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ChoiceValuesTra
 class ChoiceValuesTransformerTest extends TestCase
 {
     /**
-     * @covers ChoiceValuesTransformer::transform
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ChoiceValuesTransformer::transform
      * @dataProvider data
      */
     public function testTransform(array $storedAs, string $submitted, string $restored): void
@@ -29,7 +29,7 @@ class ChoiceValuesTransformerTest extends TestCase
     }
 
     /**
-     * @covers ChoiceValuesTransformer::reverseTransform
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ChoiceValuesTransformer::reverseTransform
      * @dataProvider data
      */
     public function testReverseTransform(array $storedAs, string $submitted, string $restored): void

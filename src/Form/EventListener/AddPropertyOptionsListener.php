@@ -15,7 +15,6 @@ namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\EventListener;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
@@ -29,6 +28,7 @@ use Symfony\Component\Form\FormInterface;
 use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertySpecificationInterface;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ChoiceValuesTransformer;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraintTransformer;
+use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceTypeTransformed;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\ChoiceFormOptionsArrayType;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\DateTimeFormOptionsArrayType;
@@ -75,7 +75,7 @@ class AddPropertyOptionsListener implements EventSubscriberInterface
     protected function addFormOptions(FormInterface $form, ?string $formType = null): void
     {
         switch ($formType) {
-            case ChoiceType::class:
+            case ChoiceTypeTransformed::class:
             case ChoiceWithOtherType::class:
                 $optionsType = ChoiceFormOptionsArrayType::class;
                 break;

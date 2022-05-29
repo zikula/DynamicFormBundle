@@ -16,7 +16,6 @@ namespace Zikula\Bundle\DynamicFormPropertyBundle\EventSubscriber;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\CurrencyType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -41,6 +40,7 @@ use Symfony\Component\Form\Extension\Core\Type\WeekType;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Zikula\Bundle\DynamicFormPropertyBundle\Event\FormTypeChoiceEvent;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\Data\FormTypesChoices;
+use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceTypeTransformed;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType;
 
 class FormTypeChoiceEventSubscriber implements EventSubscriberInterface
@@ -76,7 +76,7 @@ class FormTypeChoiceEventSubscriber implements EventSubscriberInterface
                 $this->trans('Phone number') => TelType::class,
             ],
             $this->trans('Choice fields') => [
-                $this->trans('Choice') => ChoiceType::class,
+                $this->trans('Choice') => ChoiceTypeTransformed::class,
                 $this->trans('Choice with other') => ChoiceWithOtherType::class,
                 $this->trans('Checkbox') => CheckboxType::class,
                 $this->trans('Country') => CountryType::class,

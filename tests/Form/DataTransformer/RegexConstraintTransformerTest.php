@@ -20,20 +20,24 @@ use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraint
 class RegexConstraintTransformerTest extends TestCase
 {
     /**
+     * @param Regex[] $storedAs
+     *
      * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraintTransformer::transform
      * @dataProvider data
      */
-    public function testTransform($storedAs, string $submitted, string $restored): void
+    public function testTransform(array $storedAs, string $submitted, string $restored): void
     {
         $transformer = new RegexConstraintTransformer();
         $this->assertSame($restored, $transformer->transform($storedAs));
     }
 
     /**
+     * @param Regex[] $storedAs
+     *
      * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraintTransformer::reverseTransform
      * @dataProvider data
      */
-    public function testReverseTransform($storedAs, string $submitted, string $restored): void
+    public function testReverseTransform(array $storedAs, string $submitted, string $restored): void
     {
         $transformer = new RegexConstraintTransformer();
         $this->assertEquals($storedAs, $transformer->reverseTransform($submitted));

@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormPropertyBundle\Tests\Form\Type;
 
+use Symfony\Component\Form\AbstractExtension;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\Validator\Validation;
@@ -20,6 +21,9 @@ use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType;
 
 class ChoiceWithOtherTypeTest extends TypeTestCase
 {
+    /**
+     * @var array<string, mixed>
+     */
     private array $options = [
         'choices' => [
             'Spades' => 'spades',
@@ -31,7 +35,10 @@ class ChoiceWithOtherTypeTest extends TypeTestCase
         'expanded' => false,
     ];
 
-    protected function getExtensions()
+    /**
+     * @return AbstractExtension[]
+     */
+    protected function getExtensions(): array
     {
         $validator = Validation::createValidator();
 
@@ -116,6 +123,8 @@ class ChoiceWithOtherTypeTest extends TypeTestCase
     }
 
     /**
+     * @param array<int, array<string, string>> $formData
+     *
      * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType
      * @dataProvider data
      */
@@ -130,6 +139,8 @@ class ChoiceWithOtherTypeTest extends TypeTestCase
     }
 
     /**
+     * @param array<int, array<string, string>> $formData
+     *
      * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType
      * @dataProvider data
      */
@@ -152,6 +163,8 @@ class ChoiceWithOtherTypeTest extends TypeTestCase
     }
 
     /**
+     * @param array<int, array<string, mixed>> $formData
+     *
      * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType
      * @dataProvider multipleData
      */
@@ -166,6 +179,8 @@ class ChoiceWithOtherTypeTest extends TypeTestCase
     }
 
     /**
+     * @param array<int, array<string, mixed>> $formData
+     *
      * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType
      * @dataProvider multipleData
      */

@@ -19,6 +19,8 @@ use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\DefaultLabelToL
 class DefaultLabelToLabelsTransformerTest extends TestCase
 {
     /**
+     * @param array<string, string> $storedAs
+     *
      * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\DefaultLabelToLabelsTransformer::transform
      * @dataProvider data
      */
@@ -29,6 +31,8 @@ class DefaultLabelToLabelsTransformerTest extends TestCase
     }
 
     /**
+     * @param array<string, string> $storedAs
+     *
      * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\DefaultLabelToLabelsTransformer::reverseTransform
      * @dataProvider data
      */

@@ -45,6 +45,9 @@ class ArrayToStringTransformerTest extends TestCase
     }
 
     /**
+     * @param string[] $submitted
+     * @param string[] $restored
+     *
      * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ArrayToStringTransformer::transform
      * @dataProvider dataMultiple
      */
@@ -55,6 +58,9 @@ class ArrayToStringTransformerTest extends TestCase
     }
 
     /**
+     * @param string[] $submitted
+     * @param string[] $restored
+     *
      * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ArrayToStringTransformer::reverseTransform
      * @dataProvider dataMultiple
      */

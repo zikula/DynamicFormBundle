@@ -38,7 +38,10 @@ class TranslationCollectionTypeTest extends TypeTestCase
         parent::setUp();
     }
 
-    protected function getExtensions()
+    /**
+     * @return PreloadedExtension[]
+     */
+    protected function getExtensions(): array
     {
         $type = new TranslationCollectionType($this->localeProvider);
 

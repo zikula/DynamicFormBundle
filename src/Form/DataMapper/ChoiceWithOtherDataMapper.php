@@ -16,13 +16,16 @@ class ChoiceWithOtherDataMapper implements DataMapperInterface
     {
         /** @var FormInterface[] $forms */
         $forms = iterator_to_array($forms);
-        $formChoices = $forms['choices']->getParent()->getConfig()->getOption('choices');
-
-        $choices = $forms['choices']->getParent()->getConfig()->getOption('multiple') ? [] : '';
+        $formParent = $forms['choices']->getParent();
+        if (!$formParent) {
+            return;
+        }
+        $formChoices = $formParent->getConfig()->getOption('choices');
+        $choices = $formParent->getConfig()->getOption('multiple') ? [] : '';
         $other = '';
 
         if (!empty($value)) {
-            if (false !== strpos($value, ',', true)) {
+            if (false !== strpos($value, ',')) {
                 $value = explode(',', $value);
             }
             if (is_array($value)) {
@@ -57,7 +60,11 @@ class ChoiceWithOtherDataMapper implements DataMapperInterface
         $forms = iterator_to_array($forms);
         $choicesData = $forms['choices']->getData();
         $otherData = $forms['other']->getData();
-        $formMultiple = $forms['choices']->getParent()->getConfig()->getOption('multiple');
+        $formParent = $forms['choices']->getParent();
+        if (!$formParent) {
+            return;
+        }
+        $formMultiple = $formParent->getConfig()->getOption('multiple');
 
         if (!$formMultiple) {
             $value = ChoiceWithOtherType::OTHER_VALUE === $choicesData ? $otherData : $choicesData;

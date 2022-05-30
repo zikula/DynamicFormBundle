@@ -19,6 +19,8 @@ use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ChoiceValuesTra
 class ChoiceValuesTransformerTest extends TestCase
 {
     /**
+     * @param array<string, string> $storedAs
+     *
      * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ChoiceValuesTransformer::transform
      * @dataProvider data
      */
@@ -29,6 +31,8 @@ class ChoiceValuesTransformerTest extends TestCase
     }
 
     /**
+     * @param array<string, string> $storedAs
+     *
      * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ChoiceValuesTransformer::reverseTransform
      * @dataProvider data
      */

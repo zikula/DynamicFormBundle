@@ -14,11 +14,12 @@ declare(strict_types=1);
 namespace Zikula\Bundle\DynamicFormPropertyBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class ZikulaDynamicFormPropertyExtension extends Extension
+class ZikulaDynamicFormPropertyExtension extends Extension implements CompilerPassInterface
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
@@ -46,5 +47,13 @@ class ZikulaDynamicFormPropertyExtension extends Extension
 
         \array_unshift($resources, '@ZikulaDynamicFormProperty/Form/fields.html.twig');
         $container->setParameter('twig.form.resources', $resources);
+    }
+
+    public function process(ContainerBuilder $container): void
+    {
+        // register validator config for entities (this seems like it should be unnecessary)
+        $validationFile = \dirname(__DIR__).'/../config/validator/orm.xml';
+        $container->getDefinition('validator.builder')
+            ->addMethodCall('addXmlMapping', [$validationFile]);
     }
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+        https://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="Zikula\Bundle\DynamicFormPropertyBundle\Entity\AbstractDynamicPropertySpecification">
+        <property name="name">
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">255</option>
+            </constraint>
+            <constraint name="Regex">
+                <option name="pattern">/^\w+$/</option>
+                <option name="message">The name can only contain letters and underscores.</option>
+            </constraint>
+        </property>
+
+        <property name="labels">
+            <constraint name="NotNull"/>
+        </property>
+
+        <property name="formType">
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">255</option>
+            </constraint>
+        </property>
+
+        <property name="formOptions">
+            <constraint name="NotNull"/>
+        </property>
+    </class>
+</constraint-mapping>

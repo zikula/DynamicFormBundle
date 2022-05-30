@@ -13,37 +13,22 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormPropertyBundle\Entity;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertySpecificationInterface;
 
 abstract class AbstractDynamicPropertySpecification implements DynamicPropertySpecificationInterface
 {
-    /**
-     * @Assert\Length(min="1", max="255")
-     * @Assert\Regex(pattern="/^\w+$/", message="The name can only contain letters and underscores.")
-     */
-    #[Assert\Length(min: 1, max: 255)]
-    #[Assert\Regex(pattern: "/^\w+$/", message: 'The name can only contain letters and underscores.')]
     protected ?string $name = null;
 
     /**
      * @var array<string, string>
-     * @Assert\NotNull()
      */
-    #[Assert\NotNull]
     protected array $labels = [];
 
-    /**
-     * @Assert\Length(min="1", max="255")
-     */
-    #[Assert\Length(min: 1, max: 255)]
     protected string $formType = '';
 
     /**
      * @var array<string, mixed>
-     * @Assert\NotNull()
      */
-    #[Assert\NotNull]
     protected array $formOptions = [];
 
     protected bool $active = true;

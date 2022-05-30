@@ -23,4 +23,11 @@ interface DynamicPropertiesContainerInterface
      * @return DynamicPropertySpecificationInterface[]
      */
     public function getPropertySpecifications(array $params = []): array;
+
+    /**
+     * Return a list of property labels by name.
+     *
+     * @return array<string, string> [name => translatedLabel]
+     */
+    public function getLabels(): array;
 }

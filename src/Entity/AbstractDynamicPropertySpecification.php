@@ -13,56 +13,39 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormPropertyBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertySpecificationInterface;
 
-/**
- * @ORM\MappedSuperclass
- */
-#[ORM\MappedSuperclass]
 abstract class AbstractDynamicPropertySpecification implements DynamicPropertySpecificationInterface
 {
     /**
-     * @ORM\Column(type="text", nullable=false)
      * @Assert\Length(min="1", max="255")
      * @Assert\Regex(pattern="/^\w+$/", message="The name can only contain letters and underscores.")
      */
-    #[ORM\Column(type: 'text', nullable: false)]
     #[Assert\Length(min: 1, max: 255)]
     #[Assert\Regex(pattern: "/^\w+$/", message: 'The name can only contain letters and underscores.')]
     protected ?string $name = null;
 
     /**
      * @var array<string, string>
-     * @ORM\Column(type="array", nullable=false)
      * @Assert\NotNull()
      */
-    #[ORM\Column(type: 'array', nullable: false)]
     #[Assert\NotNull]
     protected array $labels = [];
 
     /**
-     * @ORM\Column(type="text", nullable=false)
      * @Assert\Length(min="1", max="255")
      */
-    #[ORM\Column(type: 'text', nullable: false)]
     #[Assert\Length(min: 1, max: 255)]
     protected string $formType = '';
 
     /**
      * @var array<string, mixed>
-     * @ORM\Column(type="array")
      * @Assert\NotNull()
      */
-    #[ORM\Column(type: 'array')]
     #[Assert\NotNull]
     protected array $formOptions = [];
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    #[ORM\Column(type: 'boolean')]
     protected bool $active = true;
 
     /**

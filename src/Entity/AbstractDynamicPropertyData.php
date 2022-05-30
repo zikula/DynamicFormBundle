@@ -13,19 +13,13 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormPropertyBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertyDataInterface;
 
-/**
- * @ORM\MappedSuperclass
- */
-#[ORM\MappedSuperclass]
 abstract class AbstractDynamicPropertyData implements DynamicPropertyDataInterface
 {
     /**
      * @var array<string, mixed>|null
      */
-    #[ORM\Column(type: 'json', nullable: true)]
     protected ?array $data = [];
 
     public function getData(): ?array

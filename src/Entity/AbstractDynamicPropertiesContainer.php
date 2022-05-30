@@ -18,12 +18,12 @@ use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertiesContainerInterface;
 abstract class AbstractDynamicPropertiesContainer implements DynamicPropertiesContainerInterface
 {
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     abstract public function getPropertySpecifications(array $params = []): array;
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getLabels(): array
     {

@@ -36,7 +36,7 @@ class ChoiceWithOtherDataMapper implements DataMapperInterface
             } elseif (in_array($value, $formChoices, true)) {
                 $choices = $value;
             } else {
-                $choices = 'other';
+                $choices = ChoiceWithOtherType::OTHER_VALUE;
                 $other = $value;
             }
         }

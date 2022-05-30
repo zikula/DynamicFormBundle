@@ -60,14 +60,6 @@ abstract class AbstractDynamicPropertySpecification implements DynamicPropertySp
     protected array $formOptions = [];
 
     /**
-     * @ORM\Column(type="integer")
-     * @Assert\PositiveOrZero()
-     */
-    #[ORM\Column(type: 'integer')]
-    #[Assert\PositiveOrZero]
-    protected int $weight = 0;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     #[ORM\Column(type: 'boolean')]
@@ -131,16 +123,6 @@ abstract class AbstractDynamicPropertySpecification implements DynamicPropertySp
     public function setFormOptions(array $formOptions): void
     {
         $this->formOptions = $formOptions;
-    }
-
-    public function getWeight(): int
-    {
-        return $this->weight;
-    }
-
-    public function setWeight(int $weight): void
-    {
-        $this->weight = $weight;
     }
 
     public function isActive(): bool

@@ -53,11 +53,6 @@ interface DynamicPropertySpecificationInterface
     public function getFormOptions(): array;
 
     /**
-     * Returns a weighting number for sorting properties.
-     */
-    public function getWeight(): int;
-
-    /**
      * Returns boolean indicating if this property is active.
      */
     public function isActive(): bool;

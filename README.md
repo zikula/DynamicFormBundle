@@ -73,20 +73,6 @@ In order to implement this bundle, the developer must create three entities:
 3. A PropertyResponse Entity to contain the data responses to the forms.
    1. This must extend `AbstractDynamicPropertyData`
 
-In a real-world example:
-1. `Survey implements DynamicPropertiesContainerInterface`
-   1. OneToMany Question
-   2. OneToMany SurveyResponse
-2. `Question extends AbstractDynamicPropertySpecification`
-   1. ManyToOne Survey
-3. `SurveyResponse extends AbstractDynamicPropertyData`
-   1. ManyToOne Survey
-
-After generating the required entities (`symfony console make:entity Survey` etc...) and adjusting them to 
-extend required abstract classes or implement required interfaces, A standard "CRUD" Controller can be 
-created (`symfony console make:crud Survey`) to quickly generate much of the needed boilerplate code for a
-sample implementation. 
-
 Form Creation: the 'Building' form
 ----------------------------------
 

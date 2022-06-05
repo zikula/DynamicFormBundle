@@ -17,7 +17,7 @@
         </property>
 
         <property name="labels">
-            <constraint name="NotNull"/>
+            <constraint name="NotNull" />
         </property>
 
         <property name="formType">
@@ -28,7 +28,7 @@
         </property>
 
         <property name="formOptions">
-            <constraint name="NotNull"/>
+            <constraint name="NotNull" />
         </property>
     </class>
 </constraint-mapping>

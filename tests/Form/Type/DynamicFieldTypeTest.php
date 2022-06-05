@@ -22,6 +22,7 @@ use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Symfony\Component\Form\FormExtensionInterface;
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Zikula\Bundle\DynamicFormPropertyBundle\Entity\AbstractDynamicPropertySpecification;
@@ -32,7 +33,7 @@ use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicFieldType;
 class DynamicFieldTypeTest extends TypeTestCase
 {
     /**
-     * @return PreloadedExtension[]
+     * @return FormExtensionInterface[]
      */
     protected function getExtensions(): array
     {

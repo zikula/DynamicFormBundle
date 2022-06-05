@@ -15,10 +15,11 @@
                 url: form.attr('action'),
                 method: form.attr('method'),
                 data: data,
-            })
-            .done(function(html) {
-                let newForm = $(html).filter('form').filter('form[name="'+formName+'"]');
-                form.replaceWith(newForm);
+                complete: function(jqXHR, status) {
+                    let html = jqXHR.responseText;
+                    let newForm = $(html).filter('form').filter('form[name="'+formName+'"]');
+                    form.replaceWith(newForm);
+                },
             })
         }
         let addToCollectionHandler = function () {

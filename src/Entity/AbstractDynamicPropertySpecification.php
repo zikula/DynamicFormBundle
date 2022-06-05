@@ -17,7 +17,7 @@ use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertySpecificationInterfac
 
 abstract class AbstractDynamicPropertySpecification implements DynamicPropertySpecificationInterface
 {
-    protected ?string $name = null;
+    protected string $name;
 
     /**
      * @var array<string, string>
@@ -108,18 +108,8 @@ abstract class AbstractDynamicPropertySpecification implements DynamicPropertySp
         $this->name = $name;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
-    }
-
-    public function getPrefix(): string
-    {
-        return '';
-    }
-
-    public function getGroupNames(): array
-    {
-        return [];
     }
 }

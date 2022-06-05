@@ -21,12 +21,7 @@ interface DynamicPropertySpecificationInterface
     /**
      * Returns name of form field.
      */
-    public function getName(): ?string;
-
-    /**
-     * Returns optional prefix of form field.
-     */
-    public function getPrefix(): string;
+    public function getName(): string;
 
     /**
      * Returns a list of labels per locale. e.g. ['en' => 'my label', 'de' => 'mein Etikett'].
@@ -56,12 +51,4 @@ interface DynamicPropertySpecificationInterface
      * Returns boolean indicating if this property is active.
      */
     public function isActive(): bool;
-
-    /**
-     * Returns a list of group names per locale.
-     * May optionally be used for dividing fields into several fieldsets.
-     *
-     * @return string[]
-     */
-    public function getGroupNames(): array;
 }

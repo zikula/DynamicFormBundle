@@ -16,7 +16,7 @@ stan: ## PHPStan Static Code analysis
 	./vendor/bin/phpstan analyse
 
 ## —— TEST —————————————————————————————————————————————————
-test: cs phpunit ## check coding standards and run tests
+test: cs stan phpunit ## check coding standards and run tests
 
 phpunit: ## Run PHPUnit Test
 	./vendor/bin/phpunit -c phpunit.xml.dist

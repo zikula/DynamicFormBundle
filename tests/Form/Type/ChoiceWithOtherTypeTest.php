@@ -78,6 +78,9 @@ class ChoiceWithOtherTypeTest extends TypeTestCase
         $this->assertContains(ChoiceWithOtherType::OTHER_VALUE, $choices);
     }
 
+    /**
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType
+     */
     public function testFormValidation(): void
     {
         $form = $this->factory->create(ChoiceWithOtherType::class, [], $this->options);

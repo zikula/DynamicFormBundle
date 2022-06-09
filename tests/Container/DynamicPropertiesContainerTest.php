@@ -8,6 +8,9 @@ use Zikula\Bundle\DynamicFormPropertyBundle\Entity\AbstractDynamicPropertySpecif
 
 class DynamicPropertiesContainerTest extends TestCase
 {
+    /**
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Container\AbstractDynamicPropertiesContainer::getPropertySpecifications
+     */
     public function testGetPropertySpecifications(): void
     {
         $container = $this->getContainer();
@@ -17,6 +20,9 @@ class DynamicPropertiesContainerTest extends TestCase
         }
     }
 
+    /**
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Container\AbstractDynamicPropertiesContainer::getLabels
+     */
     public function testGetLabels(): void
     {
         $container = $this->getContainer();
@@ -34,6 +40,9 @@ class DynamicPropertiesContainerTest extends TestCase
         );
     }
 
+    /**
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Container\AbstractDynamicPropertiesContainer::getLabels
+     */
     public function testGetLabelsTranslated(): void
     {
         $container = $this->getContainer();
@@ -51,6 +60,9 @@ class DynamicPropertiesContainerTest extends TestCase
         );
     }
 
+    /**
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Container\AbstractDynamicPropertiesContainer::getGroupedLabels
+     */
     public function testGetGroupedLabels(): void
     {
         $container = $this->getContainer();
@@ -74,6 +86,9 @@ class DynamicPropertiesContainerTest extends TestCase
         );
     }
 
+    /**
+     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Container\AbstractDynamicPropertiesContainer::getGroupedLabels
+     */
     public function testGetGroupedLabelsTranslated(): void
     {
         $container = $this->getContainer();

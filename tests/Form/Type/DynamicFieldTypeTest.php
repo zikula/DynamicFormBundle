@@ -63,6 +63,7 @@ class DynamicFieldTypeTest extends TypeTestCase
         $this->assertTrue($form->has('formType'));
         $this->assertTrue($form->has('labels'));
         $this->assertTrue($form->has('active'));
+        $this->assertTrue($form->has('groups'));
         $this->assertTrue($form->has('formOptions'));
 
         // check types added by eventSubscribers exist

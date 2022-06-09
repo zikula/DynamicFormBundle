@@ -1,6 +1,18 @@
 DynamicFormPropertyBundle
 =========================
 
+The `DynamicFormPropertyBundle` offers helpers for handling dynamic form fields (forms built from definitions stored in
+the database). This can be helpful for several applications where a site admin (not the developer) needs to configure
+the fields of a form, like contact forms, surveys or exams. For example, a user profile manager could use this
+functionality to handle definition and management of user profile data.
+
+Example Use cases:
+- Form builder
+- Survey/questionnaire/exam
+- Profile/contact
+- Employment applications
+- etc.
+
 Installation
 ============
 
@@ -43,22 +55,6 @@ return [
 ];
 ```
 
-Dynamic form fields
-===================
-
-The `DynamicFormPropertyBundle` offers helpers for handling dynamic form fields (*properties*).
-This can be helpful for several applications where a site admin (not the developer) needs to configure the fields of a 
-form, like contact forms, surveys or exams. For example, a user profile manager could use this functionality to
-handle definition and management of user profile data.
-
-Example Use cases:
- - Form builder
- - Survey/questionnaire/exam
- - Profile data
- - Contact data
- - Application data
- - etc.
-
 Getting Started
 ---------------
 
@@ -69,15 +65,15 @@ In order to implement this bundle, the developer must create three entities:
    2. The response data (OneToMany)
    3. This _may_ implement `DynamicPropertiesContainerInterface`
 2. A 'wrapper' Entity that defines the dynamic property specification.
-   1. This must extend `AbstractDynamicPropertySpecification`
+   1. This **must** extend `AbstractDynamicPropertySpecification`
 3. A PropertyResponse Entity to contain the data responses to the forms.
-   1. This must extend `AbstractDynamicPropertyData`
+   1. This **must** extend `AbstractDynamicPropertyData`
 
 Form Creation: the 'Building' form
 ----------------------------------
 
 The `Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicFieldCollectionType` formType is a collection of 
-Dynamic Fields in your form. You must define the `entry_type` to be your own 'wrapper' Entity (`Question` above).
+Dynamic Fields in your form. You must define the `entry_type` to be your own 'wrapper' Entity (item 2 above).
 Each member of the collection provides a form type to define all the needed details of a formType
 (a `DynamicPropertySpecification`) which consists of two main parts. First a choice field which allows the
 selection of a field type using a dropdown list. Upon selection further field-specific form fields for the field options
@@ -100,16 +96,16 @@ Form Creation: The 'Responding' form
 The bundle also provides the `Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\InlineFormDefinitionType` formType.
 This provides for inclusion of the dynamic properties of the form. So an application can just use one
 form type for adding the defined fields for a given data object form. The formType requires the `dynamicFieldsContainer`
-object. This object implements `Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertiesContainerInterface`. This can
-be your 'Container' object (the `Survey` above) or possibly another provider like a Repository. The object must
-provide a list of dynamic property specifications (as defined by the 'Wrapper' class - The `Question` above). This list
+object. This object implements `Zikula\Bundle\DynamicFormPropertyBundle\Container\DynamicPropertiesContainerInterface`.
+This can be your 'Container' object (item 1 above) or possibly another provider like a Repository. The object must
+provide a list of dynamic property specifications (as defined by the 'wrapper' class). This list
 can be optionally sorted or filtered as required.
 
 Example:
 
 ```php
     $builder->add('survey', InlineFormDefinitionType::class, [
-        'dynamicFieldsContainer' => $survey,
+        'dynamicFieldsContainer' => $myContainer,
     ]);
 ```
 

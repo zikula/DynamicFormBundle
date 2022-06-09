@@ -16,6 +16,12 @@
 
         <field name="active" column="active" type="boolean" />
 
+        <field name="groups" column="groups" type="array" nullable="false">
+            <options>
+                <option name="default">a:0:{}</option><!-- needed for migration-->
+            </options>
+        </field>
+
     </mapped-superclass>
 
 </doctrine-mapping>

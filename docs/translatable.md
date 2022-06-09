@@ -1,12 +1,13 @@
-# Translatable Labels
+# Translatable Labels and Group names
 
-This bundle provides for "inline" label translation for all dynamic fields. If a label text is not provided, the field
-name will be used (like normal text fields). Any _configured_ language/locale will be shown in the dynamic field
-creation.
+This bundle provides for "inline" label and group name translation for all dynamic fields.
+ - If a label text is not provided, the field name will be used (like normal text fields).
+ - If a group name is not provided, the field is placed in the 'Default' group.
+ - Any _configured_ language/locale will be shown in the dynamic field creation.
 
 ## Enable label translation
 
-In your app, you must configure label translation. Create a config file:
+In your app, you must enable label and group name translation. Create a config file:
 
 ```yaml
 # config/packages/zikula_dynamic_form_property.yaml
@@ -14,6 +15,8 @@ In your app, you must configure label translation. Create a config file:
 zikula_dynamic_form_property:
     translate_labels: true
 ```
+
+note: `translate_labels` applies to both labels and group names.
 
 ## Add supported translation locales
 

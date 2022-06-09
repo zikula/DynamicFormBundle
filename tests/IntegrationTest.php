@@ -17,7 +17,7 @@ class IntegrationTest extends KernelTestCase
         return DynamicFormTestKernel::class;
     }
 
-    public function testSomething()
+    public function testServicesAvailable(): void
     {
         self::bootKernel();
         $container = static::getContainer();
@@ -28,7 +28,9 @@ class IntegrationTest extends KernelTestCase
         $this->assertTrue($container->has('zikula.dynamic_form.provider.locale_provider'));
 
         $this->assertTrue($container->hasParameter('twig.form.resources'));
-        $this->assertContains('@ZikulaDynamicFormProperty/Form/fields.html.twig', $container->getParameter('twig.form.resources'));
+        /** @var string[] $twigFormResources */
+        $twigFormResources = $container->getParameter('twig.form.resources');
+        $this->assertContains('@ZikulaDynamicFormProperty/Form/fields.html.twig', $twigFormResources);
     }
 }
 
@@ -43,9 +45,9 @@ class DynamicFormTestKernel extends Kernel
         ];
     }
 
-    public function registerContainerConfiguration(LoaderInterface $loader)
+    public function registerContainerConfiguration(LoaderInterface $loader): void
     {
-        $loader->load(function(ContainerBuilder $container) {
+        $loader->load(function (ContainerBuilder $container) {
             $container->loadFromExtension('framework', ['secret' => 'not-secret', 'test' => true]);
         });
     }

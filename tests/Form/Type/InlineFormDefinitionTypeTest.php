@@ -22,7 +22,7 @@ use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Zikula\Bundle\DynamicFormPropertyBundle\Entity\AbstractDynamicPropertiesContainer;
+use Zikula\Bundle\DynamicFormPropertyBundle\Container\AbstractDynamicPropertiesContainer;
 use Zikula\Bundle\DynamicFormPropertyBundle\Entity\AbstractDynamicPropertyData;
 use Zikula\Bundle\DynamicFormPropertyBundle\Entity\AbstractDynamicPropertySpecification;
 use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceTypeTransformed;

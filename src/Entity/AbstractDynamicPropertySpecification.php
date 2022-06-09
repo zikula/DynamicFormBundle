@@ -34,6 +34,11 @@ abstract class AbstractDynamicPropertySpecification implements DynamicPropertySp
     protected bool $active = true;
 
     /**
+     * @var array<string, string>
+     */
+    protected array $groups = [];
+
+    /**
      * @return array<string, string>
      */
     public function getLabels(): array
@@ -111,5 +116,30 @@ abstract class AbstractDynamicPropertySpecification implements DynamicPropertySp
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function getGroups(): array
+    {
+        return $this->groups;
+    }
+
+    public function getGroup(string $locale = ''): string
+    {
+        if (!empty($locale) && isset($this->groups[$locale])) {
+            return $this->groups[$locale];
+        }
+
+        return $this->groups['default'] ?? 'Default';
+    }
+
+    /**
+     * @param array<string, string> $groups
+     */
+    public function setGroups(array $groups): void
+    {
+        $this->groups = $groups;
     }
 }

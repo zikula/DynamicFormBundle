@@ -11,9 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Entity;
-
-use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertiesContainerInterface;
+namespace Zikula\Bundle\DynamicFormPropertyBundle\Container;
 
 abstract class AbstractDynamicPropertiesContainer implements DynamicPropertiesContainerInterface
 {
@@ -25,11 +23,24 @@ abstract class AbstractDynamicPropertiesContainer implements DynamicPropertiesCo
     /**
      * {@inheritDoc}
      */
-    public function getLabels(): array
+    public function getLabels(string $locale = ''): array
     {
         $labels = [];
         foreach ($this->getPropertySpecifications() as $specification) {
-            $labels[$specification->getName()] = $specification->getLabel();
+            $labels[$specification->getName()] = $specification->getLabel($locale);
+        }
+
+        return $labels;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getGroupedLabels(string $locale = ''): array
+    {
+        $labels = [];
+        foreach ($this->getPropertySpecifications() as $specification) {
+            $labels[$specification->getGroup($locale)][$specification->getName()] = $specification->getLabel($locale);
         }
 
         return $labels;

@@ -17,7 +17,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertiesContainerInterface;
+use Zikula\Bundle\DynamicFormPropertyBundle\Container\DynamicPropertiesContainerInterface;
 
 /**
  * Form type for embedding dynamic fields.
@@ -33,7 +33,7 @@ class InlineFormDefinitionType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options = []): void
     {
-        /** @var DynamicPropertiesContainerInterface $dynamicFieldsContainer */
+        /** @var \Zikula\Bundle\DynamicFormPropertyBundle\Container\DynamicPropertiesContainerInterface $dynamicFieldsContainer */
         $dynamicFieldsContainer = $options['dynamicFieldsContainer'];
 
         foreach ($dynamicFieldsContainer->getPropertySpecifications() as $fieldSpecification) {

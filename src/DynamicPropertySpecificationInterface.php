@@ -51,4 +51,16 @@ interface DynamicPropertySpecificationInterface
      * Returns boolean indicating if this property is active.
      */
     public function isActive(): bool;
+
+    /**
+     * Returns a list of groups per locale. e.g. ['en' => 'my group', 'de' => 'mein Gruppe'].
+     *
+     * @return string[]
+     */
+    public function getGroups(): array;
+
+    /**
+     * Returns group for a specific locale.
+     */
+    public function getGroup(string $locale = ''): string;
 }

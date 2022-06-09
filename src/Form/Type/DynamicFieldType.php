@@ -59,6 +59,9 @@ class DynamicFieldType extends AbstractType
                 'label' => 'Translated labels',
                 'help' => 'If the label field is left blank, the name field will be used instead.',
             ]);
+            $builder->add('groups', TranslationCollectionType::class, [
+                'label' => 'Translated group names',
+            ]);
         } else {
             $builder->add('labels', TextType::class, [
                 'label' => 'Label',
@@ -66,6 +69,11 @@ class DynamicFieldType extends AbstractType
                 'help' => 'If the label field is left blank, the name field will be used instead.',
             ]);
             $builder->get('labels')->addModelTransformer(new DefaultLabelToLabelsTransformer());
+            $builder->add('groups', TextType::class, [
+                'label' => 'Group',
+                'required' => false,
+            ]);
+            $builder->get('groups')->addModelTransformer(new DefaultLabelToLabelsTransformer());
         }
 
         $builder

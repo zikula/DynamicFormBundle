@@ -43,7 +43,11 @@ class FormTypesChoices implements ArrayAccess, Iterator
         return isset($this->choices[$offset]);
     }
 
-    public function offsetGet($offset): mixed
+    /**
+     * @return mixed
+     */
+    #[\ReturnTypeWillChange]
+    public function offsetGet($offset)
     {
         return $this->choices[$offset];
     }
@@ -63,12 +67,20 @@ class FormTypesChoices implements ArrayAccess, Iterator
         reset($this->choices);
     }
 
-    public function current(): mixed
+    /**
+     * @return mixed
+     */
+    #[\ReturnTypeWillChange]
+    public function current()
     {
         return current($this->choices);
     }
 
-    public function key(): mixed
+    /**
+     * @return mixed
+     */
+    #[\ReturnTypeWillChange]
+    public function key()
     {
         return key($this->choices);
     }

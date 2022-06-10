@@ -5,7 +5,7 @@ The general principle of data storage for dynamic properties is that they _must_
 and the value are required to be simple datatypes (strings, ints).
 
 The entire collection of properties is stored in the `data` column of the entity that extends
-`AbstractDynamicPropertyData`. This data array is stored as a `json` serialized array. As stated above, this is a
+`AbstractResponseData`. This data array is stored as a `json` serialized array. As stated above, this is a
 _simple array_ of only one 'layer'. Each form field must store a textual representation of a simple value.
 
 If the created application employing this bundle creates and adds custom fields, they should use `DataMappers` to

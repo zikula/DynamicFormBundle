@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormBundle\Entity;
 
-use Zikula\Bundle\DynamicFormBundle\DynamicPropertyDataInterface;
+use Zikula\Bundle\DynamicFormBundle\ResponseDataInterface;
 
-abstract class AbstractDynamicPropertyData implements DynamicPropertyDataInterface
+abstract class AbstractResponseData implements ResponseDataInterface
 {
     /**
      * @var array<string, mixed>|null

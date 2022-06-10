@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormBundle;
 
-interface DynamicPropertyDataInterface
+interface ResponseDataInterface
 {
     /**
      * @return array<string, mixed>|null

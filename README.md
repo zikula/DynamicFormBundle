@@ -61,23 +61,22 @@ Getting Started
 In order to implement this bundle, the developer must create three entities:
 
 1. A 'container' Entity that holds both:
-   1. The dynamic property specifications (OneToMany)
+   1. The form specifications (OneToMany)
    2. The response data (OneToMany)
-   3. This _may_ implement `DynamicPropertiesContainerInterface`
-2. A 'wrapper' Entity that defines the dynamic property specification.
-   1. This **must** extend `AbstractDynamicPropertySpecification`
-3. A PropertyResponse Entity to contain the data responses to the forms.
-   1. This **must** extend `AbstractDynamicPropertyData`
+   3. This _may_ extend `AbstractSpecificationContainer`
+2. A 'wrapper' Entity that defines the form specification.
+   1. This **must** extend `AbstractFormSpecification`
+3. A 'response' Entity to contain the data responses to the forms.
+   1. This **must** extend `AbstractResponseData`
 
 Form Creation: the 'Building' form
 ----------------------------------
 
-The `Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldCollectionType` formType is a collection of 
-Dynamic Fields in your form. You must define the `entry_type` to be your own 'wrapper' Entity (item 2 above).
-Each member of the collection provides a form type to define all the needed details of a formType
-(a `DynamicPropertySpecification`) which consists of two main parts. First a choice field which allows the
-selection of a field type using a dropdown list. Upon selection further field-specific form fields for the field options
-are loaded using ajax and dynamically added/replaced in the form. 
+The `Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldCollectionType` formType is a collection of Dynamic Fields in
+your form. You must define the `entry_type` to be your own 'wrapper' Entity (item 2 above). Each member of the
+collection provides a form type to define all the needed details of a formType (a `FormSpecification`) which consists of
+two main parts. A choice field which allows the selection of a field type using a dropdown list. Upon selection, further
+field-specific form fields for the field options are loaded using ajax and dynamically added/replaced in the form. 
 
 ```php
     $builder
@@ -93,19 +92,18 @@ Therefore, **you must include jQuery in your front-end assets.**
 Form Creation: The 'Responding' form
 ------------------------------------
 
-The bundle also provides the `Zikula\Bundle\DynamicFormBundle\Form\Type\InlineFormDefinitionType` formType.
-This provides for inclusion of the dynamic properties of the form. So an application can just use one
-form type for adding the defined fields for a given data object form. The formType requires the `dynamicFieldsContainer`
-object. This object implements `Zikula\Bundle\DynamicFormBundle\Container\DynamicPropertiesContainerInterface`.
-This can be your 'Container' object (item 1 above) or possibly another provider like a Repository. The object must
-provide a list of dynamic property specifications (as defined by the 'wrapper' class). This list
-can be optionally sorted or filtered as required.
+The bundle also provides the `Zikula\Bundle\DynamicFormBundle\Form\Type\InlineFormDefinitionType` formType. This
+provides for inclusion of the dynamic properties of the form. So an application can just use one form type for adding
+the defined fields for a given data object form. The formType requires the `specificationContainer` object. This object
+implements `Zikula\Bundle\DynamicFormBundle\Container\SpecificationContainerInterface`. This can be your 'Container'
+object (item 1 above) or possibly another provider like a Repository. The object must provide a list of form
+specifications (as defined by the 'wrapper' class). This list can be optionally sorted or filtered as required.
 
 Example:
 
 ```php
     $builder->add('survey', InlineFormDefinitionType::class, [
-        'dynamicFieldsContainer' => $myContainer,
+        'specificationContainer' => $myContainer,
     ]);
 ```
 

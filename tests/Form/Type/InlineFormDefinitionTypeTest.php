@@ -22,9 +22,9 @@ use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Zikula\Bundle\DynamicFormBundle\Container\AbstractDynamicPropertiesContainer;
-use Zikula\Bundle\DynamicFormBundle\Entity\AbstractDynamicPropertyData;
-use Zikula\Bundle\DynamicFormBundle\Entity\AbstractDynamicPropertySpecification;
+use Zikula\Bundle\DynamicFormBundle\Container\AbstractSpecificationContainer;
+use Zikula\Bundle\DynamicFormBundle\Entity\AbstractFormSpecification;
+use Zikula\Bundle\DynamicFormBundle\Entity\AbstractResponseData;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\InlineFormDefinitionType;
 
@@ -68,8 +68,8 @@ class InlineFormDefinitionTypeTest extends TypeTestCase
      */
     public function testSubmitValidData(): void
     {
-        $options = ['dynamicFieldsContainer' => new TempContainer()];
-        $result = new class() extends AbstractDynamicPropertyData {
+        $options = ['specificationContainer' => new TempContainer()];
+        $result = new class() extends AbstractResponseData {
         };
         $form = $this->factory->create(ParentFormType::class, $result, $options);
         $this->assertTrue($form->get('fields')->has('name'));
@@ -93,25 +93,25 @@ class ParentFormType extends AbstractType
     {
         $builder
             ->add('fields', InlineFormDefinitionType::class, [
-                'dynamicFieldsContainer' => $options['dynamicFieldsContainer'],
+                'specificationContainer' => $options['specificationContainer'],
             ])
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setRequired('dynamicFieldsContainer');
+        $resolver->setRequired('specificationContainer');
     }
 }
 
-class TempContainer extends AbstractDynamicPropertiesContainer
+class TempContainer extends AbstractSpecificationContainer
 {
     /**
      * @param array<string, mixed> $options
      */
-    public function getSpec(string $name, string $type, array $options = []): AbstractDynamicPropertySpecification
+    public function getSpec(string $name, string $type, array $options = []): AbstractFormSpecification
     {
-        $spec = new class() extends AbstractDynamicPropertySpecification {
+        $spec = new class() extends AbstractFormSpecification {
         };
         $spec->setName($name);
         $spec->setFormType($type);
@@ -121,7 +121,7 @@ class TempContainer extends AbstractDynamicPropertiesContainer
         return $spec;
     }
 
-    public function getPropertySpecifications(array $params = []): array
+    public function getFormSpecifications(array $params = []): array
     {
         return [
             $this->getSpec('name', TextType::class),

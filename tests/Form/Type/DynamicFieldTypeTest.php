@@ -25,7 +25,7 @@ use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormExtensionInterface;
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
-use Zikula\Bundle\DynamicFormBundle\Entity\AbstractDynamicPropertySpecification;
+use Zikula\Bundle\DynamicFormBundle\Entity\AbstractFormSpecification;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldType;
@@ -52,7 +52,7 @@ class DynamicFieldTypeTest extends TypeTestCase
      */
     public function testProperFormCreation(string $type, array $expectedOptions): void
     {
-        $formData = new class() extends AbstractDynamicPropertySpecification {
+        $formData = new class() extends AbstractFormSpecification {
         };
         $formData->setName('foo');
         $formData->setFormType($type);

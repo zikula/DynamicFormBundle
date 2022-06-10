@@ -17,7 +17,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Zikula\Bundle\DynamicFormBundle\Container\DynamicPropertiesContainerInterface;
+use Zikula\Bundle\DynamicFormBundle\Container\SpecificationContainerInterface;
 
 /**
  * Form type for embedding dynamic fields.
@@ -33,10 +33,10 @@ class InlineFormDefinitionType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options = []): void
     {
-        /** @var \Zikula\Bundle\DynamicFormBundle\Container\DynamicPropertiesContainerInterface $dynamicFieldsContainer */
-        $dynamicFieldsContainer = $options['dynamicFieldsContainer'];
+        /** @var \Zikula\Bundle\DynamicFormBundle\Container\SpecificationContainerInterface $specificationContainer */
+        $specificationContainer = $options['specificationContainer'];
 
-        foreach ($dynamicFieldsContainer->getPropertySpecifications() as $fieldSpecification) {
+        foreach ($specificationContainer->getFormSpecifications() as $fieldSpecification) {
             $fieldOptions = $fieldSpecification->getFormOptions();
             $fieldOptions['label'] = $fieldOptions['label'] ?? $fieldSpecification->getLabel($this->translator->getLocale());
             $builder->add($fieldSpecification->getName(), $fieldSpecification->getFormType(), $fieldOptions);
@@ -50,7 +50,7 @@ class InlineFormDefinitionType extends AbstractType
             'mapped' => false,
             'inherit_data' => true,
         ]);
-        $resolver->setRequired('dynamicFieldsContainer');
-        $resolver->addAllowedTypes('dynamicFieldsContainer', DynamicPropertiesContainerInterface::class);
+        $resolver->setRequired('specificationContainer');
+        $resolver->addAllowedTypes('specificationContainer', SpecificationContainerInterface::class);
     }
 }

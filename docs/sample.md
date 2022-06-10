@@ -3,12 +3,12 @@ Creating a sample implementation
 
 Let's create a real-world example - a Survey Maker!
 
-1. `Survey implements DynamicPropertiesContainerInterface`
+1. `Survey extends AbstractSpecificationContainer`
     1. OneToMany Question
     2. OneToMany SurveyResponse
-2. `Question extends AbstractDynamicPropertySpecification`
+2. `Question extends AbstractFormSpecification`
     1. ManyToOne Survey
-3. `SurveyResponse extends AbstractDynamicPropertyData`
+3. `SurveyResponse extends AbstractResponseData`
     1. ManyToOne Survey
 
 Generate the required entities
@@ -16,9 +16,9 @@ Generate the required entities
 - `symfony console make:entity Question`
 - `symfony console make:entity SurveyResponse`
 
-- Adjust `Question extends AbstractDynamicPropertySpecification`
-- Adjust `Survey implements DynamicPropertiesContainerInterface`
-- Adjust `SurveyResponse extends AbstractDynamicPropertyData`
+- Adjust `Question extends AbstractFormSpecification`
+- Adjust `Survey extends AbstractSpecificationContainer`
+- Adjust `SurveyResponse extends AbstractResponseData`
 
 You may need to go back and edit `Survey` to create the OneToMany relationships.
 

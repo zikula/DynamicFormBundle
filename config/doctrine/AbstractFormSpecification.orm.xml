@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="Zikula\Bundle\DynamicFormBundle\Entity\AbstractDynamicPropertySpecification">
+    <mapped-superclass name="Zikula\Bundle\DynamicFormBundle\Entity\AbstractFormSpecification">
 
         <field name="name" column="name" type="string" length="255" nullable="false" />
 

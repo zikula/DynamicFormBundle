@@ -25,7 +25,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
-use Zikula\Bundle\DynamicFormBundle\DynamicPropertySpecificationInterface;
 use Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ChoiceValuesTransformer;
 use Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\RegexConstraintTransformer;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed;
@@ -35,6 +34,7 @@ use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\DateTimeFormOptions
 use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\FormOptionsArrayType;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\MoneyFormOptionsArrayType;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\RegexibleFormOptionsArrayType;
+use Zikula\Bundle\DynamicFormBundle\FormSpecificationInterface;
 
 class AddPropertyOptionsListener implements EventSubscriberInterface
 {
@@ -56,7 +56,7 @@ class AddPropertyOptionsListener implements EventSubscriberInterface
     public function onPreSetData(FormEvent $event): void
     {
         $data = $event->getData();
-        if ($data instanceof DynamicPropertySpecificationInterface) {
+        if ($data instanceof FormSpecificationInterface) {
             $this->addFormOptions($event->getForm(), $data->getFormType());
         }
     }

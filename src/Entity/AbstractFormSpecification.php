@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormBundle\Entity;
 
-use Zikula\Bundle\DynamicFormBundle\DynamicPropertySpecificationInterface;
+use Zikula\Bundle\DynamicFormBundle\FormSpecificationInterface;
 
-abstract class AbstractDynamicPropertySpecification implements DynamicPropertySpecificationInterface
+abstract class AbstractFormSpecification implements FormSpecificationInterface
 {
     protected string $name;
 

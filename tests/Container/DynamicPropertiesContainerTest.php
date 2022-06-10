@@ -3,25 +3,25 @@
 namespace Container;
 
 use PHPUnit\Framework\TestCase;
-use Zikula\Bundle\DynamicFormBundle\Container\AbstractDynamicPropertiesContainer;
-use Zikula\Bundle\DynamicFormBundle\Entity\AbstractDynamicPropertySpecification;
+use Zikula\Bundle\DynamicFormBundle\Container\AbstractSpecificationContainer;
+use Zikula\Bundle\DynamicFormBundle\Entity\AbstractFormSpecification;
 
 class DynamicPropertiesContainerTest extends TestCase
 {
     /**
-     * @covers \Zikula\Bundle\DynamicFormBundle\Container\AbstractDynamicPropertiesContainer::getPropertySpecifications
+     * @covers \Zikula\Bundle\DynamicFormBundle\Container\AbstractSpecificationContainer::getFormSpecifications
      */
     public function testGetPropertySpecifications(): void
     {
         $container = $this->getContainer();
-        $this->assertCount(7, $container->getPropertySpecifications());
-        foreach ($container->getPropertySpecifications() as $spec) {
-            $this->assertInstanceOf(AbstractDynamicPropertySpecification::class, $spec);
+        $this->assertCount(7, $container->getFormSpecifications());
+        foreach ($container->getFormSpecifications() as $spec) {
+            $this->assertInstanceOf(AbstractFormSpecification::class, $spec);
         }
     }
 
     /**
-     * @covers \Zikula\Bundle\DynamicFormBundle\Container\AbstractDynamicPropertiesContainer::getLabels
+     * @covers \Zikula\Bundle\DynamicFormBundle\Container\AbstractSpecificationContainer::getLabels
      */
     public function testGetLabels(): void
     {
@@ -41,7 +41,7 @@ class DynamicPropertiesContainerTest extends TestCase
     }
 
     /**
-     * @covers \Zikula\Bundle\DynamicFormBundle\Container\AbstractDynamicPropertiesContainer::getLabels
+     * @covers \Zikula\Bundle\DynamicFormBundle\Container\AbstractSpecificationContainer::getLabels
      */
     public function testGetLabelsTranslated(): void
     {
@@ -61,7 +61,7 @@ class DynamicPropertiesContainerTest extends TestCase
     }
 
     /**
-     * @covers \Zikula\Bundle\DynamicFormBundle\Container\AbstractDynamicPropertiesContainer::getGroupedLabels
+     * @covers \Zikula\Bundle\DynamicFormBundle\Container\AbstractSpecificationContainer::getGroupedLabels
      */
     public function testGetGroupedLabels(): void
     {
@@ -87,7 +87,7 @@ class DynamicPropertiesContainerTest extends TestCase
     }
 
     /**
-     * @covers \Zikula\Bundle\DynamicFormBundle\Container\AbstractDynamicPropertiesContainer::getGroupedLabels
+     * @covers \Zikula\Bundle\DynamicFormBundle\Container\AbstractSpecificationContainer::getGroupedLabels
      */
     public function testGetGroupedLabelsTranslated(): void
     {
@@ -114,10 +114,10 @@ class DynamicPropertiesContainerTest extends TestCase
         );
     }
 
-    private function getContainer(): AbstractDynamicPropertiesContainer
+    private function getContainer(): AbstractSpecificationContainer
     {
-        return new class() extends AbstractDynamicPropertiesContainer {
-            public function getPropertySpecifications(array $params = []): array
+        return new class() extends AbstractSpecificationContainer {
+            public function getFormSpecifications(array $params = []): array
             {
                 $properties = [
                     ['name' => 'one', 'labels' => [], 'groups' => []],
@@ -130,7 +130,7 @@ class DynamicPropertiesContainerTest extends TestCase
                 ];
                 $specs = [];
                 foreach ($properties as $property) {
-                    $spec = new class() extends AbstractDynamicPropertySpecification {
+                    $spec = new class() extends AbstractFormSpecification {
                     };
                     $spec->setName($property['name']);
                     $spec->setLabels($property['labels']);

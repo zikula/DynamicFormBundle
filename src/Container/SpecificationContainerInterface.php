@@ -13,18 +13,18 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormBundle\Container;
 
-use Zikula\Bundle\DynamicFormBundle\DynamicPropertySpecificationInterface;
+use Zikula\Bundle\DynamicFormBundle\FormSpecificationInterface;
 
-interface DynamicPropertiesContainerInterface
+interface SpecificationContainerInterface
 {
     /**
      * Returns a list of property specifications.
      *
      * @param array<string, mixed> $params parameters used to filter the array
      *
-     * @return DynamicPropertySpecificationInterface[]
+     * @return FormSpecificationInterface[]
      */
-    public function getPropertySpecifications(array $params = []): array;
+    public function getFormSpecifications(array $params = []): array;
 
     /**
      * Return a list of property labels by name.

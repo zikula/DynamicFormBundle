@@ -13,12 +13,12 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormBundle\Container;
 
-abstract class AbstractDynamicPropertiesContainer implements DynamicPropertiesContainerInterface
+abstract class AbstractSpecificationContainer implements SpecificationContainerInterface
 {
     /**
      * {@inheritDoc}
      */
-    abstract public function getPropertySpecifications(array $params = []): array;
+    abstract public function getFormSpecifications(array $params = []): array;
 
     /**
      * {@inheritDoc}
@@ -26,7 +26,7 @@ abstract class AbstractDynamicPropertiesContainer implements DynamicPropertiesCo
     public function getLabels(string $locale = ''): array
     {
         $labels = [];
-        foreach ($this->getPropertySpecifications() as $specification) {
+        foreach ($this->getFormSpecifications() as $specification) {
             $labels[$specification->getName()] = $specification->getLabel($locale);
         }
 
@@ -39,7 +39,7 @@ abstract class AbstractDynamicPropertiesContainer implements DynamicPropertiesCo
     public function getGroupedLabels(string $locale = ''): array
     {
         $labels = [];
-        foreach ($this->getPropertySpecifications() as $specification) {
+        foreach ($this->getFormSpecifications() as $specification) {
             $labels[$specification->getGroup($locale)][$specification->getName()] = $specification->getLabel($locale);
         }
 

@@ -30,7 +30,7 @@ class IntegrationTest extends KernelTestCase
         $this->assertTrue($container->hasParameter('twig.form.resources'));
         /** @var string[] $twigFormResources */
         $twigFormResources = $container->getParameter('twig.form.resources');
-        $this->assertContains('@ZikulaDynamicFormProperty/Form/fields.html.twig', $twigFormResources);
+        $this->assertContains('@ZikulaDynamicForm/Form/fields.html.twig', $twigFormResources);
     }
 }
 

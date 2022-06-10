@@ -2,7 +2,7 @@
     "name": "zikula/dynamic-form-bundle",
     "type": "symfony-bundle",
     "description": "A Symfony bundle providing helpers for dynamic forms.",
-    "homepage": "https://github.com/zikula/DynamicFormPropertyBundle",
+    "homepage": "https://github.com/zikula/DynamicFormBundle",
     "license": "MIT",
     "authors": [
         {

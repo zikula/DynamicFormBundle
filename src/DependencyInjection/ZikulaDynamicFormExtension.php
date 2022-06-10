@@ -19,7 +19,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class ZikulaDynamicFormPropertyExtension extends Extension implements CompilerPassInterface
+class ZikulaDynamicFormExtension extends Extension implements CompilerPassInterface
 {
     public function load(array $configs, ContainerBuilder $container): void
     {

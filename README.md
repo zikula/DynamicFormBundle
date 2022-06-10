@@ -1,7 +1,7 @@
 DynamicFormBundle
 =================
 
-The `DynamicFormPropertyBundle` offers helpers for handling dynamic form fields (forms built from definitions stored in
+The `DynamicFormBundle` offers helpers for handling dynamic form fields (forms built from definitions stored in
 the database). This can be helpful for several applications where a site admin (not the developer) needs to configure
 the fields of a form, like contact forms, surveys or exams. For example, a user profile manager could use this
 functionality to handle definition and management of user profile data.

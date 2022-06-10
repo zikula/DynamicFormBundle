@@ -33,7 +33,7 @@ class InlineFormDefinitionType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options = []): void
     {
-        /** @var \Zikula\Bundle\DynamicFormBundle\Container\SpecificationContainerInterface $specificationContainer */
+        /** @var SpecificationContainerInterface $specificationContainer */
         $specificationContainer = $options['specificationContainer'];
 
         foreach ($specificationContainer->getFormSpecifications() as $fieldSpecification) {

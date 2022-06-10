@@ -11,10 +11,10 @@ lower priority.
 Provided Custom FormTypes
 -------------------------
 ### ChoiceTypeTransformed
-ChoiceTypeTransformed is the same as a standard ChoiceType, it just stores the response as a string. (see [data_storage](./data_storage.md))
+ChoiceTypeTransformed is the same as a standard ChoiceType, it just stores the response as a string. (see [data_storage](data_storage.md))
 
 ### ChoiceWithOtherType
-ChoiceWithOtherType provides a standard ChoiceType field but adds an 'other' option. (see [data_storage](./data_storage.md))
+ChoiceWithOtherType provides a standard ChoiceType field but adds an 'other' option. (see [data_storage](data_storage.md))
 
 Adding Custom FormTypes
 -----------------------

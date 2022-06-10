@@ -22,7 +22,7 @@ use Zikula\Bundle\DynamicFormBundle\Container\SpecificationContainerInterface;
 /**
  * Form type for embedding dynamic fields.
  */
-class InlineFormDefinitionType extends AbstractType
+class DynamicFieldsType extends AbstractType
 {
     private TranslatorInterface $translator;
 

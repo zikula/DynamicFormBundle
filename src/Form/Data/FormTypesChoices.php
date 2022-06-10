@@ -18,7 +18,7 @@ use Exception;
 use Iterator;
 
 /**
- * Object to manage the available choices when selecting a FormType in DynamicFieldType.
+ * Object to manage the available choices when selecting a FormType in FormSpecificationType.
  *
  * @implements Iterator<string|null, array<string, string>|false>
  * @implements ArrayAccess<string, array<string, string>>

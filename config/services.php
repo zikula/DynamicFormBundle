@@ -14,8 +14,8 @@ declare(strict_types=1);
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use Zikula\Bundle\DynamicFormBundle\EventSubscriber\FormTypeChoiceEventSubscriber;
-use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldType;
-use Zikula\Bundle\DynamicFormBundle\Form\Type\InlineFormDefinitionType;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\FormSpecificationType;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldsType;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\TranslationCollectionType;
 use Zikula\Bundle\DynamicFormBundle\Provider\LocaleProvider;
 
@@ -28,13 +28,13 @@ return static function (ContainerConfigurator $container) {
             ])
             ->tag('kernel.event_subscriber')
 
-        ->set('zikula.dynamic_form.form_type.dynamic_form_field_type', DynamicFieldType::class)
+        ->set('zikula.dynamic_form.form_type.dynamic_form_field_type', FormSpecificationType::class)
             ->args([
                 service('event_dispatcher')
             ])
             ->tag('form.type')
 
-        ->set('zikula.dynamic_form.form_type.inline_form_definition_type', InlineFormDefinitionType::class)
+        ->set('zikula.dynamic_form.form_type.inline_form_definition_type', DynamicFieldsType::class)
             ->args([
                 service('translator')
             ])

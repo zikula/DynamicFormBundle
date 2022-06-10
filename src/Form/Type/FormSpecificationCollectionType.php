@@ -18,7 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Zikula\Bundle\DynamicFormBundle\Entity\AbstractFormSpecification;
 
-class DynamicFieldCollectionType extends AbstractType
+class FormSpecificationCollectionType extends AbstractType
 {
     public function getParent(): ?string
     {
@@ -28,7 +28,7 @@ class DynamicFieldCollectionType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'entry_type' => DynamicFieldType::class,
+            'entry_type' => FormSpecificationType::class,
             'allow_add' => true,
             'allow_delete' => true,
             'delete_empty' => function (AbstractFormSpecification $property = null) {

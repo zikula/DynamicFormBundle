@@ -28,9 +28,9 @@ use Symfony\Component\Form\Test\TypeTestCase;
 use Zikula\Bundle\DynamicFormBundle\Entity\AbstractFormSpecification;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType;
-use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldType;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\FormSpecificationType;
 
-class DynamicFieldTypeTest extends TypeTestCase
+class FormSpecificationTypeTest extends TypeTestCase
 {
     /**
      * @return FormExtensionInterface[]
@@ -38,7 +38,7 @@ class DynamicFieldTypeTest extends TypeTestCase
     protected function getExtensions(): array
     {
         $dispatcher = $this->createMock(EventDispatcherInterface::class);
-        $type = new DynamicFieldType($dispatcher, false);
+        $type = new FormSpecificationType($dispatcher, false);
 
         return [
             new PreloadedExtension([$type], []),
@@ -47,7 +47,7 @@ class DynamicFieldTypeTest extends TypeTestCase
 
     /**
      * @param string[] $expectedOptions
-     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldType
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\FormSpecificationType
      * @dataProvider data
      */
     public function testProperFormCreation(string $type, array $expectedOptions): void
@@ -56,7 +56,7 @@ class DynamicFieldTypeTest extends TypeTestCase
         };
         $formData->setName('foo');
         $formData->setFormType($type);
-        $form = $this->factory->create(DynamicFieldType::class, $formData);
+        $form = $this->factory->create(FormSpecificationType::class, $formData);
 
         // check basic types exist
         $this->assertTrue($form->has('name'));

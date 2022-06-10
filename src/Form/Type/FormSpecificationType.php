@@ -25,9 +25,9 @@ use Zikula\Bundle\DynamicFormBundle\Form\EventListener\AddFormOptionsListener;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\FormOptionsArrayType;
 
 /**
- * Form type providing a dynamic selection of field type and field options.
+ * Form type defining a form field type and field options.
  */
-class DynamicFieldType extends AbstractType
+class FormSpecificationType extends AbstractType
 {
     private EventDispatcherInterface $eventDispatcher;
     private bool $translateLabels;

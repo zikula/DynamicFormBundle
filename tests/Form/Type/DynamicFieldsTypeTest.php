@@ -26,9 +26,9 @@ use Zikula\Bundle\DynamicFormBundle\Container\AbstractSpecificationContainer;
 use Zikula\Bundle\DynamicFormBundle\Entity\AbstractFormSpecification;
 use Zikula\Bundle\DynamicFormBundle\Entity\AbstractResponseData;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed;
-use Zikula\Bundle\DynamicFormBundle\Form\Type\InlineFormDefinitionType;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldsType;
 
-class InlineFormDefinitionTypeTest extends TypeTestCase
+class DynamicFieldsTypeTest extends TypeTestCase
 {
     private TranslatorInterface $translator;
 
@@ -56,7 +56,7 @@ class InlineFormDefinitionTypeTest extends TypeTestCase
      */
     protected function getExtensions(): array
     {
-        $type = new InlineFormDefinitionType($this->translator);
+        $type = new DynamicFieldsType($this->translator);
 
         return [
             new PreloadedExtension([$type], []),
@@ -64,7 +64,7 @@ class InlineFormDefinitionTypeTest extends TypeTestCase
     }
 
     /**
-     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\InlineFormDefinitionType
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldsType
      */
     public function testSubmitValidData(): void
     {
@@ -92,7 +92,7 @@ class ParentFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('fields', InlineFormDefinitionType::class, [
+            ->add('fields', DynamicFieldsType::class, [
                 'specificationContainer' => $options['specificationContainer'],
             ])
         ;

@@ -18,7 +18,7 @@ use Zikula\Bundle\DynamicFormBundle\FormSpecificationInterface;
 interface SpecificationContainerInterface
 {
     /**
-     * Returns a list of property specifications.
+     * Returns a list of form specifications.
      *
      * @param array<string, mixed> $params parameters used to filter the array
      *
@@ -27,14 +27,14 @@ interface SpecificationContainerInterface
     public function getFormSpecifications(array $params = []): array;
 
     /**
-     * Return a list of property labels by name.
+     * Return a list of form labels by name.
      *
      * @return array<string, string> [name => translatedLabel]
      */
     public function getLabels(string $locale = ''): array;
 
     /**
-     * Return a list of property labels by group.
+     * Return a list of form labels by group.
      *
      * @return array<string, array<string, string>> [group => [name => translatedLabel]]
      */

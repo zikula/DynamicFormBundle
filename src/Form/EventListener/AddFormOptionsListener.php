@@ -36,7 +36,7 @@ use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\MoneyFormOptionsArr
 use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\RegexibleFormOptionsArrayType;
 use Zikula\Bundle\DynamicFormBundle\FormSpecificationInterface;
 
-class AddPropertyOptionsListener implements EventSubscriberInterface
+class AddFormOptionsListener implements EventSubscriberInterface
 {
     private FormBuilderInterface $formBuilder;
 

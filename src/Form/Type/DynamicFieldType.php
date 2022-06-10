@@ -21,7 +21,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 use Zikula\Bundle\DynamicFormBundle\Event\FormTypeChoiceEvent;
 use Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\DefaultLabelToLabelsTransformer;
-use Zikula\Bundle\DynamicFormBundle\Form\EventListener\AddPropertyOptionsListener;
+use Zikula\Bundle\DynamicFormBundle\Form\EventListener\AddFormOptionsListener;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\FormOptionsArrayType;
 
 /**
@@ -85,7 +85,7 @@ class DynamicFieldType extends AbstractType
                 'required' => false,
             ])
         ;
-        $listener = new AddPropertyOptionsListener($builder);
+        $listener = new AddFormOptionsListener($builder);
         $builder->addEventSubscriber($listener);
         $builder->get('formType')->addEventSubscriber($listener);
     }

@@ -48,7 +48,7 @@ interface FormSpecificationInterface
     public function getFormOptions(): array;
 
     /**
-     * Returns boolean indicating if this property is active.
+     * Returns boolean indicating if this form is active.
      */
     public function isActive(): bool;
 

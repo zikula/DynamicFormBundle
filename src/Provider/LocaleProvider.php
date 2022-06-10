@@ -29,6 +29,8 @@ class LocaleProvider implements LocaleProviderInterface
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @todo implement regions
      */
     public function getSupportedLocales(bool $includeRegions = true): array
@@ -42,6 +44,8 @@ class LocaleProvider implements LocaleProviderInterface
     }
 
     /**
+     * {@inheritDoc}
+     *
      * @todo implement regions
      */
     public function getSupportedLocaleNames(string $region = null, string $displayLocale = null, bool $includeRegions = true): array

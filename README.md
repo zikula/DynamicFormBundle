@@ -26,7 +26,7 @@ Applications that use Symfony Flex
 Open a command console, enter your project directory and execute:
 
 ```console
-$ composer require zikula/dynamic-form-property-bundle
+$ composer require zikula/dynamic-form-bundle
 ```
 
 Applications that don't use Symfony Flex
@@ -38,7 +38,7 @@ Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
 
 ```console
-$ composer require zikula/dynamic-form-property-bundle
+$ composer require zikula/dynamic-form-bundle
 ```
 
 ### Step 2: Enable the Bundle
@@ -51,7 +51,7 @@ in the `config/bundles.php` file of your project:
 
 return [
     // ...
-    Zikula\Bundle\DynamicFormPropertyBundle\ZikulaDynamicFormBundle::class => ['all' => true],
+    Zikula\Bundle\DynamicFormBundle\ZikulaDynamicFormBundle::class => ['all' => true],
 ];
 ```
 
@@ -72,7 +72,7 @@ In order to implement this bundle, the developer must create three entities:
 Form Creation: the 'Building' form
 ----------------------------------
 
-The `Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicFieldCollectionType` formType is a collection of 
+The `Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldCollectionType` formType is a collection of 
 Dynamic Fields in your form. You must define the `entry_type` to be your own 'wrapper' Entity (item 2 above).
 Each member of the collection provides a form type to define all the needed details of a formType
 (a `DynamicPropertySpecification`) which consists of two main parts. First a choice field which allows the
@@ -93,10 +93,10 @@ Therefore, **you must include jQuery in your front-end assets.**
 Form Creation: The 'Responding' form
 ------------------------------------
 
-The bundle also provides the `Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\InlineFormDefinitionType` formType.
+The bundle also provides the `Zikula\Bundle\DynamicFormBundle\Form\Type\InlineFormDefinitionType` formType.
 This provides for inclusion of the dynamic properties of the form. So an application can just use one
 form type for adding the defined fields for a given data object form. The formType requires the `dynamicFieldsContainer`
-object. This object implements `Zikula\Bundle\DynamicFormPropertyBundle\Container\DynamicPropertiesContainerInterface`.
+object. This object implements `Zikula\Bundle\DynamicFormBundle\Container\DynamicPropertiesContainerInterface`.
 This can be your 'Container' object (item 1 above) or possibly another provider like a Repository. The object must
 provide a list of dynamic property specifications (as defined by the 'wrapper' class). This list
 can be optionally sorted or filtered as required.

@@ -1,5 +1,5 @@
-DynamicFormPropertyBundle
-=========================
+DynamicFormBundle
+=================
 
 The `DynamicFormPropertyBundle` offers helpers for handling dynamic form fields (forms built from definitions stored in
 the database). This can be helpful for several applications where a site admin (not the developer) needs to configure

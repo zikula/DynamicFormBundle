@@ -10,7 +10,7 @@
          beStrictAboutTodoAnnotatedTests="true"
          verbose="true">
     <testsuites>
-        <testsuite name="DynamicFormPropertyBundle Test Suite">
+        <testsuite name="DynamicFormBundle Test Suite">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>

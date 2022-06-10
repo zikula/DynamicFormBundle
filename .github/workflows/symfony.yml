@@ -10,33 +10,141 @@ permissions:
   contents: read
 
 jobs:
-  symfony-tests:
-    runs-on: ubuntu-latest
+  cs-fixer:
+    name: 'PHP CS Fixer'
+
+    runs-on: 'ubuntu-latest'
+
+    strategy:
+      matrix:
+        php-version:
+          - '7.4'
+          - '8.1'
+
     steps:
-    #  To automatically get bug fixes and new Php versions for shivammathur/setup-php,
-    # change this to (see https://github.com/shivammathur/setup-php#bookmark-versioning):
-    # uses: shivammathur/setup-php@v2
-    - uses: shivammathur/setup-php@2cb9b829437ee246e9b3cac53555a39208ca6d28
-      with:
-        php-version: '8.0'
-    - uses: actions/checkout@v3
-    - name: Copy .env.test.local
-      run: php -r "file_exists('.env.test.local') || copy('.env.test', '.env.test.local');"
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v3
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
-    - name: Install Dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-    - name: Create Database
-      run: |
-        mkdir -p data
-        touch data/database.sqlite
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
-      run: vendor/bin/phpunit
+      - name: 'Check out'
+        uses: 'actions/checkout@v2'
+
+      - name: 'Set up PHP'
+        uses: 'shivammathur/setup-php@v2'
+        with:
+          php-version: '${{ matrix.php-version }}'
+          coverage: 'none'
+
+      - name: 'Get Composer cache directory'
+        id: 'composer-cache'
+        run: 'echo "::set-output name=cache-dir::$(composer config cache-files-dir)"'
+
+      - name: 'Cache dependencies'
+        uses: 'actions/cache@v2'
+        with:
+          path: '${{ steps.composer-cache.outputs.cache-dir }}'
+          key: "php-${{ matrix.php-version }}-composer-locked-${{ hashFiles('composer.lock') }}"
+          restore-keys: 'php-${{ matrix.php-version }}-composer-locked-'
+
+      - name: 'Install dependencies'
+        run: 'composer update --no-progress --prefer-stable'
+
+      - name: 'Check the code style'
+        run: 'vendor/bin/php-cs-fixer fix --diff --dry-run'
+
+  phpstan:
+    name: 'PhpStan'
+
+    runs-on: 'ubuntu-latest'
+
+    strategy:
+      matrix:
+        php-version:
+          - '7.4'
+          - '8.0'
+          - '8.1'
+
+    steps:
+      - name: 'Check out'
+        uses: 'actions/checkout@v2'
+
+      - name: 'Set up PHP'
+        uses: 'shivammathur/setup-php@v2'
+        with:
+          php-version: '${{ matrix.php-version }}'
+          coverage: 'none'
+
+      - name: 'Get Composer cache directory'
+        id: 'composer-cache'
+        run: 'echo "::set-output name=cache-dir::$(composer config cache-files-dir)"'
+
+      - name: 'Cache dependencies'
+        uses: 'actions/cache@v2'
+        with:
+          path: '${{ steps.composer-cache.outputs.cache-dir }}'
+          key: "php-${{ matrix.php-version }}-composer-locked-${{ hashFiles('composer.lock') }}"
+          restore-keys: 'php-${{ matrix.php-version }}-composer-locked-'
+
+      - name: 'Install dependencies'
+        run: 'composer update --no-progress --prefer-stable'
+
+      - name: 'Run PhpStan'
+        run: 'vendor/bin/phpstan analyze --no-progress'
+
+  symfony-tests:
+    name: 'PHPUnit'
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        include:
+          - php-version: '7.4'
+            composer-options: '--prefer-lowest --prefer-stable'
+            symfony-version: '5.4.*'
+          - php-version: '7.4'
+            composer-options: '--prefer-stable'
+            symfony-version: '5.4.*'
+          - php-version: '8.0'
+            composer-options: '--prefer-stable'
+            symfony-version: '5.4.*'
+          - php-version: '8.1'
+            composer-options: '--prefer-stable'
+            symfony-version: '5.4.*'
+          - php-version: '8.0'
+            composer-options: '--prefer-stable'
+            symfony-version: '6.0.*'
+          - php-version: '8.1'
+            composer-options: '--prefer-stable'
+            symfony-version: '6.1.*'
+
+    steps:
+      - name: 'Check out'
+        uses: actions/checkout@v3
+
+      - name: 'PHP setup'
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '${{ matrix.php-version }}'
+          coverage: 'none'
+
+      - name: Copy .env.test.local
+        run: php -r "file_exists('.env.test.local') || copy('.env.test', '.env.test.local');"
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Create Database
+        run: |
+          mkdir -p data
+          touch data/database.sqlite
+
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        env:
+          DATABASE_URL: sqlite:///%kernel.project_dir%/data/database.sqlite
+        run: vendor/bin/phpunit

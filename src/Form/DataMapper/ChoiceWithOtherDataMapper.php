@@ -22,8 +22,10 @@ class ChoiceWithOtherDataMapper implements DataMapperInterface
 {
     /**
      * {@inheritDoc}
+     *
+     * @param mixed $value
      */
-    public function mapDataToForms(mixed $value, \Traversable $forms): void
+    public function mapDataToForms($value, \Traversable $forms): void
     {
         /** @var FormInterface[] $forms */
         $forms = iterator_to_array($forms);
@@ -61,8 +63,10 @@ class ChoiceWithOtherDataMapper implements DataMapperInterface
 
     /**
      * {@inheritDoc}
+     *
+     * @param mixed $value
      */
-    public function mapFormsToData(\Traversable $forms, mixed &$value): void
+    public function mapFormsToData(\Traversable $forms, &$value): void
     {
         if (!\is_array($value)) {
             throw new UnexpectedTypeException($value, 'array');

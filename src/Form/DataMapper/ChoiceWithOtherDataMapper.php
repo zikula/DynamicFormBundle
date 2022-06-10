@@ -1,11 +1,11 @@
 <?php
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\DataMapper;
+namespace Zikula\Bundle\DynamicFormBundle\Form\DataMapper;
 
 use Symfony\Component\Form\DataMapperInterface;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
 use Symfony\Component\Form\FormInterface;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType;
 
 class ChoiceWithOtherDataMapper implements DataMapperInterface
 {

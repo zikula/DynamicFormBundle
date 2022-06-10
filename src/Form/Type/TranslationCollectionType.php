@@ -11,12 +11,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\Type;
+namespace Zikula\Bundle\DynamicFormBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Zikula\Bundle\DynamicFormPropertyBundle\Provider\LocaleProviderInterface;
+use Zikula\Bundle\DynamicFormBundle\Provider\LocaleProviderInterface;
 
 class TranslationCollectionType extends AbstractType
 {

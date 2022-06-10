@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\EventListener;
+namespace Zikula\Bundle\DynamicFormBundle\Form\EventListener;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
@@ -25,16 +25,16 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
-use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertySpecificationInterface;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ChoiceValuesTransformer;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraintTransformer;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceTypeTransformed;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\ChoiceFormOptionsArrayType;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\DateTimeFormOptionsArrayType;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\FormOptionsArrayType;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\MoneyFormOptionsArrayType;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\RegexibleFormOptionsArrayType;
+use Zikula\Bundle\DynamicFormBundle\DynamicPropertySpecificationInterface;
+use Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ChoiceValuesTransformer;
+use Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\RegexConstraintTransformer;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\ChoiceFormOptionsArrayType;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\DateTimeFormOptionsArrayType;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\FormOptionsArrayType;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\MoneyFormOptionsArrayType;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\RegexibleFormOptionsArrayType;
 
 class AddPropertyOptionsListener implements EventSubscriberInterface
 {

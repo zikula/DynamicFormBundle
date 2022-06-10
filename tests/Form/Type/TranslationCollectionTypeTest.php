@@ -11,12 +11,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Tests\Form\Type;
+namespace Zikula\Bundle\DynamicFormBundle\Tests\Form\Type;
 
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\TranslationCollectionType;
-use Zikula\Bundle\DynamicFormPropertyBundle\Provider\LocaleProviderInterface;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\TranslationCollectionType;
+use Zikula\Bundle\DynamicFormBundle\Provider\LocaleProviderInterface;
 
 class TranslationCollectionTypeTest extends TypeTestCase
 {
@@ -51,7 +51,7 @@ class TranslationCollectionTypeTest extends TypeTestCase
     }
 
     /**
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\TranslationCollectionType
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\TranslationCollectionType
      */
     public function testSubmitValidData(): void
     {

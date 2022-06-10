@@ -11,12 +11,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\Type;
+namespace Zikula\Bundle\DynamicFormBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ArrayToStringTransformer;
+use Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ArrayToStringTransformer;
 
 class ChoiceTypeTransformed extends AbstractType
 {

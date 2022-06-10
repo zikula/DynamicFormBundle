@@ -11,9 +11,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Event;
+namespace Zikula\Bundle\DynamicFormBundle\Event;
 
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Data\FormTypesChoices;
+use Zikula\Bundle\DynamicFormBundle\Form\Data\FormTypesChoices;
 
 class FormTypeChoiceEvent
 {

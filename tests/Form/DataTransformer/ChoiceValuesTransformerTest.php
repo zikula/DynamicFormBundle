@@ -11,17 +11,17 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Tests\Form\DataTransformer;
+namespace Zikula\Bundle\DynamicFormBundle\Tests\Form\DataTransformer;
 
 use PHPUnit\Framework\TestCase;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ChoiceValuesTransformer;
+use Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ChoiceValuesTransformer;
 
 class ChoiceValuesTransformerTest extends TestCase
 {
     /**
      * @param array<string, string> $storedAs
      *
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ChoiceValuesTransformer::transform
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ChoiceValuesTransformer::transform
      * @dataProvider data
      */
     public function testTransform(array $storedAs, string $submitted, string $restored): void
@@ -33,7 +33,7 @@ class ChoiceValuesTransformerTest extends TestCase
     /**
      * @param array<string, string> $storedAs
      *
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ChoiceValuesTransformer::reverseTransform
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ChoiceValuesTransformer::reverseTransform
      * @dataProvider data
      */
     public function testReverseTransform(array $storedAs, string $submitted, string $restored): void

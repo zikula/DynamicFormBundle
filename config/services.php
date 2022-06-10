@@ -13,11 +13,11 @@ declare(strict_types=1);
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use Zikula\Bundle\DynamicFormPropertyBundle\EventSubscriber\FormTypeChoiceEventSubscriber;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicFieldType;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\InlineFormDefinitionType;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\TranslationCollectionType;
-use Zikula\Bundle\DynamicFormPropertyBundle\Provider\LocaleProvider;
+use Zikula\Bundle\DynamicFormBundle\EventSubscriber\FormTypeChoiceEventSubscriber;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldType;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\InlineFormDefinitionType;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\TranslationCollectionType;
+use Zikula\Bundle\DynamicFormBundle\Provider\LocaleProvider;
 
 return static function (ContainerConfigurator $container) {
 

@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Tests\Form\Type;
+namespace Zikula\Bundle\DynamicFormBundle\Tests\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -22,11 +22,11 @@ use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Zikula\Bundle\DynamicFormPropertyBundle\Container\AbstractDynamicPropertiesContainer;
-use Zikula\Bundle\DynamicFormPropertyBundle\Entity\AbstractDynamicPropertyData;
-use Zikula\Bundle\DynamicFormPropertyBundle\Entity\AbstractDynamicPropertySpecification;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceTypeTransformed;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\InlineFormDefinitionType;
+use Zikula\Bundle\DynamicFormBundle\Container\AbstractDynamicPropertiesContainer;
+use Zikula\Bundle\DynamicFormBundle\Entity\AbstractDynamicPropertyData;
+use Zikula\Bundle\DynamicFormBundle\Entity\AbstractDynamicPropertySpecification;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\InlineFormDefinitionType;
 
 class InlineFormDefinitionTypeTest extends TypeTestCase
 {
@@ -64,7 +64,7 @@ class InlineFormDefinitionTypeTest extends TypeTestCase
     }
 
     /**
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\InlineFormDefinitionType
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\InlineFormDefinitionType
      */
     public function testSubmitValidData(): void
     {

@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\EventSubscriber;
+namespace Zikula\Bundle\DynamicFormBundle\EventSubscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
@@ -38,10 +38,10 @@ use Symfony\Component\Form\Extension\Core\Type\TimezoneType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\WeekType;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Zikula\Bundle\DynamicFormPropertyBundle\Event\FormTypeChoiceEvent;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Data\FormTypesChoices;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceTypeTransformed;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType;
+use Zikula\Bundle\DynamicFormBundle\Event\FormTypeChoiceEvent;
+use Zikula\Bundle\DynamicFormBundle\Form\Data\FormTypesChoices;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType;
 
 class FormTypeChoiceEventSubscriber implements EventSubscriberInterface
 {

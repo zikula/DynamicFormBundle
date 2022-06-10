@@ -1,8 +1,8 @@
 {
-    "name": "zikula/dynamic-form-property-bundle",
+    "name": "zikula/dynamic-form-bundle",
     "type": "symfony-bundle",
-    "description": "A Symfony bundle providing dynamic properties to Symfony forms.",
-    "homepage": "https://ziku.la",
+    "description": "A Symfony bundle providing helpers for dynamic forms.",
+    "homepage": "https://github.com/zikula/DynamicFormPropertyBundle",
     "license": "MIT",
     "authors": [
         {
@@ -45,9 +45,9 @@
         }
     },
     "autoload": {
-        "psr-4": { "Zikula\\Bundle\\DynamicFormPropertyBundle\\": "src/" }
+        "psr-4": { "Zikula\\Bundle\\DynamicFormBundle\\": "src/" }
     },
     "autoload-dev": {
-        "psr-4": { "Zikula\\Bundle\\DynamicFormPropertyBundle\\Tests\\": "tests/" }
+        "psr-4": { "Zikula\\Bundle\\DynamicFormBundle\\Tests\\": "tests/" }
     }
 }

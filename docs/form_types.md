@@ -4,7 +4,7 @@ FormTypes list
 The bundle provides all the [standard Symfony formTypes](https://symfony.com/doc/current/reference/forms/types.html)
 that are reasonable to include in dynamically generated forms. You may want to amend, filter or trim the field type
 list. An event is available for your app's consumption to do so. Listen for the 
-`Zikula\Bundle\DynamicFormPropertyBundle\Event\FormTypeChoiceEvent` and modify the formType list as needed.
+`Zikula\Bundle\DynamicFormBundle\Event\FormTypeChoiceEvent` and modify the formType list as needed.
 The initial list is also populated by an EventSubscriber with a _priority_ of 1000. Be sure your event subscriber has a
 lower priority.
 
@@ -21,7 +21,7 @@ namespace App\EventSubscriber;
 
 use App\Form\HairColorType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Zikula\Bundle\DynamicFormPropertyBundle\Event\FormTypeChoiceEvent;
+use Zikula\Bundle\DynamicFormBundle\Event\FormTypeChoiceEvent;
 
 class CustomFormTypeSubscriber implements EventSubscriberInterface
 {

@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Provider;
+namespace Zikula\Bundle\DynamicFormBundle\Provider;
 
 interface LocaleProviderInterface
 {

@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Container;
+namespace Zikula\Bundle\DynamicFormBundle\Container;
 
 abstract class AbstractDynamicPropertiesContainer implements DynamicPropertiesContainerInterface
 {

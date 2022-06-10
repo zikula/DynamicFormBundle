@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\DependencyInjection;
+namespace Zikula\Bundle\DynamicFormBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -30,10 +30,10 @@ class ZikulaDynamicFormPropertyExtension extends Extension implements CompilerPa
         if (null !== $configuration) {
             $config = $this->processConfiguration($configuration, $configs);
             $definition = $container->getDefinition('zikula.dynamic_form.provider.locale_provider');
-            $definition->setArgument(1, $config['translate_labels']);
+            $definition->setArgument(1, $config['translate']);
 
             $definition = $container->getDefinition('zikula.dynamic_form.form_type.dynamic_form_field_type');
-            $definition->setArgument(1, $config['translate_labels']);
+            $definition->setArgument(1, $config['translate']);
         }
 
         $this->registerFormTheme($container);
@@ -45,7 +45,7 @@ class ZikulaDynamicFormPropertyExtension extends Extension implements CompilerPa
         $resources = $container->hasParameter('twig.form.resources') ?
             $container->getParameter('twig.form.resources') : [];
 
-        \array_unshift($resources, '@ZikulaDynamicFormProperty/Form/fields.html.twig');
+        \array_unshift($resources, '@ZikulaDynamicForm/Form/fields.html.twig');
         $container->setParameter('twig.form.resources', $resources);
     }
 

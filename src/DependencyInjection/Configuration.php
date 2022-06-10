@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\DependencyInjection;
+namespace Zikula\Bundle\DynamicFormBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -20,14 +20,14 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('zikula_dynamic_form_property');
+        $treeBuilder = new TreeBuilder('zikula_dynamic_form');
         $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
-                ->booleanNode('translate_labels')
+                ->booleanNode('translate')
                     ->defaultFalse()
-                    ->info('Enable translatable labels for dynamic fields.')
+                    ->info('Enable translatable labels and groups for dynamic fields.')
                 ->end()
             ->end()
         ;

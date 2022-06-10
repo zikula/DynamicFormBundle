@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Tests\Form\Type;
+namespace Zikula\Bundle\DynamicFormBundle\Tests\Form\Type;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
@@ -25,10 +25,10 @@ use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormExtensionInterface;
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
-use Zikula\Bundle\DynamicFormPropertyBundle\Entity\AbstractDynamicPropertySpecification;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceTypeTransformed;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\ChoiceWithOtherType;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicFieldType;
+use Zikula\Bundle\DynamicFormBundle\Entity\AbstractDynamicPropertySpecification;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldType;
 
 class DynamicFieldTypeTest extends TypeTestCase
 {
@@ -47,7 +47,7 @@ class DynamicFieldTypeTest extends TypeTestCase
 
     /**
      * @param string[] $expectedOptions
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicFieldType
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldType
      * @dataProvider data
      */
     public function testProperFormCreation(string $type, array $expectedOptions): void

@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="Zikula\Bundle\DynamicFormPropertyBundle\Entity\AbstractDynamicPropertyData">
+    <mapped-superclass name="Zikula\Bundle\DynamicFormBundle\Entity\AbstractDynamicPropertyData">
 
         <field name="data" column="data" type="json" nullable="true" />
 

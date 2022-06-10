@@ -13,10 +13,10 @@ In your app, you must enable label and group name translation. Create a config f
 # config/packages/zikula_dynamic_form_property.yaml
 
 zikula_dynamic_form_property:
-    translate_labels: true
+    translate: true
 ```
 
-note: `translate_labels` applies to both labels and group names.
+note: `translate` applies to both labels and group names.
 
 ## Add supported translation locales
 
@@ -26,7 +26,7 @@ You must indicate which locales you will support via an event subscriber. Create
 namespace App\EventSubscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Zikula\Bundle\DynamicFormPropertyBundle\Event\SupportedLocalesEvent;
+use Zikula\Bundle\DynamicFormBundle\Event\SupportedLocalesEvent;
 
 class SupportedLocaleSubscriber implements EventSubscriberInterface
 {

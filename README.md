@@ -51,7 +51,7 @@ in the `config/bundles.php` file of your project:
 
 return [
     // ...
-    Zikula\Bundle\DynamicFormPropertyBundle\ZikulaDynamicFormPropertyBundle::class => ['all' => true],
+    Zikula\Bundle\DynamicFormPropertyBundle\ZikulaDynamicFormBundle::class => ['all' => true],
 ];
 ```
 

@@ -11,18 +11,18 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Tests\Form\DataTransformer;
+namespace Zikula\Bundle\DynamicFormBundle\Tests\Form\DataTransformer;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Constraints\Regex;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraintTransformer;
+use Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\RegexConstraintTransformer;
 
 class RegexConstraintTransformerTest extends TestCase
 {
     /**
      * @param Regex[] $storedAs
      *
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraintTransformer::transform
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\RegexConstraintTransformer::transform
      * @dataProvider data
      */
     public function testTransform(array $storedAs, string $submitted, string $restored): void
@@ -34,7 +34,7 @@ class RegexConstraintTransformerTest extends TestCase
     /**
      * @param Regex[] $storedAs
      *
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraintTransformer::reverseTransform
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\RegexConstraintTransformer::reverseTransform
      * @dataProvider data
      */
     public function testReverseTransform(array $storedAs, string $submitted, string $restored): void

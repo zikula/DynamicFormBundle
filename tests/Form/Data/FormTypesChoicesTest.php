@@ -11,18 +11,18 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Tests\Form\Data;
+namespace Zikula\Bundle\DynamicFormBundle\Tests\Form\Data;
 
 use ArrayAccess;
 use Iterator;
 use PHPUnit\Framework\TestCase;
 use Traversable;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Data\FormTypesChoices;
+use Zikula\Bundle\DynamicFormBundle\Form\Data\FormTypesChoices;
 
 class FormTypesChoicesTest extends TestCase
 {
     /**
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Data\FormTypesChoices
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Data\FormTypesChoices
      */
     public function testEmptyInstantiation(): void
     {
@@ -33,7 +33,7 @@ class FormTypesChoicesTest extends TestCase
     }
 
     /**
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Data\FormTypesChoices
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Data\FormTypesChoices
      */
     public function testInstantiationWithArg(): void
     {
@@ -49,7 +49,7 @@ class FormTypesChoicesTest extends TestCase
     }
 
     /**
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Data\FormTypesChoices::offsetSet
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Data\FormTypesChoices::offsetSet
      */
     public function testAdd(): void
     {
@@ -64,7 +64,7 @@ class FormTypesChoicesTest extends TestCase
     }
 
     /**
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\Data\FormTypesChoices::offsetUnset
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Data\FormTypesChoices::offsetUnset
      */
     public function testExceptionOnUnset(): void
     {

@@ -11,9 +11,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Container;
+namespace Zikula\Bundle\DynamicFormBundle\Container;
 
-use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertySpecificationInterface;
+use Zikula\Bundle\DynamicFormBundle\DynamicPropertySpecificationInterface;
 
 interface DynamicPropertiesContainerInterface
 {

@@ -3,13 +3,13 @@
 namespace Container;
 
 use PHPUnit\Framework\TestCase;
-use Zikula\Bundle\DynamicFormPropertyBundle\Container\AbstractDynamicPropertiesContainer;
-use Zikula\Bundle\DynamicFormPropertyBundle\Entity\AbstractDynamicPropertySpecification;
+use Zikula\Bundle\DynamicFormBundle\Container\AbstractDynamicPropertiesContainer;
+use Zikula\Bundle\DynamicFormBundle\Entity\AbstractDynamicPropertySpecification;
 
 class DynamicPropertiesContainerTest extends TestCase
 {
     /**
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Container\AbstractDynamicPropertiesContainer::getPropertySpecifications
+     * @covers \Zikula\Bundle\DynamicFormBundle\Container\AbstractDynamicPropertiesContainer::getPropertySpecifications
      */
     public function testGetPropertySpecifications(): void
     {
@@ -21,7 +21,7 @@ class DynamicPropertiesContainerTest extends TestCase
     }
 
     /**
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Container\AbstractDynamicPropertiesContainer::getLabels
+     * @covers \Zikula\Bundle\DynamicFormBundle\Container\AbstractDynamicPropertiesContainer::getLabels
      */
     public function testGetLabels(): void
     {
@@ -41,7 +41,7 @@ class DynamicPropertiesContainerTest extends TestCase
     }
 
     /**
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Container\AbstractDynamicPropertiesContainer::getLabels
+     * @covers \Zikula\Bundle\DynamicFormBundle\Container\AbstractDynamicPropertiesContainer::getLabels
      */
     public function testGetLabelsTranslated(): void
     {
@@ -61,7 +61,7 @@ class DynamicPropertiesContainerTest extends TestCase
     }
 
     /**
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Container\AbstractDynamicPropertiesContainer::getGroupedLabels
+     * @covers \Zikula\Bundle\DynamicFormBundle\Container\AbstractDynamicPropertiesContainer::getGroupedLabels
      */
     public function testGetGroupedLabels(): void
     {
@@ -87,7 +87,7 @@ class DynamicPropertiesContainerTest extends TestCase
     }
 
     /**
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Container\AbstractDynamicPropertiesContainer::getGroupedLabels
+     * @covers \Zikula\Bundle\DynamicFormBundle\Container\AbstractDynamicPropertiesContainer::getGroupedLabels
      */
     public function testGetGroupedLabelsTranslated(): void
     {

@@ -11,11 +11,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle;
+namespace Zikula\Bundle\DynamicFormBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class ZikulaDynamicFormPropertyBundle extends Bundle
+class ZikulaDynamicFormBundle extends Bundle
 {
     public function getPath(): string
     {

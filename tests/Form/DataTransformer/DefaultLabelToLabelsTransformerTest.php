@@ -11,17 +11,17 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Tests\Form\DataTransformer;
+namespace Zikula\Bundle\DynamicFormBundle\Tests\Form\DataTransformer;
 
 use PHPUnit\Framework\TestCase;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\DefaultLabelToLabelsTransformer;
+use Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\DefaultLabelToLabelsTransformer;
 
 class DefaultLabelToLabelsTransformerTest extends TestCase
 {
     /**
      * @param array<string, string> $storedAs
      *
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\DefaultLabelToLabelsTransformer::transform
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\DefaultLabelToLabelsTransformer::transform
      * @dataProvider data
      */
     public function testTransform(array $storedAs, string $submitted, string $restored): void
@@ -33,7 +33,7 @@ class DefaultLabelToLabelsTransformerTest extends TestCase
     /**
      * @param array<string, string> $storedAs
      *
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\DefaultLabelToLabelsTransformer::reverseTransform
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\DefaultLabelToLabelsTransformer::reverseTransform
      * @dataProvider data
      */
     public function testReverseTransform(array $storedAs, string $submitted, string $restored): void

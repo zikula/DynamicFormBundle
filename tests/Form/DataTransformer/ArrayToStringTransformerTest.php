@@ -11,15 +11,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Tests\Form\DataTransformer;
+namespace Zikula\Bundle\DynamicFormBundle\Tests\Form\DataTransformer;
 
 use PHPUnit\Framework\TestCase;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ArrayToStringTransformer;
+use Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ArrayToStringTransformer;
 
 class ArrayToStringTransformerTest extends TestCase
 {
     /**
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ArrayToStringTransformer::transform
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ArrayToStringTransformer::transform
      * @dataProvider data
      */
     public function testTransform(string $storedAs, string $submitted, string $restored): void
@@ -29,7 +29,7 @@ class ArrayToStringTransformerTest extends TestCase
     }
 
     /**
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ArrayToStringTransformer::reverseTransform
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ArrayToStringTransformer::reverseTransform
      * @dataProvider data
      */
     public function testReverseTransform(string $storedAs, string $submitted, string $restored): void
@@ -48,7 +48,7 @@ class ArrayToStringTransformerTest extends TestCase
      * @param string[] $submitted
      * @param string[] $restored
      *
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ArrayToStringTransformer::transform
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ArrayToStringTransformer::transform
      * @dataProvider dataMultiple
      */
     public function testTransformMultiple(string $storedAs, array $submitted, array $restored): void
@@ -61,7 +61,7 @@ class ArrayToStringTransformerTest extends TestCase
      * @param string[] $submitted
      * @param string[] $restored
      *
-     * @covers \Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\ArrayToStringTransformer::reverseTransform
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ArrayToStringTransformer::reverseTransform
      * @dataProvider dataMultiple
      */
     public function testReverseTransformMultiple(string $storedAs, array $submitted, array $restored): void

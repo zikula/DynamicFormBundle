@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\Type;
+namespace Zikula\Bundle\DynamicFormBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -19,10 +19,10 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
-use Zikula\Bundle\DynamicFormPropertyBundle\Event\FormTypeChoiceEvent;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\DefaultLabelToLabelsTransformer;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\EventListener\AddPropertyOptionsListener;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions\FormOptionsArrayType;
+use Zikula\Bundle\DynamicFormBundle\Event\FormTypeChoiceEvent;
+use Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\DefaultLabelToLabelsTransformer;
+use Zikula\Bundle\DynamicFormBundle\Form\EventListener\AddPropertyOptionsListener;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\FormOptionsArrayType;
 
 /**
  * Form type providing a dynamic selection of field type and field options.

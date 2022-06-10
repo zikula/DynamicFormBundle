@@ -1,6 +1,6 @@
 <?php
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Tests;
+namespace Zikula\Bundle\DynamicFormBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -8,7 +8,7 @@ use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel;
-use Zikula\Bundle\DynamicFormPropertyBundle\ZikulaDynamicFormPropertyBundle;
+use Zikula\Bundle\DynamicFormBundle\ZikulaDynamicFormBundle;
 
 class IntegrationTest extends KernelTestCase
 {
@@ -41,7 +41,7 @@ class DynamicFormTestKernel extends Kernel
         return [
             new FrameworkBundle(),
             new TwigBundle(),
-            new ZikulaDynamicFormPropertyBundle(),
+            new ZikulaDynamicFormBundle(),
         ];
     }
 

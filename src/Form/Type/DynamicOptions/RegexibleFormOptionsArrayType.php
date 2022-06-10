@@ -11,12 +11,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\Type\DynamicOptions;
+namespace Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer\RegexConstraintTransformer;
+use Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\RegexConstraintTransformer;
 
 class RegexibleFormOptionsArrayType extends AbstractType
 {

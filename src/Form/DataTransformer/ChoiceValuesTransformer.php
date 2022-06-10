@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Form\DataTransformer;
+namespace Zikula\Bundle\DynamicFormBundle\Form\DataTransformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
 

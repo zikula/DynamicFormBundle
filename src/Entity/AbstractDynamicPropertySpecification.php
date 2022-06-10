@@ -11,9 +11,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Entity;
+namespace Zikula\Bundle\DynamicFormBundle\Entity;
 
-use Zikula\Bundle\DynamicFormPropertyBundle\DynamicPropertySpecificationInterface;
+use Zikula\Bundle\DynamicFormBundle\DynamicPropertySpecificationInterface;
 
 abstract class AbstractDynamicPropertySpecification implements DynamicPropertySpecificationInterface
 {

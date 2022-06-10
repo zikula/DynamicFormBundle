@@ -11,21 +11,21 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormPropertyBundle\Provider;
+namespace Zikula\Bundle\DynamicFormBundle\Provider;
 
 use Symfony\Component\Intl\Locales;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
-use Zikula\Bundle\DynamicFormPropertyBundle\Event\SupportedLocalesEvent;
+use Zikula\Bundle\DynamicFormBundle\Event\SupportedLocalesEvent;
 
 class LocaleProvider implements LocaleProviderInterface
 {
     private EventDispatcherInterface $eventDispatcher;
-    private bool $translateLabels;
+    private bool $translate;
 
-    public function __construct(EventDispatcherInterface $eventDispatcher, bool $translateLabels = false)
+    public function __construct(EventDispatcherInterface $eventDispatcher, bool $translate = false)
     {
         $this->eventDispatcher = $eventDispatcher;
-        $this->translateLabels = $translateLabels;
+        $this->translate = $translate;
     }
 
     /**
@@ -33,7 +33,7 @@ class LocaleProvider implements LocaleProviderInterface
      */
     public function getSupportedLocales(bool $includeRegions = true): array
     {
-        if (!$this->translateLabels) {
+        if (!$this->translate) {
             return ['default'];
         }
         $this->eventDispatcher->dispatch($event = new SupportedLocalesEvent(['default']));
@@ -46,7 +46,7 @@ class LocaleProvider implements LocaleProviderInterface
      */
     public function getSupportedLocaleNames(string $region = null, string $displayLocale = null, bool $includeRegions = true): array
     {
-        if (!$this->translateLabels) {
+        if (!$this->translate) {
             return ['Default' => 'default'];
         }
         $locales = $this->getSupportedLocales($includeRegions);

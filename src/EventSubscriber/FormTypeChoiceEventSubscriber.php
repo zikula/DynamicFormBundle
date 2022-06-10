@@ -16,6 +16,7 @@ namespace Zikula\Bundle\DynamicFormBundle\EventSubscriber;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\CurrencyType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -76,7 +77,8 @@ class FormTypeChoiceEventSubscriber implements EventSubscriberInterface
                 $this->trans('Phone number') => TelType::class,
             ],
             $this->trans('Choice fields') => [
-                $this->trans('Choice') => ChoiceTypeTransformed::class,
+                $this->trans('Choice (standard)') => ChoiceType::class,
+                $this->trans('Choice transformed') => ChoiceTypeTransformed::class,
                 $this->trans('Choice with other') => ChoiceWithOtherType::class,
                 $this->trans('Checkbox') => CheckboxType::class,
                 $this->trans('Country') => CountryType::class,

@@ -8,6 +8,14 @@ list. An event is available for your app's consumption to do so. Listen for the
 The initial list is also populated by an EventSubscriber with a _priority_ of 1000. Be sure your event subscriber has a
 lower priority.
 
+Provided Custom FormTypes
+-------------------------
+### ChoiceTypeTransformed
+ChoiceTypeTransformed is the same as a standard ChoiceType, it just stores the response as a string. (see [data_storage](./data_storage.md))
+
+### ChoiceWithOtherType
+ChoiceWithOtherType provides a standard ChoiceType field but adds an 'other' option. (see [data_storage](./data_storage.md))
+
 Adding Custom FormTypes
 -----------------------
 

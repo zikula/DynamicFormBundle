@@ -30,7 +30,7 @@ class AbstractResponseDataTest extends TestCase
         };
     }
 
-    public function testSetAndGet()
+    public function testSetAndGet(): void
     {
         $data = [
             'foo' => 1,

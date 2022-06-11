@@ -21,26 +21,103 @@ class FormTypeChoiceEventTest extends TestCase
 {
     public function testConstruction(): void
     {
-//        $event = new FormTypeChoiceEvent();
-//        var_dump($event->getChoices());
-//        $this->assertEmpty($event->getChoices());
-//
-//        $choices = [
-//            'foo' => 'bar',
-//            'faz' => 'baz',
-//        ];
-//        $event = new FormTypeChoiceEvent(new FormTypesChoices($choices));
-//        $this->assertSame($choices, $event->getChoices());
+        $choices = [
+            'g1' => [
+                'foo' => 'bar',
+                'faz' => 'baz',
+            ],
+        ];
+        $event = new FormTypeChoiceEvent(new FormTypesChoices($choices));
+        $this->assertSame('bar', $event->getChoices()['g1']['foo']);
+        $this->assertSame('baz', $event->getChoices()['g1']['faz']);
+        $this->assertArrayNotHasKey('fee', $event->getChoices());
     }
 
     public function testSetChoices(): void
     {
-//        $event = new FormTypeChoiceEvent();
-//        $choices = [
-//            'foo' => 'bar',
-//            'faz' => 'baz',
-//        ];
-//        $event->setChoices(new FormTypesChoices($choices));
-//        $this->assertSame($choices, $event->getChoices());
+        $event = new FormTypeChoiceEvent();
+        $choices = [
+            'g1' => [
+                'foo' => 'bar',
+                'faz' => 'baz',
+            ],
+        ];
+        $event->setChoices(new FormTypesChoices($choices));
+        $this->assertSame('bar', $event->getChoices()['g1']['foo']);
+        $this->assertSame('baz', $event->getChoices()['g1']['faz']);
+        $this->assertArrayNotHasKey('fee', $event->getChoices());
+    }
+
+    public function testAddChoice(): void
+    {
+        $event = new FormTypeChoiceEvent();
+        $event->addChoice('g1', 'label1', 'FormType');
+        $this->assertSame(['label1' => 'FormType'], $event->getChoices()['g1']);
+    }
+
+    public function testAddChoices(): void
+    {
+        $event = new FormTypeChoiceEvent();
+        $choices = [
+            [
+                'groupName' => 'g1',
+                'label' => 'label1',
+                'formType' => 'formType',
+            ],
+            [
+                'groupName' => 'g2',
+                'label' => 'label2',
+                'formType' => 'formType2',
+            ],
+        ];
+        $event->addChoices($choices);
+        $this->assertSame(['label1' => 'formType'], $event->getChoices()['g1']);
+        $this->assertSame(['label2' => 'formType2'], $event->getChoices()['g2']);
+    }
+
+    public function testRemoveChoice(): void
+    {
+        $choices = [
+            'g1' => [
+                'foo' => 'bar',
+                'faz' => 'baz',
+            ],
+        ];
+        $event = new FormTypeChoiceEvent(new FormTypesChoices($choices));
+        $this->assertSame('bar', $event->getChoices()['g1']['foo']);
+        $event->removeChoice('g1', 'foo');
+        $this->assertArrayNotHasKey('foo', $event->getChoices()['g1']);
+    }
+
+    public function testRemoveChoices(): void
+    {
+        $choices = [
+            'g1' => [
+                'foo' => 'bar',
+                'faz' => 'baz',
+                'fee' => 'bee',
+                'fum' => 'bum',
+            ],
+        ];
+        $event = new FormTypeChoiceEvent(new FormTypesChoices($choices));
+        $this->assertSame('bar', $event->getChoices()['g1']['foo']);
+        $this->assertSame('baz', $event->getChoices()['g1']['faz']);
+        $this->assertSame('bee', $event->getChoices()['g1']['fee']);
+        $this->assertSame('bum', $event->getChoices()['g1']['fum']);
+        $removedChoices = [
+            [
+                'groupName' => 'g1',
+                'label' => 'foo',
+            ],
+            [
+                'groupName' => 'g1',
+                'label' => 'faz',
+            ],
+        ];
+        $event->removeChoices($removedChoices);
+        $this->assertArrayNotHasKey('foo', $event->getChoices()['g1']);
+        $this->assertArrayNotHasKey('faz', $event->getChoices()['g1']);
+        $this->assertSame('bee', $event->getChoices()['g1']['fee']);
+        $this->assertSame('bum', $event->getChoices()['g1']['fum']);
     }
 }

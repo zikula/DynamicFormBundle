@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Container;
+namespace Zikula\Bundle\DynamicFormBundle\Tests\Container;
 
 use PHPUnit\Framework\TestCase;
 use Zikula\Bundle\DynamicFormBundle\Container\AbstractSpecificationContainer;

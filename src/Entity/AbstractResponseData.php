@@ -22,11 +22,17 @@ abstract class AbstractResponseData implements ResponseDataInterface
      */
     protected ?array $data = [];
 
+    /**
+     * {@inheritDoc}
+     */
     public function getData(): ?array
     {
         return $this->data;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function setData(?array $data): void
     {
         $this->data = $data;

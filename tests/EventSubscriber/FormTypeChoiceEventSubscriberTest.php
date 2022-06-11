@@ -19,6 +19,9 @@ use Symfony\Component\Translation\IdentityTranslator;
 use Zikula\Bundle\DynamicFormBundle\Event\FormTypeChoiceEvent;
 use Zikula\Bundle\DynamicFormBundle\EventSubscriber\FormTypeChoiceEventSubscriber;
 
+/**
+ * @covers \Zikula\Bundle\DynamicFormBundle\EventSubscriber\FormTypeChoiceEventSubscriber
+ */
 class FormTypeChoiceEventSubscriberTest extends TestCase
 {
     private EventDispatcher $dispatcher;

@@ -16,6 +16,9 @@ namespace Zikula\Bundle\DynamicFormBundle\Tests\Event;
 use PHPUnit\Framework\TestCase;
 use Zikula\Bundle\DynamicFormBundle\Event\SupportedLocalesEvent;
 
+/**
+ * @covers \Zikula\Bundle\DynamicFormBundle\Event\SupportedLocalesEvent
+ */
 class SupportedLocalesEventTest extends TestCase
 {
     public function testSetSupportedLocales(): void

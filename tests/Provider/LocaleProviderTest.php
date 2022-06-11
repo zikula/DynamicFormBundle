@@ -19,6 +19,9 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Zikula\Bundle\DynamicFormBundle\Event\SupportedLocalesEvent;
 use Zikula\Bundle\DynamicFormBundle\Provider\LocaleProvider;
 
+/**
+ * @covers \Zikula\Bundle\DynamicFormBundle\Provider\LocaleProvider
+ */
 class LocaleProviderTest extends TestCase
 {
     public function testGetSupportedLocalesUntranslated(): void

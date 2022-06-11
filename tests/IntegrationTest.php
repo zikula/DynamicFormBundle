@@ -28,6 +28,10 @@ class IntegrationTest extends KernelTestCase
         return DynamicFormTestKernel::class;
     }
 
+    /**
+     * @covers \Zikula\Bundle\DynamicFormBundle\DependencyInjection\Configuration
+     * @covers \Zikula\Bundle\DynamicFormBundle\DependencyInjection\ZikulaDynamicFormExtension
+     */
     public function testServicesAvailable(): void
     {
         self::bootKernel();

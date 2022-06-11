@@ -17,6 +17,9 @@ use PHPUnit\Framework\TestCase;
 use Zikula\Bundle\DynamicFormBundle\Event\FormTypeChoiceEvent;
 use Zikula\Bundle\DynamicFormBundle\Form\Data\FormTypesChoices;
 
+/**
+ * @covers \Zikula\Bundle\DynamicFormBundle\Event\FormTypeChoiceEvent
+ */
 class FormTypeChoiceEventTest extends TestCase
 {
     public function testConstruction(): void

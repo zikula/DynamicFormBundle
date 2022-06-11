@@ -19,6 +19,8 @@ use Zikula\Bundle\DynamicFormBundle\Entity\AbstractResponseData;
 /**
  * Note: phpstan doesn't like magic __get, __set, __isset, __unset.
  * This is why so many lines are ignored below.
+ *
+ * @covers \Zikula\Bundle\DynamicFormBundle\Entity\AbstractResponseData
  */
 class AbstractResponseDataTest extends TestCase
 {

@@ -114,7 +114,7 @@ class FormTypesChoices implements ArrayAccess, Iterator
             if (!isset($choice['groupName'], $choice['label'], $choice['formType'])) {
                 throw new \InvalidArgumentException();
             }
-            $this->addChoice(...$choice);
+            $this->addChoice(...array_values($choice));
         }
     }
 
@@ -132,7 +132,7 @@ class FormTypesChoices implements ArrayAccess, Iterator
             if (!isset($choice['groupName'], $choice['label'])) {
                 throw new \InvalidArgumentException();
             }
-            $this->removeChoice(...$choice);
+            $this->removeChoice(...array_values($choice));
         }
     }
 }

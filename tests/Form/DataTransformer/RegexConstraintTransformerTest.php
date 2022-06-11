@@ -17,6 +17,9 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\Validator\Constraints\Regex;
 use Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\RegexConstraintTransformer;
 
+/**
+ * @uses \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\RegexConstraintTransformer
+ */
 class RegexConstraintTransformerTest extends TestCase
 {
     /**

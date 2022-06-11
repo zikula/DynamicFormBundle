@@ -28,6 +28,9 @@ use Zikula\Bundle\DynamicFormBundle\Entity\AbstractResponseData;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldsType;
 
+/**
+ * @uses \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldsType
+ */
 class DynamicFieldsTypeTest extends TypeTestCase
 {
     private TranslatorInterface $translator;

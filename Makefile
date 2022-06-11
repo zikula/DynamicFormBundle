@@ -19,5 +19,4 @@ stan: ## PHPStan Static Code analysis
 test: cs stan phpunit ## check coding standards and run tests
 
 phpunit: ## Run PHPUnit Test
-	./vendor/bin/phpunit -c phpunit.xml.dist
-
+	./vendor/bin/phpunit -c phpunit.xml.dist --coverage-text

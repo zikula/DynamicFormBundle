@@ -21,6 +21,10 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel;
 use Zikula\Bundle\DynamicFormBundle\ZikulaDynamicFormBundle;
 
+/**
+ * @uses \Zikula\Bundle\DynamicFormBundle\DependencyInjection\Configuration
+ * @uses \Zikula\Bundle\DynamicFormBundle\DependencyInjection\ZikulaDynamicFormExtension
+ */
 class IntegrationTest extends KernelTestCase
 {
     protected static function getKernelClass(): string

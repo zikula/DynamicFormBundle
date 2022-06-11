@@ -19,6 +19,9 @@ use PHPUnit\Framework\TestCase;
 use Traversable;
 use Zikula\Bundle\DynamicFormBundle\Form\Data\FormTypesChoices;
 
+/**
+ * @uses \Zikula\Bundle\DynamicFormBundle\Form\Data\FormTypesChoices
+ */
 class FormTypesChoicesTest extends TestCase
 {
     /**

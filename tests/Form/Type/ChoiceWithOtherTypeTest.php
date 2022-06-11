@@ -19,6 +19,10 @@ use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\Validator\Validation;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType;
 
+/**
+ * @uses \Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType
+ * @uses \Zikula\Bundle\DynamicFormBundle\Form\DataMapper\ChoiceWithOtherDataMapper
+ */
 class ChoiceWithOtherTypeTest extends TypeTestCase
 {
     /**

@@ -30,6 +30,10 @@ use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\FormSpecificationType;
 
+/**
+ * @uses \Zikula\Bundle\DynamicFormBundle\Form\Type\FormSpecificationType
+ * @uses \Zikula\Bundle\DynamicFormBundle\Form\EventListener\AddFormOptionsListener
+ */
 class FormSpecificationTypeTest extends TypeTestCase
 {
     /**

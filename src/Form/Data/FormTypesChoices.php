@@ -121,6 +121,9 @@ class FormTypesChoices implements ArrayAccess, Iterator
     public function removeChoice(string $groupName, string $label): void
     {
         unset($this->choices[$groupName][$label]);
+        if (empty($this->choices[$groupName])) {
+            unset($this->choices[$groupName]);
+        }
     }
 
     /**

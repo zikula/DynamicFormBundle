@@ -22,8 +22,9 @@ use Symfony\Component\HttpKernel\Kernel;
 use Zikula\Bundle\DynamicFormBundle\ZikulaDynamicFormBundle;
 
 /**
- * @uses \Zikula\Bundle\DynamicFormBundle\DependencyInjection\Configuration
- * @uses \Zikula\Bundle\DynamicFormBundle\DependencyInjection\ZikulaDynamicFormExtension
+ * @covers \Zikula\Bundle\DynamicFormBundle\DependencyInjection\Configuration
+ * @covers \Zikula\Bundle\DynamicFormBundle\DependencyInjection\ZikulaDynamicFormExtension
+ * @covers \Zikula\Bundle\DynamicFormBundle\ZikulaDynamicFormBundle
  */
 class IntegrationTest extends KernelTestCase
 {
@@ -32,10 +33,6 @@ class IntegrationTest extends KernelTestCase
         return DynamicFormTestKernel::class;
     }
 
-    /**
-     * @covers \Zikula\Bundle\DynamicFormBundle\DependencyInjection\Configuration
-     * @covers \Zikula\Bundle\DynamicFormBundle\DependencyInjection\ZikulaDynamicFormExtension
-     */
     public function testServicesAvailable(): void
     {
         self::bootKernel();

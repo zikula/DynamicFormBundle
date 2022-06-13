@@ -20,3 +20,6 @@ test: cs stan phpunit ## check coding standards and run tests
 
 phpunit: ## Run PHPUnit Test
 	./vendor/bin/phpunit -c phpunit.xml.dist --coverage-text
+
+phpunit-cov: ## Run PHPUnit Test with coverage. Output to html in /temp-coverage
+	XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html=temp-coverage

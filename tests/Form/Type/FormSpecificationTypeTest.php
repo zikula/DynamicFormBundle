@@ -30,10 +30,6 @@ use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\FormSpecificationType;
 
-/**
- * @uses \Zikula\Bundle\DynamicFormBundle\Form\Type\FormSpecificationType
- * @uses \Zikula\Bundle\DynamicFormBundle\Form\EventListener\AddFormOptionsListener
- */
 class FormSpecificationTypeTest extends TypeTestCase
 {
     /**
@@ -53,6 +49,11 @@ class FormSpecificationTypeTest extends TypeTestCase
      * @param string[] $expectedOptions
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\FormSpecificationType
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\EventListener\AddFormOptionsListener
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\ChoiceFormOptionsArrayType
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\DateTimeFormOptionsArrayType
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\FormOptionsArrayType
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\MoneyFormOptionsArrayType
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\RegexibleFormOptionsArrayType
      * @dataProvider data
      */
     public function testProperFormCreation(string $type, array $expectedOptions): void

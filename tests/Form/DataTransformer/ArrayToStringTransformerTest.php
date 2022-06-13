@@ -17,7 +17,6 @@ use PHPUnit\Framework\TestCase;
 use Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ArrayToStringTransformer;
 
 /**
- * @uses \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ArrayToStringTransformer
  * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ArrayToStringTransformer::__construct()
  */
 class ArrayToStringTransformerTest extends TestCase

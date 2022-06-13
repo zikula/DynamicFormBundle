@@ -29,7 +29,7 @@ use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldsType;
 
 /**
- * @uses \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldsType
+ * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldsType
  */
 class DynamicFieldsTypeTest extends TypeTestCase
 {
@@ -66,9 +66,6 @@ class DynamicFieldsTypeTest extends TypeTestCase
         ];
     }
 
-    /**
-     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicFieldsType
-     */
     public function testSubmitValidData(): void
     {
         $options = ['specificationContainer' => new TempContainer()];

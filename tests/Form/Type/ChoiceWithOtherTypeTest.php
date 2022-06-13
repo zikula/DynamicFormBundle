@@ -20,8 +20,8 @@ use Symfony\Component\Validator\Validation;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType;
 
 /**
- * @uses \Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType
- * @uses \Zikula\Bundle\DynamicFormBundle\Form\DataMapper\ChoiceWithOtherDataMapper
+ * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType
+ * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataMapper\ChoiceWithOtherDataMapper
  */
 class ChoiceWithOtherTypeTest extends TypeTestCase
 {
@@ -51,9 +51,6 @@ class ChoiceWithOtherTypeTest extends TypeTestCase
         ];
     }
 
-    /**
-     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType
-     */
     public function testOtherOptionExists(): void
     {
         $form = $this->factory->create(ChoiceWithOtherType::class, [], $this->options);
@@ -82,9 +79,6 @@ class ChoiceWithOtherTypeTest extends TypeTestCase
         $this->assertContains(ChoiceWithOtherType::OTHER_VALUE, $choices);
     }
 
-    /**
-     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType
-     */
     public function testFormValidation(): void
     {
         $form = $this->factory->create(ChoiceWithOtherType::class, [], $this->options);
@@ -132,8 +126,6 @@ class ChoiceWithOtherTypeTest extends TypeTestCase
     /**
      * @param array<int, array<string, string>> $formData
      *
-     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType
-     * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataMapper\ChoiceWithOtherDataMapper
      * @dataProvider data
      */
     public function testSubmitValidData(string $expected, array $formData): void
@@ -149,8 +141,6 @@ class ChoiceWithOtherTypeTest extends TypeTestCase
     /**
      * @param array<int, array<string, string>> $formData
      *
-     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType
-     * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataMapper\ChoiceWithOtherDataMapper
      * @dataProvider data
      */
     public function testExpandedSubmitValidData(string $expected, array $formData): void
@@ -174,8 +164,6 @@ class ChoiceWithOtherTypeTest extends TypeTestCase
     /**
      * @param array<int, array<string, mixed>> $formData
      *
-     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType
-     * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataMapper\ChoiceWithOtherDataMapper
      * @dataProvider multipleData
      */
     public function testMultipleSubmitValidData(string $expected, array $formData): void
@@ -191,8 +179,6 @@ class ChoiceWithOtherTypeTest extends TypeTestCase
     /**
      * @param array<int, array<string, mixed>> $formData
      *
-     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType
-     * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataMapper\ChoiceWithOtherDataMapper
      * @dataProvider multipleData
      */
     public function testExpandedMultipleSubmitValidData(string $expected, array $formData): void

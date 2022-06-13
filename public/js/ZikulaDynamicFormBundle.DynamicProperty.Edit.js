@@ -2,12 +2,9 @@
 (function($) {
     $(document).ready(function() {
         let changeHandler = function(event) {
-            let formTypeField = $(event.target);
             let form;
             let data;
 
-            let formOptions = $(formTypeField).closest("[id$='_formOptions']");
-            formOptions.html('<i class="fa-solid fa-gear fa-3x fa-fw fa-spin" aria-hidden="true"></i>');
             form = $(this).closest('form');
             let formName = form.attr('name');
             data = $(form).serializeArray();

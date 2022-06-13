@@ -221,17 +221,17 @@ class FormTypesChoicesTest extends TestCase
     public function testIterator(): void
     {
         $foo = new FormTypesChoices([
-            'key1' => ['1val'],
-            'key2' => ['2val'],
-            'key3' => ['3val'],
-            'key4' => ['4val'],
+            'key1' => ['a' => '1val'],
+            'key2' => ['a' => '2val'],
+            'key3' => ['a' => '3val'],
+            'key4' => ['a' => '4val'],
         ]);
         $this->assertIsIterable($foo);
         $i = 1;
         $foo->rewind();
         while ($foo->valid()) {
             $this->assertEquals('key'.$i, $foo->key());
-            $this->assertEquals([$i.'val'], $foo->current());
+            $this->assertEquals(['a' => $i.'val'], $foo->current());
             $foo->next();
             ++$i;
         }

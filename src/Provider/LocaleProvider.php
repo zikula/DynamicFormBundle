@@ -30,10 +30,8 @@ class LocaleProvider implements LocaleProviderInterface
 
     /**
      * {@inheritDoc}
-     *
-     * @todo implement regions
      */
-    public function getSupportedLocales(bool $includeRegions = true): array
+    public function getSupportedLocales(): array
     {
         if (!$this->translate) {
             return ['default'];
@@ -45,15 +43,13 @@ class LocaleProvider implements LocaleProviderInterface
 
     /**
      * {@inheritDoc}
-     *
-     * @todo implement regions
      */
-    public function getSupportedLocaleNames(string $region = null, string $displayLocale = null, bool $includeRegions = true): array
+    public function getSupportedLocaleNames(string $displayLocale = null): array
     {
         if (!$this->translate) {
             return ['Default' => 'default'];
         }
-        $locales = $this->getSupportedLocales($includeRegions);
+        $locales = $this->getSupportedLocales();
         $namedLocales = [];
         foreach ($locales as $locale) {
             $localeName = 'default' === $locale ? 'Default' : Locales::getName($locale, $displayLocale);

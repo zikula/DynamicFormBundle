@@ -16,16 +16,16 @@ namespace Zikula\Bundle\DynamicFormBundle\Provider;
 interface LocaleProviderInterface
 {
     /**
-     * Return a list of supported locales by region.
+     * Return a list of supported locales.
      *
      * @return string[]
      */
-    public function getSupportedLocales(bool $includeRegions = true): array;
+    public function getSupportedLocales(): array;
 
     /**
-     * Return an associative list of supported locales by region by their translated names.
+     * Return an associative list of supported locales by their translated names.
      *
      * @return array<string, string>
      */
-    public function getSupportedLocaleNames(string $region = null, string $displayLocale = null, bool $includeRegions = true): array;
+    public function getSupportedLocaleNames(string $displayLocale = null): array;
 }

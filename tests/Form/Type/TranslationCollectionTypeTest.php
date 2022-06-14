@@ -25,12 +25,12 @@ class TranslationCollectionTypeTest extends TypeTestCase
     protected function setUp(): void
     {
         $this->localeProvider = new class() implements LocaleProviderInterface {
-            public function getSupportedLocales(bool $includeRegions = true): array
+            public function getSupportedLocales(): array
             {
                 return ['en'];
             }
 
-            public function getSupportedLocaleNames(string $region = null, string $displayLocale = null, bool $includeRegions = true): array
+            public function getSupportedLocaleNames(string $displayLocale = null): array
             {
                 return ['English' => 'en'];
             }

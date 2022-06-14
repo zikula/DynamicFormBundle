@@ -35,7 +35,9 @@ class IntegrationTest extends KernelTestCase
 
     public function testServicesAvailable(): void
     {
-        self::bootKernel();
+        self::bootKernel([
+            'debug' => false,
+        ]);
         $container = static::getContainer();
         $this->assertTrue($container->has('zikula.dynamic_form.event_subscriber.form_type_choice_event_subscriber'));
         $this->assertTrue($container->has('zikula.dynamic_form.form_type.dynamic_form_field_type'));

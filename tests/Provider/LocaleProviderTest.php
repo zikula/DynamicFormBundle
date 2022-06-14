@@ -87,5 +87,13 @@ class LocaleProviderTest extends TestCase
             'French (Belgium)' => 'fr_BE',
         ];
         $this->assertEquals($expected, $provider->getSupportedLocaleNames());
+        $german = [
+            'Default' => 'default',
+            'Deutsch' => 'de',
+            'Französisch (Belgien)' => 'fr_BE',
+            'Französisch (Frankreich)' => 'fr_FR',
+            'Spanisch' => 'es',
+        ];
+        $this->assertEquals($german, $provider->getSupportedLocaleNames('de'));
     }
 }

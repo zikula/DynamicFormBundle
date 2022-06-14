@@ -47,6 +47,7 @@ class FormSpecificationTypeTest extends TypeTestCase
 
     /**
      * @param string[] $expectedOptions
+     * @covers \Zikula\Bundle\DynamicFormBundle\Entity\AbstractFormSpecification
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\FormSpecificationType
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\EventListener\AddFormOptionsListener
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\ChoiceFormOptionsArrayType

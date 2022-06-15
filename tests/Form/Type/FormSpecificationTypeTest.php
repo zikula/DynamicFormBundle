@@ -46,6 +46,19 @@ class FormSpecificationTypeTest extends TypeTestCase
     }
 
     /**
+     * @covers \Zikula\Bundle\DynamicFormBundle\Entity\AbstractFormSpecification
+     */
+    public function testNameFieldOnNew(): void
+    {
+        $formData = new class() extends AbstractFormSpecification {
+        };
+        $form = $this->factory->create(FormSpecificationType::class, $formData);
+
+        $this->assertTrue($form->has('name'));
+        $this->assertFalse($form->get('name')->isDisabled());
+    }
+
+    /**
      * @param string[] $expectedOptions
      * @covers \Zikula\Bundle\DynamicFormBundle\Entity\AbstractFormSpecification
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\FormSpecificationType
@@ -67,6 +80,7 @@ class FormSpecificationTypeTest extends TypeTestCase
 
         // check basic types exist
         $this->assertTrue($form->has('name'));
+        $this->assertTrue($form->get('name')->isDisabled());
         $this->assertTrue($form->has('formType'));
         $this->assertTrue($form->has('labels'));
         $this->assertTrue($form->has('active'));

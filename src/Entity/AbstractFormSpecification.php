@@ -115,7 +115,7 @@ abstract class AbstractFormSpecification implements FormSpecificationInterface
 
     public function getName(): string
     {
-        return $this->name;
+        return $this->name ?? '';
     }
 
     /**

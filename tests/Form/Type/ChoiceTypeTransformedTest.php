@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Zikula\Bundle\DynamicFormBundle\Tests;
+namespace Zikula\Bundle\DynamicFormBundle\Tests\Form\Type;
 
 use Symfony\Component\Form\Test\TypeTestCase;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed;
@@ -61,7 +61,7 @@ class ChoiceTypeTransformedTest extends TypeTestCase
         $this->assertNotEmpty($form->getErrors());
         $data = $form->getData();
         $this->assertNull($data);
-        $this->assertSame('The selected choice is invalid.', $form->getErrors()->current()->getMessage());
+        $this->assertContains($form->getErrors()->current()->getMessage(), ['This value is not valid.', 'The selected choice is invalid.']); // php7 or php8
     }
 
     public function testSubmitMultipleValidData(): void

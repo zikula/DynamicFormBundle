@@ -15,10 +15,13 @@ namespace Zikula\Bundle\DynamicFormBundle\Tests\Form\Type;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\LanguageType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
@@ -61,12 +64,17 @@ class FormSpecificationTypeTest extends TypeTestCase
     /**
      * @param string[] $expectedOptions
      * @covers \Zikula\Bundle\DynamicFormBundle\Entity\AbstractFormSpecification
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\FormSpecificationType
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\EventListener\AddFormOptionsListener
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\ChoiceFormOptionsArrayType
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\CountryFormOptionsArrayType
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\DateTimeFormOptionsArrayType
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\FormOptionsArrayType
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\LanguageFormOptionsArrayType
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\MoneyFormOptionsArrayType
+     * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\RangeFormOptionsArrayType
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\RegexibleFormOptionsArrayType
      * @dataProvider data
      */
@@ -108,6 +116,9 @@ class FormSpecificationTypeTest extends TypeTestCase
         yield 'money' => [MoneyType::class, ['currency']];
         yield 'text' => [TextType::class, ['constraints']];
         yield 'textarea' => [TextareaType::class, ['constraints']];
+        yield 'country' => [CountryType::class, ['alpha3']];
+        yield 'language' => [LanguageType::class, ['alpha3']];
+        yield 'range' => [RangeType::class, ['attr']];
         yield 'default' => [IntegerType::class, []];
     }
 }

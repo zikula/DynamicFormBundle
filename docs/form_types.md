@@ -8,6 +8,11 @@ list. An event is available for your app's consumption to do so. Listen for the
 The initial list is also populated by an EventSubscriber with a _priority_ of 1000. Be sure your event subscriber has a
 lower priority.
 
+When a formType is selected, the form is reloaded via jQuery and relevant formOptions are provided to the user. This is
+accomplished with an event subscriber (`Zikula\Bundle\DynamicFormBundle\Form\EventListener\AddFormOptionsListener`).
+All forms will have the following formOptions added: `required`, `priority`, `help`. Other formTypes add additional
+options as well.
+
 Provided Custom FormTypes
 -------------------------
 ### ChoiceTypeTransformed
@@ -47,3 +52,10 @@ class CustomFormTypeSubscriber implements EventSubscriberInterface
     }
 }
 ```
+
+If your custom formType requires non-standard form options, you will need to add an EventSubscriber and create a
+`formOptions` field based on the `formType` field. You can see 
+`Zikula\Bundle\DynamicFormBundle\Form\EventListener\AddFormOptionsListener` and you can reference the 
+[official Symfony doc](https://symfony.com/doc/current/form/dynamic_form_modification.html) for more information.
+You should register your listener at a higher priority than the bundle's listener, and you should also `stopPropogation`
+on the event after your action to prevent the bundle's listeners from also attempting to modify the form.

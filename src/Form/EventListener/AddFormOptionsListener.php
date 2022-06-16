@@ -15,9 +15,12 @@ namespace Zikula\Bundle\DynamicFormBundle\Form\EventListener;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\LanguageType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
@@ -30,9 +33,12 @@ use Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\RegexConstraintTransfor
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\ChoiceFormOptionsArrayType;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\CountryFormOptionsArrayType;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\DateTimeFormOptionsArrayType;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\FormOptionsArrayType;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\LanguageFormOptionsArrayType;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\MoneyFormOptionsArrayType;
+use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\RangeFormOptionsArrayType;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\RegexibleFormOptionsArrayType;
 use Zikula\Bundle\DynamicFormBundle\FormSpecificationInterface;
 
@@ -91,6 +97,15 @@ class AddFormOptionsListener implements EventSubscriberInterface
             case TextType::class:
             case TextareaType::class:
                 $optionsType = RegexibleFormOptionsArrayType::class;
+                break;
+            case RangeType::class:
+                $optionsType = RangeFormOptionsArrayType::class;
+                break;
+            case CountryType::class:
+                $optionsType = CountryFormOptionsArrayType::class;
+                break;
+            case LanguageType::class:
+                $optionsType = LanguageFormOptionsArrayType::class;
                 break;
             default:
                 $optionsType = FormOptionsArrayType::class;

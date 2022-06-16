@@ -14,14 +14,17 @@ declare(strict_types=1);
 namespace Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CurrencyType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class MoneyFormOptionsArrayType extends AbstractType
+class RangeFormOptionsArrayType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('currency', CurrencyType::class);
+        $builder->add('attr', null, ['compound' => true]);
+        $builder->get('attr')
+            ->add('min', TextType::class, ['attr' => ['min' => 0]])
+            ->add('max', TextType::class, ['attr' => ['min' => 0]]);
     }
 
     public function getParent(): ?string

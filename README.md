@@ -1,6 +1,9 @@
 DynamicFormBundle
 =================
 
+![Build Status](https://img.shields.io/github/workflow/status/zikula/DynamicFormBundle/Symfony)
+![License](https://img.shields.io/github/license/zikula/DynamicFormBundle)
+
 The `DynamicFormBundle` offers helpers for handling dynamic form fields (forms built from definitions stored in
 the database). This can be helpful for several applications where a site admin (not the developer) needs to configure
 the fields of a form, like contact forms, surveys or exams.

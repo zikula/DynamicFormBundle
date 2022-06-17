@@ -6,5 +6,6 @@
 /composer.lock
 /.phpunit.result.cache
 /temp-coverage
+/coverage.xml
 
 /.php-cs-fixer.cache

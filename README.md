@@ -2,6 +2,7 @@ DynamicFormBundle
 =================
 
 ![Build Status](https://img.shields.io/github/workflow/status/zikula/DynamicFormBundle/Symfony)
+[![codecov](https://codecov.io/gh/zikula/DynamicFormBundle/branch/main/graph/badge.svg?token=9BIL3EQ5IK)](https://codecov.io/gh/zikula/DynamicFormBundle)
 ![License](https://img.shields.io/github/license/zikula/DynamicFormBundle)
 
 The `DynamicFormBundle` offers helpers for handling dynamic form fields (forms built from definitions stored in

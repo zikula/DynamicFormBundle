@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormBundle\Tests\Form\Type;
 
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -28,7 +28,9 @@ use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormExtensionInterface;
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
+use Symfony\Component\Translation\IdentityTranslator;
 use Zikula\Bundle\DynamicFormBundle\Entity\AbstractFormSpecification;
+use Zikula\Bundle\DynamicFormBundle\EventSubscriber\FormTypeChoiceEventSubscriber;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\FormSpecificationType;
@@ -40,7 +42,9 @@ class FormSpecificationTypeTest extends TypeTestCase
      */
     protected function getExtensions(): array
     {
-        $dispatcher = $this->createMock(EventDispatcherInterface::class);
+        $dispatcher = new EventDispatcher();
+        $translator = new IdentityTranslator();
+        $dispatcher->addSubscriber(new FormTypeChoiceEventSubscriber($translator));
         $type = new FormSpecificationType($dispatcher, false);
 
         return [
@@ -59,6 +63,25 @@ class FormSpecificationTypeTest extends TypeTestCase
 
         $this->assertTrue($form->has('name'));
         $this->assertFalse($form->get('name')->isDisabled());
+    }
+
+    /**
+     * @covers \Zikula\Bundle\DynamicFormBundle\Entity\AbstractFormSpecification
+     */
+    public function testBasicFormSubmission(): void
+    {
+        $formData = new class() extends AbstractFormSpecification {
+        };
+        $form = $this->factory->create(FormSpecificationType::class, $formData);
+        $form->submit(['name' => 'foo', 'formType' => IntegerType::class, 'active' => true]);
+        $this->assertTrue($form->isSynchronized());
+        $this->assertEmpty($form->getErrors());
+        /** @var AbstractFormSpecification $data */
+        $data = $form->getData();
+        $this->assertTrue($data->isActive());
+        $this->assertSame('foo', $data->getName());
+        $this->assertSame(IntegerType::class, $data->getFormType());
+        $this->assertArrayHasKey('required', $data->getFormOptions());
     }
 
     /**

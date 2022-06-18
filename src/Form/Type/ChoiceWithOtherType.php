@@ -39,9 +39,11 @@ class ChoiceWithOtherType extends AbstractType
                 'multiple' => $options['multiple'],
                 'expanded' => $options['expanded'],
                 'required' => $options['required'],
+                'empty_data' => '',
                 'attr' => ['class' => 'other-enabler'],
             ])
             ->add('other', TextType::class, [
+                'empty_data' => '',
                 'required' => false,
             ])
             ->setDataMapper(new ChoiceWithOtherDataMapper())
@@ -61,6 +63,7 @@ class ChoiceWithOtherType extends AbstractType
             'choices' => [],
             'expanded' => false,
             'multiple' => false,
+            'empty_data' => null,
             'other_label' => null,
         ]);
         $resolver->setRequired('choices');
@@ -78,12 +81,12 @@ class ChoiceWithOtherType extends AbstractType
     private function validate(FormEvent $event): void
     {
         $data = $event->getData();
-        if (empty($data['other'])
+        if (empty($data)) {
+            return;
+        }
+        if (empty($data['other']) && isset($data['choices'])
             && (
-                (
-                    is_array($data['choices'])
-                    && in_array(self::OTHER_VALUE, $data['choices'], true)
-                )
+                (is_array($data['choices']) && in_array(self::OTHER_VALUE, $data['choices'], true))
                 || (self::OTHER_VALUE === $data['choices'])
             )
         ) {

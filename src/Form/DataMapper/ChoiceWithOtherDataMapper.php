@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Zikula\Bundle\DynamicFormBundle\Form\DataMapper;
 
 use Symfony\Component\Form\DataMapperInterface;
-use Symfony\Component\Form\Exception\UnexpectedTypeException;
 use Symfony\Component\Form\FormInterface;
 use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType;
 
@@ -22,10 +21,8 @@ class ChoiceWithOtherDataMapper implements DataMapperInterface
 {
     /**
      * {@inheritDoc}
-     *
-     * @param mixed $value
      */
-    public function mapDataToForms($value, \Traversable $forms): void
+    public function mapDataToForms($viewData, \Traversable $forms): void
     {
         /** @var FormInterface[] $forms */
         $forms = iterator_to_array($forms);
@@ -37,23 +34,23 @@ class ChoiceWithOtherDataMapper implements DataMapperInterface
         $choices = $formParent->getConfig()->getOption('multiple') ? [] : '';
         $other = '';
 
-        if (!empty($value)) {
-            if (false !== strpos($value, ',')) {
-                $value = explode(',', $value);
+        if (!empty($viewData)) {
+            if (false !== strpos($viewData, ',')) {
+                $viewData = explode(',', $viewData);
             }
-            if (is_array($value)) {
-                $intersection = array_intersect($formChoices, $value);
-                $others = array_diff($value, $intersection);
+            if (is_array($viewData)) {
+                $intersection = array_intersect($formChoices, $viewData);
+                $others = array_diff($viewData, $intersection);
                 if (count($others) > 0) {
                     $intersection['Other'] = ChoiceWithOtherType::OTHER_VALUE;
                 }
                 $choices = array_values($intersection);
                 $other = implode(',', $others);
-            } elseif (in_array($value, $formChoices, true)) {
-                $choices = $value;
+            } elseif (in_array($viewData, $formChoices, true)) {
+                $choices = $viewData;
             } else {
                 $choices = ChoiceWithOtherType::OTHER_VALUE;
-                $other = $value;
+                $other = $viewData;
             }
         }
 
@@ -63,14 +60,9 @@ class ChoiceWithOtherDataMapper implements DataMapperInterface
 
     /**
      * {@inheritDoc}
-     *
-     * @param mixed $value
      */
-    public function mapFormsToData(\Traversable $forms, &$value): void
+    public function mapFormsToData(\Traversable $forms, &$viewData): void
     {
-        if (!\is_array($value)) {
-            throw new UnexpectedTypeException($value, 'array');
-        }
         /** @var FormInterface[] $forms */
         $forms = iterator_to_array($forms);
         $choicesData = $forms['choices']->getData();
@@ -82,7 +74,7 @@ class ChoiceWithOtherDataMapper implements DataMapperInterface
         $formMultiple = $formParent->getConfig()->getOption('multiple');
 
         if (!$formMultiple) {
-            $value = ChoiceWithOtherType::OTHER_VALUE === $choicesData ? $otherData : $choicesData;
+            $viewData = ChoiceWithOtherType::OTHER_VALUE === $choicesData ? $otherData : $choicesData;
         } else {
             if (in_array(ChoiceWithOtherType::OTHER_VALUE, $choicesData, true)) {
                 $otherKey = array_search(ChoiceWithOtherType::OTHER_VALUE, $choicesData, true);
@@ -95,7 +87,7 @@ class ChoiceWithOtherDataMapper implements DataMapperInterface
                 $choicesData = array_merge($choicesData, $otherValue);
             }
 
-            $value = is_array($choicesData) ? implode(',', $choicesData) : $choicesData;
+            $viewData = is_array($choicesData) ? implode(',', $choicesData) : $choicesData;
         }
     }
 }

@@ -201,4 +201,46 @@ class ChoiceWithOtherTypeTest extends TypeTestCase
         yield 5 => ['stars', ['choices' => [ChoiceWithOtherType::OTHER_VALUE], 'other' => 'stars']];
         yield 5 => ['stars,moons', ['choices' => [ChoiceWithOtherType::OTHER_VALUE], 'other' => 'stars,moons']];
     }
+
+    public function testLoadExistingData(): void
+    {
+        $form = $this->factory->create(ChoiceWithOtherType::class, 'hearts', $this->options);
+        $form->submit(['choices' => 'hearts']);
+        $this->assertTrue($form->isSynchronized());
+        $this->assertEmpty($form->getErrors());
+        $data = $form->getData();
+        $this->assertEquals('hearts', $data);
+    }
+
+    public function testLoadExistingMultipleData(): void
+    {
+        $this->options['multiple'] = true;
+        $form = $this->factory->create(ChoiceWithOtherType::class, 'hearts,clubs', $this->options);
+        $form->submit(['choices' => ['hearts', 'clubs']]);
+        $this->assertTrue($form->isSynchronized());
+        $this->assertEmpty($form->getErrors());
+        $data = $form->getData();
+        $this->assertEquals('hearts,clubs', $data);
+    }
+
+    public function testLoadExistingOtherData(): void
+    {
+        $form = $this->factory->create(ChoiceWithOtherType::class, 'stars', $this->options);
+        $form->submit(['choices' => ChoiceWithOtherType::OTHER_VALUE, 'other' => 'stars']);
+        $this->assertTrue($form->isSynchronized());
+        $this->assertEmpty($form->getErrors());
+        $data = $form->getData();
+        $this->assertEquals('stars', $data);
+    }
+
+    public function testLoadExistingOtherMultipleData(): void
+    {
+        $this->options['multiple'] = true;
+        $form = $this->factory->create(ChoiceWithOtherType::class, 'hearts,stars', $this->options);
+        $form->submit(['choices' => ['hearts', ChoiceWithOtherType::OTHER_VALUE], 'other' => 'stars']);
+        $this->assertTrue($form->isSynchronized());
+        $this->assertEmpty($form->getErrors());
+        $data = $form->getData();
+        $this->assertEquals('hearts,stars', $data);
+    }
 }

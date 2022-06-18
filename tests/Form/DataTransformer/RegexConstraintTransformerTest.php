@@ -21,11 +21,12 @@ class RegexConstraintTransformerTest extends TestCase
 {
     /**
      * @param Regex[] $storedAs
+     * @param mixed   $submitted
      *
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\RegexConstraintTransformer::transform
      * @dataProvider data
      */
-    public function testTransform(array $storedAs, string $submitted, string $restored): void
+    public function testTransform(array $storedAs, $submitted, string $restored): void
     {
         $transformer = new RegexConstraintTransformer();
         $this->assertSame($restored, $transformer->transform($storedAs));
@@ -33,11 +34,12 @@ class RegexConstraintTransformerTest extends TestCase
 
     /**
      * @param Regex[] $storedAs
+     * @param mixed   $submitted
      *
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\RegexConstraintTransformer::reverseTransform
      * @dataProvider data
      */
-    public function testReverseTransform(array $storedAs, string $submitted, string $restored): void
+    public function testReverseTransform(array $storedAs, $submitted, string $restored): void
     {
         $transformer = new RegexConstraintTransformer();
         $this->assertEquals($storedAs, $transformer->reverseTransform($submitted));
@@ -46,5 +48,8 @@ class RegexConstraintTransformerTest extends TestCase
     public function data(): \Iterator
     {
         yield 0 => [[new Regex('/^\w+$/')], '/^\w+$/', '/^\w+$/'];
+        yield 1 => [[new Regex('/^\w+$/')], ['/^\w+$/', '', ''], '/^\w+$/'];
+        yield 2 => [[new Regex('/.*/')], null, '/.*/'];
+        yield 2 => [[new Regex('/^\w+$/')], new Regex('/^\w+$/'), '/^\w+$/'];
     }
 }

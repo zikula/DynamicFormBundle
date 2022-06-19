@@ -55,7 +55,7 @@ class FormSpecificationTypeTest extends TypeTestCase
     /**
      * @covers \Zikula\Bundle\DynamicFormBundle\Entity\AbstractFormSpecification
      */
-    public function testNameFieldOnNew(): void
+    public function testFormCreation(): void
     {
         $formData = new class() extends AbstractFormSpecification {
         };
@@ -63,6 +63,11 @@ class FormSpecificationTypeTest extends TypeTestCase
 
         $this->assertTrue($form->has('name'));
         $this->assertFalse($form->get('name')->isDisabled());
+
+        $this->assertInstanceOf(TextType::class, $form->get('labels')->getConfig()->getType()->getInnerType());
+        $this->assertInstanceOf(TextType::class, $form->get('groups')->getConfig()->getType()->getInnerType());
+        $this->assertCount(0, $form->get('labels'));
+        $this->assertCount(0, $form->get('groups'));
     }
 
     /**

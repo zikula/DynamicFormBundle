@@ -28,9 +28,6 @@ class ChoiceWithOtherType extends AbstractType
 {
     public const OTHER_VALUE = 'other';
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -54,9 +51,6 @@ class ChoiceWithOtherType extends AbstractType
         });
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

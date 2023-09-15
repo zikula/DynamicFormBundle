@@ -15,14 +15,8 @@ namespace Zikula\Bundle\DynamicFormBundle\Container;
 
 abstract class AbstractSpecificationContainer implements SpecificationContainerInterface
 {
-    /**
-     * {@inheritDoc}
-     */
     abstract public function getFormSpecifications(array $params = []): array;
 
-    /**
-     * {@inheritDoc}
-     */
     public function getLabels(string $locale = ''): array
     {
         $labels = [];
@@ -33,9 +27,6 @@ abstract class AbstractSpecificationContainer implements SpecificationContainerI
         return $labels;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getGroupedLabels(string $locale = ''): array
     {
         $labels = [];

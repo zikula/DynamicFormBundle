@@ -39,7 +39,7 @@ class FormSpecificationTypeTranslatedTest extends TypeTestCase
                 return ['en', 'de'];
             }
 
-            public function getSupportedLocaleNames(string $displayLocale = null): array
+            public function getSupportedLocaleNames(?string $displayLocale = null): array
             {
                 return ['English' => 'en', 'German' => 'de'];
             }

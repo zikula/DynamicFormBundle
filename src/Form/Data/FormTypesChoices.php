@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Zikula\Bundle\DynamicFormBundle\Form\Data;
 
 use ArrayAccess;
-use Exception;
 use Iterator;
 
 /**
@@ -23,7 +22,7 @@ use Iterator;
  * @implements Iterator<string|null, array<string, string>|false>
  * @implements ArrayAccess<string, array<string, string>>
  */
-class FormTypesChoices implements ArrayAccess, Iterator
+class FormTypesChoices implements \ArrayAccess, \Iterator
 {
     /**
      * @var array<string, array<string, string>>
@@ -43,9 +42,6 @@ class FormTypesChoices implements ArrayAccess, Iterator
         return isset($this->choices[$offset]);
     }
 
-    /**
-     * @return mixed
-     */
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
@@ -59,7 +55,7 @@ class FormTypesChoices implements ArrayAccess, Iterator
 
     public function offsetUnset($offset): void
     {
-        throw new Exception('Not allowed to unset!');
+        throw new \Exception('Not allowed to unset!');
     }
 
     public function rewind(): void
@@ -67,18 +63,12 @@ class FormTypesChoices implements ArrayAccess, Iterator
         reset($this->choices);
     }
 
-    /**
-     * @return mixed
-     */
     #[\ReturnTypeWillChange]
     public function current()
     {
         return current($this->choices);
     }
 
-    /**
-     * @return mixed
-     */
     #[\ReturnTypeWillChange]
     public function key()
     {

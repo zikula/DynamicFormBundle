@@ -41,7 +41,7 @@ class DynamicFieldsTypeTest extends TypeTestCase
             /**
              * @param string[] $parameters this is for phpstan
              */
-            public function trans(string $id, array $parameters = [], string $domain = null, string $locale = null): string
+            public function trans(string $id, array $parameters = [], ?string $domain = null, ?string $locale = null): string
             {
                 return $id;
             }

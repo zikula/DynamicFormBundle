@@ -91,6 +91,7 @@ class FormSpecificationTypeTest extends TypeTestCase
 
     /**
      * @param string[] $expectedOptions
+     *
      * @covers \Zikula\Bundle\DynamicFormBundle\Entity\AbstractFormSpecification
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceTypeTransformed
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType
@@ -104,6 +105,7 @@ class FormSpecificationTypeTest extends TypeTestCase
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\MoneyFormOptionsArrayType
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\RangeFormOptionsArrayType
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\Type\DynamicOptions\RegexibleFormOptionsArrayType
+     *
      * @dataProvider data
      */
     public function testProperFormCreation(string $type, array $expectedOptions): void

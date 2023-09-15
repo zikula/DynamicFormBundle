@@ -19,9 +19,6 @@ use Zikula\Bundle\DynamicFormBundle\Form\Type\ChoiceWithOtherType;
 
 class ChoiceWithOtherDataMapper implements DataMapperInterface
 {
-    /**
-     * {@inheritDoc}
-     */
     public function mapDataToForms($viewData, \Traversable $forms): void
     {
         /** @var FormInterface[] $forms */
@@ -58,9 +55,6 @@ class ChoiceWithOtherDataMapper implements DataMapperInterface
         $forms['other']->setData($other);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function mapFormsToData(\Traversable $forms, &$viewData): void
     {
         /** @var FormInterface[] $forms */
@@ -87,7 +81,7 @@ class ChoiceWithOtherDataMapper implements DataMapperInterface
                 $choicesData = array_merge($choicesData, $otherValue);
             }
 
-            $viewData = is_array($choicesData) ? implode(',', $choicesData) : $choicesData;
+            $viewData = implode(',', $choicesData);
         }
     }
 }

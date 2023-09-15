@@ -30,7 +30,7 @@ class TranslationCollectionTypeTest extends TypeTestCase
                 return ['en'];
             }
 
-            public function getSupportedLocaleNames(string $displayLocale = null): array
+            public function getSupportedLocaleNames(?string $displayLocale = null): array
             {
                 return ['English' => 'en'];
             }

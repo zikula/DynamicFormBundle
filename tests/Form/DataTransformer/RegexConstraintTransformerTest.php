@@ -24,6 +24,7 @@ class RegexConstraintTransformerTest extends TestCase
      * @param mixed   $submitted
      *
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\RegexConstraintTransformer::transform
+     *
      * @dataProvider data
      */
     public function testTransform(array $storedAs, $submitted, string $restored): void
@@ -37,6 +38,7 @@ class RegexConstraintTransformerTest extends TestCase
      * @param mixed   $submitted
      *
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\RegexConstraintTransformer::reverseTransform
+     *
      * @dataProvider data
      */
     public function testReverseTransform(array $storedAs, $submitted, string $restored): void

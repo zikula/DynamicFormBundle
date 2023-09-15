@@ -28,9 +28,6 @@ class LocaleProvider implements LocaleProviderInterface
         $this->translate = $translate;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getSupportedLocales(): array
     {
         if (!$this->translate) {
@@ -41,10 +38,7 @@ class LocaleProvider implements LocaleProviderInterface
         return $event->getSupportedLocales();
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getSupportedLocaleNames(string $displayLocale = null): array
+    public function getSupportedLocaleNames(?string $displayLocale = null): array
     {
         if (!$this->translate) {
             return ['Default' => 'default'];

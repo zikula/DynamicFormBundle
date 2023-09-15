@@ -23,6 +23,7 @@ class ArrayToStringTransformerTest extends TestCase
 {
     /**
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ArrayToStringTransformer::transform
+     *
      * @dataProvider data
      */
     public function testTransform(string $storedAs, string $submitted, string $restored): void
@@ -33,6 +34,7 @@ class ArrayToStringTransformerTest extends TestCase
 
     /**
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ArrayToStringTransformer::reverseTransform
+     *
      * @dataProvider data
      */
     public function testReverseTransform(string $storedAs, string $submitted, string $restored): void
@@ -52,6 +54,7 @@ class ArrayToStringTransformerTest extends TestCase
      * @param string[] $restored
      *
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ArrayToStringTransformer::transform
+     *
      * @dataProvider dataMultiple
      */
     public function testTransformMultiple(string $storedAs, array $submitted, array $restored): void
@@ -65,6 +68,7 @@ class ArrayToStringTransformerTest extends TestCase
      * @param string[] $restored
      *
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ArrayToStringTransformer::reverseTransform
+     *
      * @dataProvider dataMultiple
      */
     public function testReverseTransformMultiple(string $storedAs, array $submitted, array $restored): void

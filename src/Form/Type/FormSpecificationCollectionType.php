@@ -31,7 +31,7 @@ class FormSpecificationCollectionType extends AbstractType
             'entry_type' => FormSpecificationType::class,
             'allow_add' => true,
             'allow_delete' => true,
-            'delete_empty' => function (AbstractFormSpecification $property = null) {
+            'delete_empty' => function (?AbstractFormSpecification $property = null) {
                 return null === $property || empty($property->getName());
             },
             'prototype' => true, // required for javascript to work

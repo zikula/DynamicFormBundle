@@ -22,6 +22,7 @@ class ChoiceValuesTransformerTest extends TestCase
      * @param array<string, string> $storedAs
      *
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ChoiceValuesTransformer::transform
+     *
      * @dataProvider data
      */
     public function testTransform(array $storedAs, string $submitted, string $restored): void
@@ -34,6 +35,7 @@ class ChoiceValuesTransformerTest extends TestCase
      * @param array<string, string> $storedAs
      *
      * @covers \Zikula\Bundle\DynamicFormBundle\Form\DataTransformer\ChoiceValuesTransformer::reverseTransform
+     *
      * @dataProvider data
      */
     public function testReverseTransform(array $storedAs, string $submitted, string $restored): void

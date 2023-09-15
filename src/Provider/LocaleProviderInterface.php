@@ -27,5 +27,5 @@ interface LocaleProviderInterface
      *
      * @return array<string, string>
      */
-    public function getSupportedLocaleNames(string $displayLocale = null): array;
+    public function getSupportedLocaleNames(?string $displayLocale = null): array;
 }

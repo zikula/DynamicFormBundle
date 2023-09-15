@@ -13,10 +13,7 @@ declare(strict_types=1);
 
 namespace Zikula\Bundle\DynamicFormBundle\Tests\Form\Data;
 
-use ArrayAccess;
-use Iterator;
 use PHPUnit\Framework\TestCase;
-use Traversable;
 use Zikula\Bundle\DynamicFormBundle\Form\Data\FormTypesChoices;
 
 class FormTypesChoicesTest extends TestCase
@@ -27,9 +24,9 @@ class FormTypesChoicesTest extends TestCase
     public function testEmptyInstantiation(): void
     {
         $foo = new FormTypesChoices();
-        $this->assertInstanceOf(ArrayAccess::class, $foo);
-        $this->assertInstanceOf(Iterator::class, $foo);
-        $this->assertInstanceOf(Traversable::class, $foo);
+        $this->assertInstanceOf(\ArrayAccess::class, $foo);
+        $this->assertInstanceOf(\Iterator::class, $foo);
+        $this->assertInstanceOf(\Traversable::class, $foo);
     }
 
     /**
@@ -41,9 +38,9 @@ class FormTypesChoicesTest extends TestCase
             'foo' => ['bar' => 'bar'],
             'three' => ['nine' => 'nine'],
         ]);
-        $this->assertInstanceOf(ArrayAccess::class, $foo);
-        $this->assertInstanceOf(Iterator::class, $foo);
-        $this->assertInstanceOf(Traversable::class, $foo);
+        $this->assertInstanceOf(\ArrayAccess::class, $foo);
+        $this->assertInstanceOf(\Iterator::class, $foo);
+        $this->assertInstanceOf(\Traversable::class, $foo);
         $this->assertArrayHasKey('foo', $foo);
         $this->assertArrayHasKey('three', $foo);
     }
